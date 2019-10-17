@@ -1,0 +1,39 @@
+<%= form_with(model: team, url: 'createbasicinfo', local: true) do |form| %>
+    <% if team.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(team.errors.count, "error") %> prohibited this team from being saved:</h2>
+  
+        <ul>
+          <% team.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :poc %>
+      <%= form.text_field :poc %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :pocmobile %>
+      <%= form.number_field :pocmobile %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :pocemail %>
+      <%= form.text_field :pocemail %>
+    </div>
+  
+    
+    <div class="actions">
+      <%= form.submit 'Save and continue'%>
+    </div>
+  <% end %>
+  
