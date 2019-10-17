@@ -17,6 +17,29 @@ class TeamsController < ApplicationController
     @team = Team.new
   end
 
+  # GET /teams/basicinfo
+  def basicinfo
+    @team = Team.new
+  end
+
+  def createbasicinfo
+    @team = Team.new(team_basic_params)
+
+
+    @team.status = "basicinfofilled"
+
+    respond_to do |format|
+      if @team.save
+        format.html { redirect_to @team, notice: 'Team was successfully created.' }
+        format.json { render :show, status: :created, location: @team }
+      else
+        format.html { render :new }
+        format.json { render json: @team.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
+
   # GET /teams/1/edit
   def edit
   end
@@ -70,5 +93,10 @@ class TeamsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
       params.require(:team).permit(:name, :poc, :pocmobile, :pocemail, :arrivaldate, :arrivalloc, :modeofarrival, :arrivaldetails, :departuredate, :departureloc, :modeofdeparture, :departuredetails, :instructionsfromadmin, :event_id, :user_id)
+    end
+
+    #def team_basic_params
+    def team_basic_params
+      params.require(:team).permit(:name, :poc, :pocmobile, :pocemail)
     end
 end
