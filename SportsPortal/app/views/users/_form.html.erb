@@ -33,12 +33,12 @@
 
   <div class="field">
     <%= form.label :role %>
-    <%= form.text_field :role %>
+    <%= form.select :role, ['User','Event Manager','Admin'],{:include_blank => 'Select'},class: 'form-control'%>
   </div>
 
   <div class="field">
-    <%= form.label :contactNo %>
-    <%= form.number_field :contactNo %>
+    <%= form.label :contact_no %>
+    <%= form.text_field :contactNo %>
   </div>
 
   <div class="actions">
