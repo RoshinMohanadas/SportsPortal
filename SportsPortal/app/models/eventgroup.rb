@@ -1,0 +1,2 @@
+class Eventgroup < ApplicationRecord
+end

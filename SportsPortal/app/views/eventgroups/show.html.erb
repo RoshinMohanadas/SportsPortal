@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @eventgroup.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @eventgroup.description %>
+</p>
+
+<p>
+  <strong>Regstartdate:</strong>
+  <%= @eventgroup.regstartdate %>
+</p>
+
+<p>
+  <strong>Regenddate:</strong>
+  <%= @eventgroup.regenddate %>
+</p>
+
+<p>
+  <strong>Startdate:</strong>
+  <%= @eventgroup.startdate %>
+</p>
+
+<p>
+  <strong>Enddate:</strong>
+  <%= @eventgroup.enddate %>
+</p>
+
+<p>
+  <strong>Isactive:</strong>
+  <%= @eventgroup.isactive %>
+</p>
+
+<p>
+  <strong>Venue:</strong>
+  <%= @eventgroup.venue %>
+</p>
+
+<%= link_to 'Edit', edit_eventgroup_path(@eventgroup) %> |
+<%= link_to 'Back', eventgroups_path %>

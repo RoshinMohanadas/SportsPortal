@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  regstartdate: 2019-10-17
+  regenddate: 2019-10-17
+  startdate: 2019-10-17
+  enddate: 2019-10-17
+  isactive: false
+  venue: MyString
+
+two:
+  name: MyString
+  description: MyText
+  regstartdate: 2019-10-17
+  regenddate: 2019-10-17
+  startdate: 2019-10-17
+  enddate: 2019-10-17
+  isactive: false
+  venue: MyString
