@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_17_121502) do
+ActiveRecord::Schema.define(version: 2019_10_18_022911) do
 
   create_table "eventgroups", force: :cascade do |t|
     t.string "name"
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 2019_10_17_121502) do
     t.string "name"
     t.string "username"
     t.string "email"
-    t.string "password"
+    t.string "password_digest"
     t.string "role"
     t.integer "contactno"
     t.datetime "created_at", precision: 6, null: false
