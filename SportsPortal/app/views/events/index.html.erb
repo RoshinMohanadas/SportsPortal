@@ -21,7 +21,7 @@
         <td><%= event.description %></td>
         <td><%= event.eventtype %></td>
         <td><%= event.eventrules %></td>
-        <td><%= event.eventgroup_id %></td>
+        <td><%= event.eventgroup.name %></td>
         <td><%= link_to 'Show', event %></td>
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
         <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
