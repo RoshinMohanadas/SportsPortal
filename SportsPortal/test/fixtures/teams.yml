@@ -1,0 +1,35 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  poc: MyString
+  pocmobile: 1
+  pocemail: MyString
+  arrivaldate: 2019-10-17 17:29:31
+  arrivalloc: MyString
+  modeofarrival: MyString
+  arrivaldetails: MyText
+  departuredate: 2019-10-17 17:29:31
+  departureloc: MyString
+  modeofdeparture: MyString
+  departuredetails: MyText
+  instructionsfromadmin: MyText
+  event: one
+  user: one
+
+two:
+  name: MyString
+  poc: MyString
+  pocmobile: 1
+  pocemail: MyString
+  arrivaldate: 2019-10-17 17:29:31
+  arrivalloc: MyString
+  modeofarrival: MyString
+  arrivaldetails: MyText
+  departuredate: 2019-10-17 17:29:31
+  departureloc: MyString
+  modeofdeparture: MyString
+  departuredetails: MyText
+  instructionsfromadmin: MyText
+  event: two
+  user: two

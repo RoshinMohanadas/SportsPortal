@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_17_071147) do
+ActiveRecord::Schema.define(version: 2019_10_17_115931) do
 
   create_table "eventgroups", force: :cascade do |t|
     t.string "name"
@@ -36,6 +36,28 @@ ActiveRecord::Schema.define(version: 2019_10_17_071147) do
     t.index ["eventgroup_id"], name: "index_events_on_eventgroup_id"
   end
 
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.string "poc"
+    t.integer "pocmobile"
+    t.string "pocemail"
+    t.datetime "arrivaldate"
+    t.string "arrivalloc"
+    t.string "modeofarrival"
+    t.text "arrivaldetails"
+    t.datetime "departuredate"
+    t.string "departureloc"
+    t.string "modeofdeparture"
+    t.text "departuredetails"
+    t.text "instructionsfromadmin"
+    t.integer "event_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_teams_on_event_id"
+    t.index ["user_id"], name: "index_teams_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "username"
@@ -48,4 +70,6 @@ ActiveRecord::Schema.define(version: 2019_10_17_071147) do
   end
 
   add_foreign_key "events", "eventgroups"
+  add_foreign_key "teams", "events"
+  add_foreign_key "teams", "users"
 end

@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Teams</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Poc</th>
+      <th>Pocmobile</th>
+      <th>Pocemail</th>
+      <th>Arrivaldate</th>
+      <th>Arrivalloc</th>
+      <th>Modeofarrival</th>
+      <th>Arrivaldetails</th>
+      <th>Departuredate</th>
+      <th>Departureloc</th>
+      <th>Modeofdeparture</th>
+      <th>Departuredetails</th>
+      <th>Instructionsfromadmin</th>
+      <th>Event</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @teams.each do |team| %>
+      <tr>
+        <td><%= team.name %></td>
+        <td><%= team.poc %></td>
+        <td><%= team.pocmobile %></td>
+        <td><%= team.pocemail %></td>
+        <td><%= team.arrivaldate %></td>
+        <td><%= team.arrivalloc %></td>
+        <td><%= team.modeofarrival %></td>
+        <td><%= team.arrivaldetails %></td>
+        <td><%= team.departuredate %></td>
+        <td><%= team.departureloc %></td>
+        <td><%= team.modeofdeparture %></td>
+        <td><%= team.departuredetails %></td>
+        <td><%= team.instructionsfromadmin %></td>
+        <td><%= team.event_id %></td>
+        <td><%= team.user_id %></td>
+        <td><%= link_to 'Show', team %></td>
+        <td><%= link_to 'Edit', edit_team_path(team) %></td>
+        <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Team', new_team_path %>
