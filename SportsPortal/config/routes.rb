@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :teammembers
   resources :teams
   resources :events
   resources :eventgroups

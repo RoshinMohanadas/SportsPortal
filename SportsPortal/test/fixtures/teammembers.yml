@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  dob: 2019-10-17
+  email: MyString
+  gender: MyString
+  role: MyString
+  achievements: MyText
+  foodpreference: MyString
+  contactno: 1
+  team: one
+
+two:
+  name: MyString
+  dob: 2019-10-17
+  email: MyString
+  gender: MyString
+  role: MyString
+  achievements: MyText
+  foodpreference: MyString
+  contactno: 1
+  team: two

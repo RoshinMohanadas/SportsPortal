@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @teammember.name %>
+</p>
+
+<p>
+  <strong>Dob:</strong>
+  <%= @teammember.dob %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @teammember.email %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @teammember.gender %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @teammember.role %>
+</p>
+
+<p>
+  <strong>Achievements:</strong>
+  <%= @teammember.achievements %>
+</p>
+
+<p>
+  <strong>Foodpreference:</strong>
+  <%= @teammember.foodpreference %>
+</p>
+
+<p>
+  <strong>Contactno:</strong>
+  <%= @teammember.contactno %>
+</p>
+
+<p>
+  <strong>Team:</strong>
+  <%= @teammember.team_id %>
+</p>
+
+<%= link_to 'Edit', edit_teammember_path(@teammember) %> |
+<%= link_to 'Back', teammembers_path %>
