@@ -15,10 +15,12 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    @eventgroups = Eventgroup.where(:isactive => true)
   end
 
   # GET /events/1/edit
   def edit
+    @eventgroups = Eventgroup.where(:isactive => true)
   end
 
   # POST /events
