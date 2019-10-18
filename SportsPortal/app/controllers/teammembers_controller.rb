@@ -17,6 +17,13 @@ class TeammembersController < ApplicationController
     @teammember = Teammember.new
   end
 
+  def newmember
+    @teamid = params[:teamid]
+    @member = Teammember.new
+    @member.team_id = @teamid
+    @members = Teammember.where(:team_id => @teamid)
+  end
+
   # GET /teammembers/1/edit
   def edit
   end
@@ -35,6 +42,14 @@ class TeammembersController < ApplicationController
         format.json { render json: @teammember.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def createmember
+    @teammember = Teammember.new(teammember_params)
+
+    @teammember.save
+    redirect_to :controller => 'teammembers', :action => 'newmember', :teamid => @teammember.team_id
+  
   end
 
   # PATCH/PUT /teammembers/1

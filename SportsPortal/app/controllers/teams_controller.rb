@@ -31,12 +31,14 @@ class TeamsController < ApplicationController
     @team.status = "basicinfofilled"
 
       if @team.save
-        redirect_to :action => 'index'
+        redirect_to :controller => 'teammembers', :action => 'newmember', :teamid => @team.id
       else
         redirect_to 'basicinfo'
       end
     
   end
+
+  
   
 
   # GET /teams/1/edit
@@ -96,6 +98,6 @@ class TeamsController < ApplicationController
 
     #def team_basic_params
     def team_basic_params
-      params.require(:team).permit(:name, :poc, :pocmobile, :pocemail)
+      params.require(:team).permit(:name, :achievements, :poc, :pocmobile, :pocemail)
     end
 end
