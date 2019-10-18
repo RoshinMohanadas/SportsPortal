@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "users/download_pdf" => "users#download_pdf", :as => 'download_pdf' 
   get 'session/new'
   get 'homepage/home'
   root 'homepage#home'
@@ -16,11 +17,15 @@ Rails.application.routes.draw do
 
 
   get 'teams/', to: 'teams#index'
+  get 'teams/show', to: 'teams#show'
   get 'teams/basicinfo', to: 'teams#basicinfo'
+  get 'teams/editbasicinfo', to: 'teams#editbasicinfo'
   post 'teams/createbasicinfo', to: 'teams#createbasicinfo'
+  post 'teams/createteam', to: 'teams#createteam'
+  patch 'teams/updatebasicinfo', to: 'teams#updatebasicinfo'
 
   get 'teammembers/newmember', to: 'teammembers#newmember'
   post 'teammembers/createmember', to: 'teammembers#createmember'
-
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
+  # For details on the DSL available  within this file, see https://guides.rubyonrails.org/routing.html
 end

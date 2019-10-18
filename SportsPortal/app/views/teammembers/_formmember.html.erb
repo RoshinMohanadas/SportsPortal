@@ -13,46 +13,55 @@
   
     <div class="field">
       <%= form.label :name %>
+      <br>
       <%= form.text_field :name %>
     </div>
   
     <div class="field">
       <%= form.label :dob %>
+      <br>
       <%= form.date_select :dob %>
     </div>
   
     <div class="field">
       <%= form.label :email %>
+      <br>
       <%= form.text_field :email %>
     </div>
   
     <div class="field">
       <%= form.label :gender %>
+      <br>
       <%= form.select :gender, ['Male', 'Female'],{:include_blank => 'Select'},class: 'form-control'%>
     </div>
   
     <div class="field">
       <%= form.label :role %>
+      <br>
       <%= form.select :role, ['Coach', 'Captain', 'Vice Captain', 'Player', 'Support Staff', 'Manager'],{:include_blank => 'Select'},class: 'form-control'%>
     </div>
   
     <div class="field">
       <%= form.label :achievements %>
+      <br>
       <%= form.text_area :achievements %>
     </div>
   
     <div class="field">
       <%= form.label :foodpreference %>
+      <br>
       <%= form.select :foodpreference, ['Veg', 'Non-Veg'],{:include_blank => 'Select'},class: 'form-control'%>
     </div>
   
     <div class="field">
       <%= form.label :contactno %>
+      <br>
       <%= form.number_field :contactno %>
     </div>
   
     <div class="field">
       <%= form.label :team_id %>
+      <br>
       <%= form.text_field :team_id %>
     </div>
   

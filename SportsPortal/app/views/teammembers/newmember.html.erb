@@ -1,7 +1,9 @@
 
 <h1> Team members</h1>
 
-<table>
+<%= link_to 'Submit Team', {:controller => :teams, :action => :createteam, :teamid => @team.id, :eventid => @team.event_id}, method: "post" %>
+
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
