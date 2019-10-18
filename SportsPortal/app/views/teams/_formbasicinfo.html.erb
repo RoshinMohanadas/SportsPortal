@@ -1,4 +1,4 @@
-<%= form_with(model: team, url: 'createbasicinfo', local: true) do |form| %>
+<%= form_with(model: team, url: dynamic_url, local: true) do |form| %>
     <% if team.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(team.errors.count, "error") %> prohibited this team from being saved:</h2>
@@ -13,29 +13,37 @@
   
     <div class="field">
       <%= form.label :name %>
+      <br>
       <%= form.text_field :name %>
     </div>
 
     <div class="field">
       <%= form.label :achievements %>
+      <br>
       <%= form.text_area :achievements %>
     </div>
   
     <div class="field">
       <%= form.label :poc %>
+      <br>
       <%= form.text_field :poc %>
     </div>
   
     <div class="field">
       <%= form.label :pocmobile %>
+      <br>
       <%= form.number_field :pocmobile %>
     </div>
   
     <div class="field">
       <%= form.label :pocemail %>
+      <br>
       <%= form.text_field :pocemail %>
     </div>
   
+    <div class="hidden-field">
+      <%= form.hidden_field :id%>
+    </div>
     
     <div class="actions">
       <%= form.submit 'Save and continue'%>

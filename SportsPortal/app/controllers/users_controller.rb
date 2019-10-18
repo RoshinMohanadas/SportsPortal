@@ -7,6 +7,25 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  require "prawn"
+  require "prawn/table"
+
+   def download_pdf
+        @users = User.all
+        respond_to do |format|
+          format.pdf do
+            pdf = Prawn::Document.new
+            table_data = Array.new
+            table_data << ["name", "email"]
+            @users.each do |p|
+                table_data << [p.name, p.email]
+            end
+            pdf.table(table_data, :width => 500, :cell_style => { :inline_format => true })
+            send_data pdf.render, filename: 'test.pdf', type: 'application/pdf', :disposition => 'inline'
+          end
+        end
+   end
+
   # GET /users/1
   # GET /users/1.json
   def show

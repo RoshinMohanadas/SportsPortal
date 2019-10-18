@@ -22,6 +22,10 @@ class TeamsController < ApplicationController
     @team = Team.new
   end
 
+  def editbasicinfo
+    @team = Team.find(params[:id])    
+  end
+
   def createbasicinfo
     @team = Team.new(team_basic_params)
 
@@ -31,11 +35,40 @@ class TeamsController < ApplicationController
     @team.status = "basicinfofilled"
 
       if @team.save
+        #UserMailer.welcome_email(@team).deliver_now
         redirect_to :controller => 'teammembers', :action => 'newmember', :teamid => @team.id
       else
         redirect_to 'basicinfo'
       end
     
+  end
+
+  def updatebasicinfo
+    @team = Team.find(params["team"]["id"])
+
+    @name = params["team"]["name"]
+    @achievements = params["team"]["achievements"]
+    @poc = params["team"]["poc"]
+    @pocmobile = params["team"]["pocmobile"]
+    @pocemail = params["team"]["pocemail"]
+
+    @team.update_attributes(:name => @name, :achievements => @achievements, :poc => @poc, :pocmobile => @pocmobile, :pocemail => @pocemail, :status => "basicinfofilled")
+    if @team.save
+      redirect_to :controller => 'teammembers', :action => 'newmember', :teamid => @team.id
+    else
+      redirect_to 'editbasicinfo', :id => @team.id
+    end
+  end
+
+  def createteam
+    @team = Team.find(params[:teamid])
+    @eventid = params[:eventid]
+    @team.status = "pending"
+
+
+    @team.save
+    redirect_to :action => 'index'
+
   end
 
   
@@ -100,4 +133,5 @@ class TeamsController < ApplicationController
     def team_basic_params
       params.require(:team).permit(:name, :achievements, :poc, :pocmobile, :pocemail)
     end
+
 end

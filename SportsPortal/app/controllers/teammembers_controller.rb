@@ -20,6 +20,7 @@ class TeammembersController < ApplicationController
   def newmember
     @teamid = params[:teamid]
     @member = Teammember.new
+    @team = Team.find(@teamid) 
     @member.team_id = @teamid
     @members = Teammember.where(:team_id => @teamid)
   end
