@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+
+gem 'prawn'
+gem 'prawn-table'
 # For login authentication
 gem 'bcrypt-ruby'
 # for bootstrap

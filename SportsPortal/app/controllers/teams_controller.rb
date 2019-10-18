@@ -35,6 +35,7 @@ class TeamsController < ApplicationController
     @team.status = "basicinfofilled"
 
       if @team.save
+        #UserMailer.welcome_email(@team).deliver_now
         redirect_to :controller => 'teammembers', :action => 'newmember', :teamid => @team.id
       else
         redirect_to 'basicinfo'
