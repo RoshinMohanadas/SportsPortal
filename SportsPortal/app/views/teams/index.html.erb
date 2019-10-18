@@ -9,6 +9,7 @@
       <th>Poc</th>
       <th>Pocmobile</th>
       <th>Pocemail</th>
+      <th>Status</th>
       <th>Arrivaldate</th>
       <th>Arrivalloc</th>
       <th>Modeofarrival</th>
@@ -20,7 +21,7 @@
       <th>Instructionsfromadmin</th>
       <th>Event</th>
       <th>User</th>
-      # <th colspan="3"></th>
+      <th colspan="3"></th>
     </tr>
   </thead>
 
@@ -31,6 +32,7 @@
         <td><%= team.poc %></td>
         <td><%= team.pocmobile %></td>
         <td><%= team.pocemail %></td>
+        <td><%= team.status %></td>
         <td><%= team.arrivaldate %></td>
         <td><%= team.arrivalloc %></td>
         <td><%= team.modeofarrival %></td>
@@ -42,7 +44,8 @@
         <td><%= team.instructionsfromadmin %></td>
         <td><%= team.event_id %></td>
         <td><%= team.user_id %></td>
-        
+        <td><%= link_to 'Show', { :action => :show, :id => team.id}%></td>
+        <td><%= link_to 'Edit', { :action => :editbasicinfo, :id => team.id}, method: "get"%></td>
       </tr>
     <% end %>
   </tbody>
