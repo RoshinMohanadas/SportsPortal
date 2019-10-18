@@ -1,5 +1,4 @@
 <h1>New Event</h1>
-
 <%= render 'form', event: @event, eventgroups: @eventgroups %>
 
-<%= link_to 'Back', events_path %>
+<%= link_to 'Back', eventgroup_path(@event.eventgroup) %>

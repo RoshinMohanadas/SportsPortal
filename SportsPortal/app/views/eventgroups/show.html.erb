@@ -67,12 +67,13 @@
         <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+  
   </tbody>
 </table>
-
+  
 <br>
 
-<%= link_to 'New Event', new_event_path %>
+<%= link_to 'New Event', {:controller => :events, :action => :new, :groupid => @eventgroup.id} %>
 
 <%= link_to 'Edit', edit_eventgroup_path(@eventgroup) %> |
 <%= link_to 'Back', eventgroups_path %>

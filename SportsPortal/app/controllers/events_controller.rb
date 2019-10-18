@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+   
   end
 
   # GET /events/1
@@ -17,6 +17,8 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @eventgroups = Eventgroup.where(:isactive => true)
+    @event.eventgroup_id = params[:groupid]
+    
   end
 
   # GET /events/1/edit
@@ -27,8 +29,9 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
+    
     @event = Event.new(event_params)
-
+    
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
