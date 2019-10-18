@@ -4,27 +4,45 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
   </button>
+
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav navbar-right">
+  <ul class="navbar-nav navbar">
+         
+        <li class="nav-item">
+             <%= link_to "Home", users_path, { :class=>"nav-link" } %>
+        </li>
+         <li class="nav-item">
+             <%= link_to "About", current_user, { :class=>"nav-link" } %>
+        </li>
+         <li class="nav-item">
+             <%= link_to "Facilities",current_user, { :class=>"nav-link" } %>
+        </li>
+         <li class="nav-item">
+            <%= link_to "Contact",  logout_path , method: "delete" ,:class=>"nav-link" %>
+        </li>
+    
+
+    </ul>
+    <ul class="navbar-nav navbar-right navbar">
      <% if logged_in? %>
          
         <li class="nav-item">
              <%= link_to "All Users", users_path, { :class=>"nav-link" } %>
         </li>
+        <li class="nav-item">
+             <%= link_to "Home", root_path, { :class=>"nav-link" } %>
+        </li>
          <li class="nav-item">
              <%= link_to "Profile", current_user, { :class=>"nav-link" } %>
         </li>
-         <li class="nav-item">
-             <%= link_to "Update Profile",edit_user_path(current_user), { :class=>"nav-link" } %>
-        </li>
-         <li class="nav-item">
-            <%= link_to "Log out",  logout_path , method: "delete" ,:class=>"nav-link" %>
-        </li>
-         <li class="nav-item">
-             <%= link_to "Home", root_path, { :class=>"nav-link" } %>
-        </li>
         <li class="nav-item">
              <%= link_to "Create User", new_user_path, { :class=>"nav-link" } %>
+        </li>
+        <li class="nav-item">
+             <%= link_to "Update Profile",edit_user_path(current_user), { :class=>"nav-link" } %>
+        </li>
+        <li class="nav-item">
+            <%= link_to "Log out",  logout_path , method: "delete" ,:class=>"nav-link" %>
         </li>
             <% else %>
             <li class="nav-item">
