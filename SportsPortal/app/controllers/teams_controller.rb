@@ -98,6 +98,6 @@ class TeamsController < ApplicationController
 
     #def team_basic_params
     def team_basic_params
-      params.require(:team).permit(:name, :poc, :pocmobile, :pocemail)
+      params.require(:team).permit(:name, :achievements, :poc, :pocmobile, :pocemail)
     end
 end

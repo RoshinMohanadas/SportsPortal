@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_18_022911) do
+ActiveRecord::Schema.define(version: 2019_10_18_094732) do
 
   create_table "eventgroups", force: :cascade do |t|
     t.string "name"
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 2019_10_18_022911) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "status"
+    t.text "achievements"
     t.index ["event_id"], name: "index_teams_on_event_id"
     t.index ["user_id"], name: "index_teams_on_user_id"
   end
