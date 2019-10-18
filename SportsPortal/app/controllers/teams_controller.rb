@@ -31,12 +31,14 @@ class TeamsController < ApplicationController
     @team.status = "basicinfofilled"
 
       if @team.save
-        redirect_to :action => 'index'
+        redirect_to :controller => 'teammembers', :action => 'newmember', :teamid => @team.id
       else
         redirect_to 'basicinfo'
       end
     
   end
+
+  
   
 
   # GET /teams/1/edit

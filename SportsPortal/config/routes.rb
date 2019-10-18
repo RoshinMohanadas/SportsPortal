@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'homepage/home'
   root 'homepage#home'
   resources :matches
-  resources :teammembers
+  #resources :teammembers
   # resources :teams
   resources :events
   resources :eventgroups
@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   get 'teams/', to: 'teams#index'
   get 'teams/basicinfo', to: 'teams#basicinfo'
   post 'teams/createbasicinfo', to: 'teams#createbasicinfo'
+
+  get 'teammembers/newmember', to: 'teammembers#newmember'
+  post 'teammembers/createmember', to: 'teammembers#createmember'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
