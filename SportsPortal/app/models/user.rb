@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+	has_one_attached :avatar
     #has_many :leaves,foreign_key: 'eid', primary_key: 'eid'
 	# before_save { self.eid = eid.downcase }
 	#before_save { eid.downcase! }

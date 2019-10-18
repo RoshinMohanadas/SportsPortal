@@ -30,5 +30,15 @@
   <%= @user.contactno %>
 </p>
 
+<p>
+  <% if @user.avatar.attached? %>
+  <%= link_to 'Profile pic', url_for(@user.avatar),  target: :_blank %>
+
+        
+        <% end %>
+        
+   
+</p>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
