@@ -1,0 +1,62 @@
+<%= form_with(model: teammember, url: 'createmember', local: true) do |form| %>
+    <% if teammember.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(teammember.errors.count, "error") %> prohibited this teammember from being saved:</h2>
+  
+        <ul>
+          <% teammember.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :dob %>
+      <%= form.date_select :dob %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :email %>
+      <%= form.text_field :email %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :gender %>
+      <%= form.select :gender, ['Male', 'Female'],{:include_blank => 'Select'},class: 'form-control'%>
+    </div>
+  
+    <div class="field">
+      <%= form.label :role %>
+      <%= form.select :role, ['Coach', 'Captain', 'Vice Captain', 'Player', 'Support Staff', 'Manager'],{:include_blank => 'Select'},class: 'form-control'%>
+    </div>
+  
+    <div class="field">
+      <%= form.label :achievements %>
+      <%= form.text_area :achievements %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :foodpreference %>
+      <%= form.select :foodpreference, ['Veg', 'Non-Veg'],{:include_blank => 'Select'},class: 'form-control'%>
+    </div>
+  
+    <div class="field">
+      <%= form.label :contactno %>
+      <%= form.number_field :contactno %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :team_id %>
+      <%= form.text_field :team_id %>
+    </div>
+  
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
