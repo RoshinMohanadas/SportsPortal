@@ -25,18 +25,17 @@ class TeamsController < ApplicationController
   def createbasicinfo
     @team = Team.new(team_basic_params)
 
+    @team.user_id = current_user.id
+    @team.event_id = 1
 
     @team.status = "basicinfofilled"
 
-    respond_to do |format|
       if @team.save
-        format.html { redirect_to @team, notice: 'Team was successfully created.' }
-        format.json { render :show, status: :created, location: @team }
+        redirect_to :action => 'index'
       else
-        format.html { render :new }
-        format.json { render json: @team.errors, status: :unprocessable_entity }
+        redirect_to 'basicinfo'
       end
-    end
+    
   end
   
 
