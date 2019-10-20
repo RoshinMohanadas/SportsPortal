@@ -15,7 +15,7 @@
       <th>Foodpreference</th>
       <th>Contactno</th>
       <th>Team</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -31,13 +31,12 @@
         <td><%= member.foodpreference %></td>
         <td><%= member.contactno %></td>
         <td><%= member.team_id %></td>
-         <td><%= link_to 'Show'%></td>
-        <td><%= link_to 'Edit'%></td>
-        <td><%= link_to 'Destroy' %></td>
+        <td><%= link_to 'Edit', { :action => :edit, :id => member.id }, method: "get"%></td>
+        <td><%= link_to 'Destroy', { :action => :destroy, :id =>member.id}, method: "delete" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-
-<%= render 'formmember', teammember: @member%>
+<h2>Add Member</h2>
+<%= render 'formmember', teammember: @member, dynamic_url: 'createmember'%>

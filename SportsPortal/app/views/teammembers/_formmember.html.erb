@@ -1,4 +1,4 @@
-<%= form_with(model: teammember, url: 'createmember', local: true) do |form| %>
+<%= form_with(model: teammember, url: dynamic_url, local: true) do |form| %>
     <% if teammember.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(teammember.errors.count, "error") %> prohibited this teammember from being saved:</h2>
@@ -63,6 +63,10 @@
       <%= form.label :team_id %>
       <br>
       <%= form.text_field :team_id %>
+    </div>
+
+    <div class="hidden-field">
+      <%= form.hidden_field :id%>
     </div>
   
     <div class="actions">

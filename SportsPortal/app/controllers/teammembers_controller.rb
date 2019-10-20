@@ -1,5 +1,5 @@
 class TeammembersController < ApplicationController
-  before_action :set_teammember, only: [:show, :edit, :update, :destroy]
+  before_action :set_teammember, only: [:show, :edit, :destroy]
 
   # GET /teammembers
   # GET /teammembers.json
@@ -28,6 +28,7 @@ class TeammembersController < ApplicationController
   # GET /teammembers/1/edit
   def edit
   end
+  
 
   # POST /teammembers
   # POST /teammembers.json
@@ -56,25 +57,28 @@ class TeammembersController < ApplicationController
   # PATCH/PUT /teammembers/1
   # PATCH/PUT /teammembers/1.json
   def update
-    respond_to do |format|
-      if @teammember.update(teammember_params)
-        format.html { redirect_to @teammember, notice: 'Teammember was successfully updated.' }
-        format.json { render :show, status: :ok, location: @teammember }
-      else
-        format.html { render :edit }
-        format.json { render json: @teammember.errors, status: :unprocessable_entity }
-      end
+    @teammember = Teammember.find(params["teammember"]["id"])
+
+    @teammember.update(teammember_params)
+   
+    if @teammember.save
+      redirect_to :controller => 'teammembers', :action => 'newmember', :teamid => @teammember.team_id
+    else
+      redirect_to :action => 'edit', id: @teammember.id
     end
+
   end
 
   # DELETE /teammembers/1
   # DELETE /teammembers/1.json
   def destroy
+    @teamid = @teammember.team_id
     @teammember.destroy
-    respond_to do |format|
-      format.html { redirect_to teammembers_url, notice: 'Teammember was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    
+    @teammember.save
+
+    redirect_to :controller => 'teammembers', :action => 'newmember', :teamid => @teamid
+
   end
 
   private

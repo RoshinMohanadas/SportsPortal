@@ -53,4 +53,4 @@
 
 <br>
 
-<%= link_to 'New Team', 'teams/basicinfo', method: "get" %>
+<%= link_to 'New Team', { :controller => :teams, :action => :basicinfo, :eventid => "1"}, method: "get" %>
