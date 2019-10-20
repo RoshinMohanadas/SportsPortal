@@ -68,6 +68,9 @@ class TeamsController < ApplicationController
 
 
     @team.save
+
+    #send email to event admins regarding the team registration
+
     redirect_to :action => 'index'
 
   end
