@@ -75,7 +75,12 @@ class TeamsController < ApplicationController
 
   end
 
-  
+  def newtravelplan
+    
+  end
+
+  def createtravelplan
+  end
   
 
   # GET /teams/1/edit

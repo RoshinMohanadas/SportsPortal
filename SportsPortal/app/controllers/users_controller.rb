@@ -9,6 +9,9 @@ class UsersController < ApplicationController
 
   require "prawn"
   require "prawn/table"
+  require "rubygems"
+require "prawn" 
+
 
    def download_pdf
         @users = User.all
@@ -20,6 +23,13 @@ class UsersController < ApplicationController
             @users.each do |p|
                 table_data << [p.name, p.email]
             end
+
+           
+
+            pdf.text "NIT C Sports Portal", :color => "00004d", :size => 24 ,:align => :center                  
+                  
+            
+            pdf.text "  "
             pdf.table(table_data, :width => 500, :cell_style => { :inline_format => true })
             send_data pdf.render, filename: 'test.pdf', type: 'application/pdf', :disposition => 'inline'
           end
