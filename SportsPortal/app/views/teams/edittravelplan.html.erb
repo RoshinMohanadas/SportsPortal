@@ -1,0 +1,77 @@
+
+<h1>Travel Plan</h1>
+
+<%= form_with(model: @team, url: 'updatetravelplan', local: true) do |form| %>
+    <% if @team.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@team.errors.count, "error") %> prohibited this team from being saved:</h2>
+  
+        <ul>
+          <% @team.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+   
+ 
+  
+    <div class="field">
+      <%= form.label :modeofarrival %>
+      <br>
+      <%= form.select :modeofarrival, ['Bus', 'Train', 'Flight'],{:include_blank => 'Select'},class: 'form-control'%>
+    </div>
+  
+    <div class="field">
+      <%= form.label :arrivaldetails %>
+      <br>
+      <%= form.text_field :arrivaldetails %>
+    </div>
+
+    <div class="field">
+      <%= form.label :arrivalloc %>
+      <br>
+      <%= form.text_field :arrivalloc %>
+    </div>
+
+    <div class="field">
+        <%= form.label :arrivaldate %>
+        <br>
+        <%= form.datetime_select :arrivaldate %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :modeofdeparture %>
+      <br>
+      <%= form.select :modeofdeparture, ['Bus', 'Train', 'Flight'],{:include_blank => 'Select'},class: 'form-control'%>
+    </div>
+
+    <div class="field">
+        <%= form.label :departuredetails %>
+        <br>
+        <%= form.text_field :departuredetails %>
+    </div>
+  
+    <div class="field">
+        <%= form.label :departureloc %>
+        <br>
+        <%= form.text_field :departureloc %>
+    </div>
+
+    <div class="field">
+        <%= form.label :departuredate %>
+        <br>
+        <%= form.datetime_select :departuredate %>
+    </div>
+
+    <div class="hidden-field">
+      <%= form.hidden_field :id%>
+    </div>
+
+    
+    <div class="actions">
+      <%= form.submit 'Save and continue'%>
+    </div>
+  <% end %>
+  

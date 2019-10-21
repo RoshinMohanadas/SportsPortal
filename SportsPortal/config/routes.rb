@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   get 'teams/editbasicinfo', to: 'teams#editbasicinfo'
   post 'teams/createbasicinfo', to: 'teams#createbasicinfo'
   post 'teams/createteam', to: 'teams#createteam'
+  get 'teams/edittravelplan', to: 'teams#edittravelplan'
+  patch 'teams/updatetravelplan', to: 'teams#updatetravelplan'
   patch 'teams/updatebasicinfo', to: 'teams#updatebasicinfo'
 
   get 'teammembers/newmember', to: 'teammembers#newmember'

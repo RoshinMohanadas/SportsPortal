@@ -46,6 +46,7 @@
         <td><%= team.user_id %></td>
         <td><%= link_to 'Show', { :action => :show, :id => team.id}%></td>
         <td><%= link_to 'Edit', { :action => :editbasicinfo, :id => team.id}, method: "get"%></td>
+        <td><%= link_to 'Travel Plan', { :action => :edittravelplan, :id => team.id}, method: "get"%></td>
       </tr>
     <% end %>
   </tbody>
