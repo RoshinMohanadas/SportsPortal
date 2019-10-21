@@ -1,4 +1,64 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+	 <!-- <div class="row">
+		<div class="col-md-12 text-center">
+			<h1>User Profile  </h1>
+		</div>
+	</div> -->
+
+	<div class="row">
+		<div class="col-md-offset-2 col-md-8 well profile">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="text-center text-capitalize"><strong>User Profile </strong></h2>
+        </div>
+      </div> 
+
+      <div class="row">
+        <div class="col-md-5">
+          <figure>
+            <% if @user.avatar.attached? %>
+							 <%= image_tag(url_for(@user.avatar), {:style => "width:100%;padding:10%"}) %>
+            <% end %>
+					</figure>
+        </div>
+        <div class="col-md-7" style="padding:10%;">
+          <table class="table">
+            <tr>
+              <th>Institute Name :</th>
+              <td>  <%= @user.name %> </td>
+            </tr>
+            <tr>
+              <th>Email ID :</th>
+              <td>  <%= @user.email %> </td>
+            </tr>
+            <tr>
+              <th>Contact no :</th>
+              <td>  <%= @user.contactno %> </td>
+            </tr>
+            <tr>
+              <th>Account type :</th>
+              <td>  <%= @user.role %> </td>
+            </tr>
+            <tr>
+              <th></th>
+              <td></td>
+            </tr>
+          </table>
+          <div class="text-center">
+          <%= link_to 'Edit my profile', edit_user_path(@user) %>   
+
+          </div>
+        
+        </div>
+      
+      </div>
+			</div>
+		</div>
+  </div>	
+</div>
+
+
+<!-- <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Name:</strong>
@@ -39,6 +99,5 @@
         
    
 </p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+-->
