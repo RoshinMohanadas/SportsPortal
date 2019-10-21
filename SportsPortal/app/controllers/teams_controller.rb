@@ -20,6 +20,8 @@ class TeamsController < ApplicationController
   # GET /teams/basicinfo
   def basicinfo
     @team = Team.new
+
+    @team.event_id = params[:eventid]
   end
 
   def editbasicinfo
@@ -30,7 +32,6 @@ class TeamsController < ApplicationController
     @team = Team.new(team_basic_params)
 
     @team.user_id = current_user.id
-    @team.event_id = 1
 
     @team.status = "basicinfofilled"
 
@@ -67,6 +68,9 @@ class TeamsController < ApplicationController
 
 
     @team.save
+
+    #send email to event admins regarding the team registration
+
     redirect_to :action => 'index'
 
   end
@@ -131,7 +135,7 @@ class TeamsController < ApplicationController
 
     #def team_basic_params
     def team_basic_params
-      params.require(:team).permit(:name, :achievements, :poc, :pocmobile, :pocemail)
+      params.require(:team).permit(:name, :achievements, :poc, :pocmobile, :pocemail, :event_id)
     end
 
 end

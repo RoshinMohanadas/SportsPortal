@@ -25,7 +25,11 @@ Rails.application.routes.draw do
   patch 'teams/updatebasicinfo', to: 'teams#updatebasicinfo'
 
   get 'teammembers/newmember', to: 'teammembers#newmember'
+  get 'teammembers/edit', to: 'teammembers#edit'
+  patch 'teammembers/update', to: 'teammembers#update'
   post 'teammembers/createmember', to: 'teammembers#createmember'
+  delete 'teammembers/destroy', to: 'teammembers#destroy'
+
   
   # For details on the DSL available  within this file, see https://guides.rubyonrails.org/routing.html
 end
