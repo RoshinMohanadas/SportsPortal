@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get    'login'   => 'session#new'
   post   'login'   => 'session#create'
   delete 'logout'  => 'session#destroy'
+  get 'about' => 'homepage#about'
+  get 'facilities' => 'homepage#facilities'
+  get 'contact' => 'homepage#contact'
 
 
   get 'teams/', to: 'teams#index'

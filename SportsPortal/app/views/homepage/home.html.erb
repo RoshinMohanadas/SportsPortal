@@ -6,60 +6,32 @@
     </marquee> 	 %>
 </p>
 
-<div class="row content">
-    <div class="col-sm-2 sidenav">
-      <p style="padding-left: 10%;" > <strong> Latest Events </strong> </p>
-      <% @eventgroups.each do |eventgroup| %>
-      <p><%= link_to eventgroup.name, eventgroup %></p>
-      <% end %>
-    </div>
-    <div class="col-sm-8 text-left"> 
-      <h1>Welcome</h1>
-      <p> Set in a picturesque landscape at the foothills of the Western Ghats, National Institute of Technology Calicut (NITC) is located about 22 kilometers north-east of Calicut City. National Institute of Technology Calicut is a Technical Institution of national importance set up by an Act of parliament(Act 29 of 2007) namely, the National Institute of technology Act 2007, which received the assent of the President of India on 5th June,2007. The provision of the Act have come into force with effect from 15th August,2007 as per Notification S.O.1384(E) dated 9th August, 2007 of the MHRD(Dept. of Higher Education),New Delhi. As per the provision of the said Act, this Institution runs on non profitable basis. 
-      </p>
+
+   <!--  <div class="col-sm-2 sidenav">
+     <%= render 'events' %>
+
+    </div> 
+    <div class="col-sm-8 text-left"> -->
+
+
+
+      <h1><small>Welcome to </small> NITC SportsPortal</h1>
       <hr>
-      <h3>Test</h3>
-      <p>Lorem ipsum...</p>
-    </div>
-    <div class="col-sm-2 sidenav">
-      <div class="well">
-        <p class="text-center" > <strong> Latest Results </strong> </p>
-        <% @matches.each do |match| %>
-        <% if match.result?%>
-        <% title=match.teamone+" VS "+match.teamtwo%>
-        <% description=match.description+" - "+match.round%> 
-        <% result=match.result%>
-      <p><%= link_to title, match %>
+      <marquee class="marq" bgcolor = "White" direction = "left" loop="" > 
+        <div class="geek1"> Important Announcement : There wont be any further announcements untill the next announcement. </div> 
+    </marquee>
+    <hr>
+      <h3>Quick Access</h3>
+      <hr>
+       <%= link_to "Users",users_path %><hr>
+        <%= link_to "Event Groups",eventgroups_path %><hr>
+         <%= link_to "Events",events_path%><hr>
+          <%= link_to "Teams",teams_path %><hr>
+           <%= link_to "Matches",matches_path %>
       
-       <%= "Result : "+result%>
-       <br>
-      <small> <%= description%></small>
-      <%end %>
-      </p>
-      <hr>
-      <% end %>
-      </div>
-      <div class="well">
-
-        <p class="text-center"  > <strong> Upcoming Matches </strong> </p>
-            <div>
-                <% @matches.each do |match| %>
-        <% if match.result?%>
-        <% title=match.teamone+" VS "+match.teamtwo%>
-        <% description=match.description+" - "+match.round%>
-      <p><%= link_to title, match %>
-      <%= description%>
-      <%end %>
-      </p>
-      <hr>
-      <% end %>
-          </div>
+    
 
 
-      </div>
-    </div>
-  </div>
-</div>
 
 <footer class="container-fluid text-center">
   <p>&copy NITC Sports Portal</p>
