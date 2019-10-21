@@ -8,10 +8,10 @@
 
 <div class="row content">
     <div class="col-sm-2 sidenav">
-      <p> New Events </p>
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
+      <p style="padding-left: 10%;" > <strong> Latest Events </strong> </p>
+      <% @eventgroups.each do |eventgroup| %>
+      <p><%= link_to eventgroup.name, eventgroup %></p>
+      <% end %>
     </div>
     <div class="col-sm-8 text-left"> 
       <h1>Welcome</h1>
@@ -23,10 +23,39 @@
     </div>
     <div class="col-sm-2 sidenav">
       <div class="well">
-        <p>Latest Results</p>
+        <p class="text-center" > <strong> Latest Results </strong> </p>
+        <% @matches.each do |match| %>
+        <% if match.result?%>
+        <% title=match.teamone+" VS "+match.teamtwo%>
+        <% description=match.description+" - "+match.round%> 
+        <% result=match.result%>
+      <p><%= link_to title, match %>
+      
+       <%= "Result : "+result%>
+       <br>
+      <small> <%= description%></small>
+      <%end %>
+      </p>
+      <hr>
+      <% end %>
       </div>
       <div class="well">
-        <p>Upcoming Matches</p>
+
+        <p class="text-center"  > <strong> Upcoming Matches </strong> </p>
+            <div>
+                <% @matches.each do |match| %>
+        <% if match.result?%>
+        <% title=match.teamone+" VS "+match.teamtwo%>
+        <% description=match.description+" - "+match.round%>
+      <p><%= link_to title, match %>
+      <%= description%>
+      <%end %>
+      </p>
+      <hr>
+      <% end %>
+          </div>
+
+
       </div>
     </div>
   </div>
