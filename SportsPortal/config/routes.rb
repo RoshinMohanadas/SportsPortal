@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :newsfiles
   get "users/download_pdf" => "users#download_pdf", :as => 'download_pdf' 
   get 'session/new'
   get 'homepage/home'

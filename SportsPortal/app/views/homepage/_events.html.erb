@@ -5,14 +5,18 @@
       <% end %>
     </div>
     <hr>
+
+
     <div>
      <p style="padding-left: 10%;" > <strong> Latest News </strong> <hr></p>
+     <% all_news.each do |newsfile| %>
       
-      <p> Registrations open for InterNIT sports meet 2019</p>
-      <p> Chat Corner</p>
-      <p> Files to download</p>
-
+      <p><%= newsfile.title %></p>
+    
+    <% end %>
     </div>
+
+
     <hr>
     <div>
      <p style="padding-left: 10%;" > <strong> Past Events </strong> <hr></p>
