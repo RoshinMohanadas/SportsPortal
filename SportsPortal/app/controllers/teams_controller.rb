@@ -34,6 +34,7 @@ class TeamsController < ApplicationController
     @team.user_id = current_user.id
 
     @team.status = "basicinfofilled"
+    @team.travelplanstatus = "notplanned"
 
       if @team.save
         #UserMailer.welcome_email(@team).deliver_now
@@ -75,7 +76,43 @@ class TeamsController < ApplicationController
 
   end
 
-  
+  def edittravelplan
+    @team = Team.find(params[:id])
+  end
+
+  def updatetravelplan
+    @team = Team.find(params["team"]["id"])
+    @eventid = @team.event_id
+
+    @modeofarrival = params["team"]["modeofarrival"]
+    @arrivaldetails = params["team"]["arrivaldetails"]
+    @arrivalloc = params["team"]["arrivalloc"]
+    # @arrivaldate = params["team"]["arrivaldate"]
+    @arrivaldate = getDateTime(params["team"], "arrivaldate")
+    @modeofdeparture = params["team"]["modeofdeparture"]
+    @departuredetails = params["team"]["departuredetails"]
+    @departureloc = params["team"]["departureloc"]
+    # @departuredate = params["team"]["departuredate"]
+    @departuredate = getDateTime(params["team"], "departuredate")
+
+    debugger
+    
+
+    @team.update_attributes(:modeofarrival => @modeofarrival, 
+                            :arrivaldetails => @arrivaldetails, 
+                            :arrivalloc => @arrivalloc, 
+                            :arrivaldate => @arrivaldate, 
+                            :modeofdeparture => @modeofdeparture, 
+                            :departuredetails => @departuredetails,
+                            :departureloc => @departureloc,
+                            :departuredate => @departuredate,
+                            :travelplanstatus => "planned")
+    if @team.save
+      redirect_to :controller => 'teams', :action => 'index'
+    else
+      redirect_to :controller => 'teams', :action => 'edittravelplan', :id => @team.id
+    end
+  end
   
 
   # GET /teams/1/edit
@@ -137,5 +174,13 @@ class TeamsController < ApplicationController
     def team_basic_params
       params.require(:team).permit(:name, :achievements, :poc, :pocmobile, :pocemail, :event_id)
     end
+
+    def getDate(parent, date_label)
+      Date.new parent[date_label + '(1i)'].to_i, parent[date_label + '(2i)'].to_i, parent[date_label + '(3i)'].to_i
+  end
+
+  def getDateTime(parent, date_label)
+      DateTime.new parent[date_label + '(1i)'].to_i, parent[date_label + '(2i)'].to_i, parent[date_label + '(3i)'].to_i, parent[date_label + '(4i)'].to_i, parent[date_label + '(5i)'].to_i
+  end
 
 end

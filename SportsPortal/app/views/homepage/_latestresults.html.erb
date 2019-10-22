@@ -1,0 +1,18 @@
+<div class="well">
+        <p class="text-center" > <strong> Latest Results </strong> </p>
+        <% all_matches.each do |match| %>
+        <% if match.result?%>
+        <% title=match.teamone+" vs "+match.teamtwo%>
+        <% description=match.description+" - "+match.round%> 
+        <% result=match.result%>
+      <p><%= link_to title, match %>
+      
+       <%= "Result : "+result%>
+       <br>
+      <small> <%= description%></small>
+      <%end %>
+      </p>
+      <hr>
+      <% end %>
+      </div>
+      

@@ -1,0 +1,24 @@
+    <div>
+     <p style="padding-left: 10%;" > <strong> Latest Events </strong> <hr> </p>
+      <% event_groups.each do |eventgroup| %>
+      <p><%= link_to eventgroup.name, eventgroup %></p>
+      <% end %>
+    </div>
+    <hr>
+    <div>
+     <p style="padding-left: 10%;" > <strong> Latest News </strong> <hr></p>
+      
+      <p> Registrations open for InterNIT sports meet 2019</p>
+      <p> Chat Corner</p>
+      <p> Files to download</p>
+
+    </div>
+    <hr>
+    <div>
+     <p style="padding-left: 10%;" > <strong> Past Events </strong> <hr></p>
+      <% event_groups.each do |eventgroup| %>
+      <p><%= link_to eventgroup.name, eventgroup %></p>
+      <% end %>
+
+    </div>
+    

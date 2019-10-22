@@ -21,6 +21,9 @@ end
   get    'login'   => 'session#new'
   post   'login'   => 'session#create'
   delete 'logout'  => 'session#destroy'
+  get 'about' => 'homepage#about'
+  get 'facilities' => 'homepage#facilities'
+  get 'contact' => 'homepage#contact'
 
 
   get 'teams/', to: 'teams#index'
@@ -29,6 +32,8 @@ end
   get 'teams/editbasicinfo', to: 'teams#editbasicinfo'
   post 'teams/createbasicinfo', to: 'teams#createbasicinfo'
   post 'teams/createteam', to: 'teams#createteam'
+  get 'teams/edittravelplan', to: 'teams#edittravelplan'
+  patch 'teams/updatetravelplan', to: 'teams#updatetravelplan'
   patch 'teams/updatebasicinfo', to: 'teams#updatebasicinfo'
 
   get 'teammembers/newmember', to: 'teammembers#newmember'

@@ -1,6 +1,89 @@
-<h1>Editing User</h1>
+<div class="container">
+	 <!-- <div class="row">
+		<div class="col-md-12 text-center">
+			<h1>User Profile  </h1>
+		</div>
+	</div> -->
+    <%= form_with(model: @user, local: true) do |form| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-<%= render 'form', user: @user %>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<div class="row">
+		<div class="col-md-offset-1 col-md-8 well profile">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="text-center text-capitalize"><strong>Update Details </strong></h2>
+        </div>
+      </div> 
+
+      <div class="row">
+        <div class="col-md-5">
+          <figure>
+            <% if @user.avatar.attached? %>
+							 <%= image_tag(url_for(@user.avatar), {:style => "width:100%;padding:10%"}) %>
+            <% end %>
+					</figure>
+                     <div class="field">
+    <%= form.label :Update_Profile_Picture%>
+    <%= form.file_field :avatar %>
+  </div>
+        </div>
+        <div class="col-md-7" style="padding-top:10%;">
+          <table class="table">
+            <tr>
+            
+              <th>Institute Name :</th>
+              <td>  <%= @user.name %> </td>
+            </tr>
+            <tr>
+              <th>Email ID :</th>
+              <td>   <%= @user.email  %> </td>
+            </tr>
+            <tr>
+              <th>Password :</th>
+              <td>   <%= form.text_field :password %> </td>
+            </tr>
+            <tr>
+              <th>Contact no :</th>
+              <td>  <%= form.text_field :contactno %></td>
+            </tr>
+            <tr>
+              <th>Account type :</th>
+              <td>  <%= @user.role %> </td>
+            </tr>
+            <tr>
+              <th></th>
+              <td></td>
+            </tr>
+          </table>
+          <div class="text-center">
+            <div class="actions">
+    <%= form.submit 'Save' %>
+  </div>
+
+          </div>
+        
+        </div>
+      
+      </div>
+			</div>
+		</div>
+</div>	
+
+
+<% end %>
+
+
+<!-- <%= render 'form', user: @user %>
 
 <%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', users_path %> -->

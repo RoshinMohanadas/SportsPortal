@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_18_094733) do
+ActiveRecord::Schema.define(version: 2019_10_21_122816) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 2019_10_18_094733) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "status"
     t.text "achievements"
+    t.string "travelplanstatus"
     t.index ["event_id"], name: "index_teams_on_event_id"
     t.index ["user_id"], name: "index_teams_on_user_id"
   end
