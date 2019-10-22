@@ -21,7 +21,11 @@
   <%= @event.eventgroup.name %>
 </p>
 
+<% if @event.rulesfile.blank? then%>
+
+<% else %>
 <%= link_to 'Rulefile', url_for(@event.rulesfile), target: :_blank %>
+<%end%>
 
 <br>
 <%= link_to 'Edit', edit_event_path(@event) %> |
