@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+
+            <% if @image.photo.attached? %>
+				<%= image_tag(url_for(@image.photo), {:style => "width:100%;padding:10%"}) %>
+            <% end %>
+
+<!-- <%= link_to 'Edit', edit_image_path(@image) %> | -->
+<%= link_to 'Back', images_path %>

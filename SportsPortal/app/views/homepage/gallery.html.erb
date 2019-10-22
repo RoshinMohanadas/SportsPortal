@@ -1,0 +1,12 @@
+<h1> Gallery </h1>
+
+<% @eventgroups.each do |eventgroup| %>
+    <% @events=Event.where(:eventgroup_id => eventgroup.id)%>
+    <% @events.each do |event| %>
+        <% if event.name?%>
+      <p><%= event.name %>
+             <%end %>
+      </p>
+      <hr>
+      <% end %>
+         <% end %>

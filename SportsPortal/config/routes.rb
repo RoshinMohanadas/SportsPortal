@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :images
   get "users/download_pdf" => "users#download_pdf", :as => 'download_pdf' 
   get 'session/new'
   get 'homepage/home'
@@ -24,6 +25,7 @@ end
   get 'about' => 'homepage#about'
   get 'facilities' => 'homepage#facilities'
   get 'contact' => 'homepage#contact'
+  get 'homegallery' => 'homepage#gallery'
 
 
   get 'teams/', to: 'teams#index'
