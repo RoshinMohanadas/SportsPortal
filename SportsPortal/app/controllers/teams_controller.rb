@@ -113,6 +113,27 @@ class TeamsController < ApplicationController
       redirect_to :controller => 'teams', :action => 'edittravelplan', :id => @team.id
     end
   end
+
+  def approve
+    @team = Team.find(params["team"]["id"])
+
+    @team.status = "approved"
+    @team.update_attributes(:instructionsfromadmin => params["team"]["instructionsfromadmin"])
+
+    @team.save
+    redirect_to request.referrer
+
+  end
+
+  def reject
+    @team = Team.find(params["team"]["id"])
+
+    @team.status = "rejected"
+    @team.update_attributes(:instructionsfromadmin => params["team"]["instructionsfromadmin"])
+
+    @team.save
+    redirect_to request.referrer
+  end
   
 
   # GET /teams/1/edit
