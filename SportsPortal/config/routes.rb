@@ -4,6 +4,13 @@ Rails.application.routes.draw do
   get 'homepage/home'
   root 'homepage#home'
   resources :matches
+
+  resources :matches do
+     member do
+       get 'addresult'
+       
+  end
+end
   #resources :teammembers
   # resources :teams
   resources :events

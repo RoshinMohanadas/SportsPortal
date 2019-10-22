@@ -14,11 +14,26 @@ class MatchesController < ApplicationController
 
   # GET /matches/new
   def new
+    @event_id=1
     @match = Match.new
+    @match.event_id=@event_id
+    @match.result="NA"
+    @teams=Team.where("event_id = ? AND status=?",@event_id,"approved")
+    
   end
 
   # GET /matches/1/edit
   def edit
+    @match = Match.find(params[:id])
+    @event_id= @match.event_id
+    @teams=Team.where("event_id = ? AND status=?",@event_id,"approved")
+  end
+
+  def addresult
+    @match = Match.find(params[:id])
+    @event_id= @match.event_id
+    @teams=Team.where("event_id = ? AND status=?",@event_id,"approved")
+ 
   end
 
   # POST /matches

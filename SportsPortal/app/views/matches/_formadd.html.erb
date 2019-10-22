@@ -13,40 +13,40 @@
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_field :description %>
+    <%= @match.description %>
   </div>
 
   <div class="field">
     <%= form.label :Matchstarttime %>
-    <%= form.datetime_select :matchstarttime %>
+    <%= @match.matchstarttime %>
   </div>
 
   <div class="field">
     <%= form.label :round %>
-    <%= form.text_field :round %>
+    <%= @match.round %>
   </div>
 
   <div class="field">
     <%= form.label :teamone %>
-   
-    <%= form.collection_select :teamone, @teams.order(:name), :name, :name, {prompt: 'Select team'}%>
+    <%= @match.teamone %>
+    
   </div>
 
   
 
   <div class="field">
     <%= form.label :teamtwo %>
-    <%= form.collection_select :teamtwo, @teams.order(:name), :name, :name, {prompt: 'Select team'}%>
+    <%= @match.teamtwo %>
   </div>
 
   <div class="field">
     <%= form.label :venue %>
-    <%= form.text_field :venue %>
+    <%= @match.venue%>
   </div>
 
   <div class="field">
-    
-    <%= form.hidden_field :result %>
+    <%= form.label :result %>
+    <%= form.text_field :result %>
   </div>
 
   <div class="field">
