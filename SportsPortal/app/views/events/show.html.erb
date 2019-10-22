@@ -30,3 +30,33 @@
 <br>
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back',eventgroup_path(@event.eventgroup) %>
+
+<h2>Teams</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Member count</th>
+      <th>Registration Status</th>
+      <th>Travel Plan Status</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @event.teams.each do |team| %>
+      <tr>
+        <td><%= team.name %></td>
+        <td><%= team.teammembers.blank? ? 0 : team.teammembers.count%></td>
+        <td><%= team.status%></td>
+        <td><%= team.travelplanstatus%></td>
+        <td><%= link_to 'Show', { :controller => :teams, :action => :show, :id => team.id}, method: "get"%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+

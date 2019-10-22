@@ -118,4 +118,21 @@
 </table>
 
 </div>
+<% if (current_user.role.downcase == 'eventadmin') && (@team.status.downcase == 'pending') %>
+<div>
+    <%= form_for 'team' do |f| %>
+      <div class="field">
+        <%= f.label :remarks %>
+        <br>
+        <%= f.text_area :instructionsfromadmin %>
+      </div>
+      <div class="hidden-field">
+        <%= f.hidden_field :id, value: @team.id%>
+      </div>
+      <%= f.submit "Approve Team", formaction: 'approve'%>
+      <%= f.submit "Reject Team", formaction: 'reject'%>
+    <% end %>
+
+</div>
+<% end %>
 

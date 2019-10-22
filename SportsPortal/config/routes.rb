@@ -35,6 +35,8 @@ end
   get 'teams/edittravelplan', to: 'teams#edittravelplan'
   patch 'teams/updatetravelplan', to: 'teams#updatetravelplan'
   patch 'teams/updatebasicinfo', to: 'teams#updatebasicinfo'
+  post 'teams/approve', to: 'teams#approve'
+  post 'teams/reject', to: 'teams#reject'
 
   get 'teammembers/newmember', to: 'teammembers#newmember'
   get 'teammembers/edit', to: 'teammembers#edit'
