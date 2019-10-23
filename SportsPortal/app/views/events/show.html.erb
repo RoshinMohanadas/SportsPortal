@@ -1,39 +1,95 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @event.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
-
-<p>
-  <strong>Eventtype:</strong>
-  <%= @event.eventtype %>
-</p>
 
 
-<p>
-  <strong>Eventgroup:</strong>
-  <%= @event.eventgroup.name %>
-</p>
+  <p id="notice"><%= notice %></p>
 
-<% if @event.rulesfile.blank? then%>
+  <p>
+    <strong>Name:</strong>
+    <%= @event.name %>
+  </p>
 
-<% else %>
-<%= link_to 'Rulefile', url_for(@event.rulesfile), target: :_blank %>
-<%end%>
+  <p>
+    <strong>Description:</strong>
+    <%= @event.description %>
+  </p>
 
-<br>
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back',eventgroup_path(@event.eventgroup) %>
+  <p>
+    <strong>Eventtype:</strong>
+    <%= @event.eventtype %>
+  </p>
 
+
+  <p>
+    <strong>Eventgroup:</strong>
+    <%= @event.eventgroup.name %>
+  </p>
+
+  <% if @event.rulesfile.blank? then%>
+
+  <% else %>
+  <%= link_to 'Rulefile', url_for(@event.rulesfile), target: :_blank %>
+  <%end%>
+
+  <br>
+
+  <% if institute? %>
+    <% if @event.teams.where('user_id = ?', current_user.id).count == 0%>
+      <%= link_to 'Register', { :controller => :teams, :action => :basicinfo, :eventid => @event.id }, method: "get"%>
+    <% else %>
+      <%= link_to 'View Team', { :controller => :teams, :action => :show, :id => @event.teams.where('user_id = ?', current_user.id).first.id}%>
+    <% end %>
+  <% end %>
+
+
+
+<% if event_admin? %>
+  <%= link_to 'Edit', edit_event_path(@event) %> 
+<% end %>
+
+
+<h1>Matches</h1>
+
+<table class="new_table table">
+  <thead class="thead-light">
+    <tr>
+      <th>Description</th>
+      <th>Match start time</th>
+      <th>Round</th>
+      <th>Team One</th>
+      <th>Team Two</th>
+      <th>Venue</th>
+      <th>Result</th>
+      <% if event_admin? %>
+        <th colspan="3"></th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @event.matches.each do |match| %>
+      <tr>
+        <td><%= match.description %></td>
+        <td><%= match.matchstarttime %></td>
+        <td><%= match.round %></td>
+        <td><%= match.teamone %></td>
+        <td><%= match.teamtwo %></td>
+        <td><%= match.venue %></td>
+        <td><%= match.result %></td>
+        <% if event_admin? %>
+          <td><%= link_to 'Edit', edit_match_path(match) %></td>
+          <td><%= link_to 'Add Result', addresult_match_path(match) %></td>
+          <td><%= link_to 'Destroy', match, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<% if event_admin? %>
 <h2>Teams</h2>
 
-<table class="table">
+<table class="new_table table">
   <thead>
     <tr>
       <th>Name</th>
@@ -57,6 +113,8 @@
   </tbody>
 </table>
 
+<% end %>
 
+<%= link_to 'Back', eventgroup_path(@event.eventgroup)%>
 
 

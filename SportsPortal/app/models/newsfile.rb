@@ -1,0 +1,2 @@
+class Newsfile < ApplicationRecord
+end
