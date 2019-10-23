@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @newsfile.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @newsfile.description %>
+</p>
+
+<%= link_to 'Edit', edit_newsfile_path(@newsfile) %> |
+<%= link_to 'Back', newsfiles_path %>

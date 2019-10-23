@@ -14,4 +14,7 @@ class HomepageController < ApplicationController
 
     @results=Match.all
   end
+
+ 
+
 end
