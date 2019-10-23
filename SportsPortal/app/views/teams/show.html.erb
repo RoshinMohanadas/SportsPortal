@@ -23,49 +23,72 @@
 </p>
 
 <p>
+  <strong>Registration status</strong>
+  <%= @team.status %>
+</p>
+
+<% if !(@team.arrivaldate.nil?) %>
+<p>
   <strong>Arrivaldate:</strong>
   <%= @team.arrivaldate %>
 </p>
+<% end %>
 
+<% if !(@team.arrivalloc.nil?) %>
 <p>
   <strong>Arrivalloc:</strong>
   <%= @team.arrivalloc %>
 </p>
+<% end %>
 
+<% if !(@team.modeofarrival.nil?) %>
 <p>
-  <strong>Modeofarrival:</strong>
+  <strong>Mode of arrival:</strong>
   <%= @team.modeofarrival %>
 </p>
+<% end %>
 
+<% if !(@team.arrivaldetails.nil?) %>
 <p>
   <strong>Arrivaldetails:</strong>
   <%= @team.arrivaldetails %>
 </p>
+<% end %>
 
+<% if !(@team.departuredate.nil?) %>
 <p>
-  <strong>Departuredate:</strong>
+  <strong>Departure date:</strong>
   <%= @team.departuredate %>
 </p>
+<% end %>
 
+<% if !(@team.departureloc.nil?) %>
 <p>
   <strong>Departureloc:</strong>
   <%= @team.departureloc %>
 </p>
+<% end %>
 
+<% if !(@team.modeofdeparture.nil?) %>
 <p>
   <strong>Modeofdeparture:</strong>
   <%= @team.modeofdeparture %>
 </p>
+<% end %>
 
+<% if !(@team.departuredetails.nil?) %>
 <p>
   <strong>Departuredetails:</strong>
   <%= @team.departuredetails %>
 </p>
+<% end %>
 
+<% if !(@team.instructionsfromadmin.nil?) %>
 <p>
-  <strong>Instructionsfromadmin:</strong>
+  <strong>Remarks:</strong>
   <%= @team.instructionsfromadmin %>
 </p>
+<% end %>
 
 <p>
   <strong>Event:</strong>
@@ -77,7 +100,11 @@
   <%= @team.user_id %>
 </p>
 
-<%= link_to 'Edit', { :action => :editbasicinfo, :id => @team.id}, method: "get" %>
+<% if institute? &&
+      current_user.id == @team.user_id &&
+      (@team.status.downcase == 'basicinfofilled' || @team.status.downcase == 'rejected') %>
+  <%= link_to 'Edit', { :action => :editbasicinfo, :id => @team.id}, method: "get" %>
+<% end %>
 
 </div>
 <div style="display:inline-block;width:80%">
@@ -89,11 +116,8 @@
     <th>Email</th>
     <th>Gender</th>
     <th>Role</th>
-    <th>Achievements</th>
-    <th>Foodpreference</th>
-    <th>Contactno</th>
-    <th>Team</th>
-    <th colspan="3"></th>
+    <th>Food preference</th>
+    <th>Contact no</th>
   </tr>
 </thead>
 
@@ -105,20 +129,15 @@
       <td><%= member.email %></td>
       <td><%= member.gender %></td>
       <td><%= member.role %></td>
-      <td><%= member.achievements %></td>
       <td><%= member.foodpreference %></td>
       <td><%= member.contactno %></td>
-      <td><%= member.team_id %></td>
-       <td><%= link_to 'Show'%></td>
-      <td><%= link_to 'Edit'%></td>
-      <td><%= link_to 'Destroy' %></td>
     </tr>
   <% end %>
 </tbody>
 </table>
 
 </div>
-<% if (current_user.role.downcase == 'eventadmin') && (@team.status.downcase == 'pending') %>
+<% if event_admin? && (@team.status.downcase == 'pending') %>
 <div>
     <%= form_for 'team' do |f| %>
       <div class="field">
@@ -135,4 +154,14 @@
 
 </div>
 <% end %>
+
+<% if institute? && 
+      @team.status.downcase == 'approved' && 
+      (@team.travelplanstatus == 'notplanned' || @team.travelplanstatus == 'planrejected') %>
+      <%= link_to 'Travel Plan', {:controller => :teams, :action => :edittravelplan, :id => @team.id}, method: "get"%>
+<% end %>
+
+<%= link_to 'Back', event_path(@team.event)%>
+
+
 
