@@ -25,17 +25,16 @@ class ImagesController < ApplicationController
   # POST /images
   # POST /images.json
   def create
+    if params.has_key?(:image)
     @image = Image.new(image_params)
-
-    respond_to do |format|
-      if @image.save
-        format.html { redirect_to @image, notice: 'Image was successfully created.' }
-        format.json { render :show, status: :created, location: @image }
-      else
-        format.html { render :new }
-        format.json { render json: @image.errors, status: :unprocessable_entity }
-      end
+    if @image.save
+      flash[:success] = "Image added"
+      redirect_to new
     end
+  else
+    flash[:danger]="Please attach an image to upload."
+    redirect_to new
+  end
   end
 
   # PATCH/PUT /images/1

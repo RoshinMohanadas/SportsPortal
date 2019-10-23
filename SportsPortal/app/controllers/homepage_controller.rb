@@ -17,6 +17,7 @@ class HomepageController < ApplicationController
 
   def gallery
     #@events=Event.all
-    @eventgroups=Eventgroup.all
+    #@eventgroups=Eventgroup.all
+    @images=Image.all
   end
 end
