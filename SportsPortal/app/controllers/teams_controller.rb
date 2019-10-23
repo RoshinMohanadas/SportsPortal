@@ -120,8 +120,10 @@ class TeamsController < ApplicationController
     @team.status = "approved"
     @team.update_attributes(:instructionsfromadmin => params["team"]["instructionsfromadmin"])
 
-    @team.save
-    redirect_to request.referrer
+    if @team.save
+      UserMailer.approve_email(@team).deliver_now
+      redirect_to request.referrer
+    end
 
   end
 
@@ -131,8 +133,10 @@ class TeamsController < ApplicationController
     @team.status = "rejected"
     @team.update_attributes(:instructionsfromadmin => params["team"]["instructionsfromadmin"])
 
-    @team.save
-    redirect_to request.referrer
+    if @team.save
+      UserMailer.reject_email(@team).deliver_now
+      redirect_to request.referrer
+    end
   end
   
 

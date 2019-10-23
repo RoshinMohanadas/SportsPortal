@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get "users/download_pdf" => "users#download_pdf", :as => 'download_pdf' 
+  #get "reports/userdownload_pdf" => "reports#userdownload_pdf", :as => 'userdownload_pdf'
+  get "reports/userdownload_pdf"
   get 'session/new'
   get 'homepage/home'
   root 'homepage#home'
