@@ -27,12 +27,14 @@
 					<div class="col-sm-2 sidenav">
 						<%= render 'homepage/events' %>
 					</div> <!-- end of sidenav -->
-
-					<% flash.each do |message_type, message| %>
-					<div class="alert alert-<%= message_type %>"><%= message %></div>
-					<% end %>
+					
 
 					<div class="col-sm-8 text-left"> 
+						<div class="row" style="min-width:100%;">
+							<% flash.each do |message_type, message| %>
+							<div style="min-width:100%;" class="alert alert-<%= message_type %>"><%= message %></div>
+							<% end %>
+						</div>
 						<%= yield %>
 					</div><!-- end of content -->
 
@@ -43,5 +45,6 @@
 				</div><!-- end of row -->
 
 		</div> <!-- end of container -->
+		<%= render 'layouts/footer' %>
 	</body>
 </html>

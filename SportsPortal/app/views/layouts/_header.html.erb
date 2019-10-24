@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md bg-dark navbar-dark navbar-inverse">
-     <%= image_tag("nitc_logo.png",{ :style =>"padding:0px;" , :class=>"navbar-brand"}) %>
+     <%= image_tag("nitc_logo.png",{ :style =>"padding:0px;max-height:50px" , :class=>"navbar-brand"}) %>
      <%= link_to "SportsPortal", root_path, { :style =>"padding-left:0px;" , :class=>"navbar-brand" } %> 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
@@ -16,6 +16,9 @@
         </li>
          <li class="nav-item">
              <%= link_to "Facilities",facilities_path, { :class=>"nav-link" } %>
+        </li>
+          <li class="nav-item">
+            <%= link_to "Gallery",  homegallery_path ,{:class=>"nav-link" } %>
         </li>
          <li class="nav-item">
             <%= link_to "Contact",  contact_path ,{:class=>"nav-link" } %>

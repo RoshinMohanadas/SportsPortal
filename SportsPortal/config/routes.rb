@@ -27,6 +27,7 @@ end
   get 'about' => 'homepage#about'
   get 'facilities' => 'homepage#facilities'
   get 'contact' => 'homepage#contact'
+  get 'homegallery' => 'homepage#gallery'
 
 
   get 'teams/', to: 'teams#index'

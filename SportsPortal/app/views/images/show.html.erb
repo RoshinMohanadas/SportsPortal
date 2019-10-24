@@ -1,0 +1,14 @@
+<div class="row">
+<p id="notice"><%= notice %></p>
+</div>
+
+            <% if @image.photo.attached? %>
+				<%= image_tag(url_for(@image.photo), {:style => "height:600px;min-width:100%;max-width:100%;padding:10%;padding-bottom:3%;"}) %>
+            <% end %>
+
+<!-- <%= link_to 'Edit', edit_image_path(@image) %> | -->
+<% if (!logged_in? || current_user.role.downcase=='user') %>
+<%= link_to 'Return to Gallery', homegallery_path ,method: "get"%> | 
+<% else %>
+<%= link_to 'Back', images_path ,method: "get"%>
+<% end %>

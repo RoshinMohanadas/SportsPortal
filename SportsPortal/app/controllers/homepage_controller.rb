@@ -15,6 +15,9 @@ class HomepageController < ApplicationController
     @results=Match.all
   end
 
- 
-
+  def gallery
+    #@events=Event.all
+    #@eventgroups=Eventgroup.all
+    @images=Image.all
+  end
 end

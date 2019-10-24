@@ -57,6 +57,11 @@ ActiveRecord::Schema.define(version: 2019_10_23_143452) do
     t.index ["eventgroup_id"], name: "index_events_on_eventgroup_id"
   end
 
+  create_table "images", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "matches", force: :cascade do |t|
     t.string "description"
     t.datetime "matchstarttime"
