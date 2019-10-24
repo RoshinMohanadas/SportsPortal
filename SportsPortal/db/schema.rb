@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_22_172807) do
+ActiveRecord::Schema.define(version: 2019_10_23_143452) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -119,6 +119,8 @@ ActiveRecord::Schema.define(version: 2019_10_22_172807) do
     t.string "status"
     t.text "achievements"
     t.string "travelplanstatus"
+    t.text "arrivaltravelarrangement"
+    t.text "departuretravelarrangement"
     t.index ["event_id"], name: "index_teams_on_event_id"
     t.index ["user_id"], name: "index_teams_on_user_id"
   end

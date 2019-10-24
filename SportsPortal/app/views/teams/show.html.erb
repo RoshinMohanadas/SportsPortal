@@ -155,10 +155,12 @@
 </div>
 <% end %>
 
-<% if institute? && 
-      @team.status.downcase == 'approved' && 
-      (@team.travelplanstatus == 'notplanned' || @team.travelplanstatus == 'planrejected') %>
-      <%= link_to 'Travel Plan', {:controller => :teams, :action => :edittravelplan, :id => @team.id}, method: "get"%>
+<% if institute? && @team.status.downcase == 'approved' && (@team.travelplanstatus.downcase == 'notplanned' || @team.travelplanstatus.downcase == 'rejected') %>
+      <%= link_to @team.travelplanstatus.downcase == 'notplanned'? 'Travel Plan':'Edit Travel Plan', {:controller => :teams, :action => :edittravelplan, :id => @team.id}, method: "get"%>
+<% end %>
+
+<% if event_admin? && @team.status.downcase == 'approved' && (@team.travelplanstatus.downcase == 'planned' || @team.travelplanstatus.downcase == 'arranged')%>
+      <%= link_to @team.travelplanstatus.downcase == 'planned' ? 'Arrange Transportation': 'Edit Transportation', {:controller => :teams, :action => :transport, :id => @team.id}, method: "get"%>
 <% end %>
 
 <%= link_to 'Back', event_path(@team.event)%>

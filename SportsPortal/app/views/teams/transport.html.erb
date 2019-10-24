@@ -1,0 +1,63 @@
+<h1>Arrange Transport</h1>
+
+<div>
+    <div>
+        <h3>Pickup</h3>
+            <p>
+                <strong>Date</strong>
+                <%= @team.arrivaldate %>
+            </p>
+
+            <p>
+                <strong>Location</strong>
+                <%= @team.arrivalloc %>
+            </p>
+
+            <p>
+                <strong>Mode</strong>
+                <%= @team.modeofarrival %>
+            </p>            
+    </div>
+    <div>
+        <h3>Drop off</h3>
+        <p>
+            <strong>Date</strong>
+            <%= @team.departuredate %>
+        </p>
+
+        <p>
+            <strong>Location</strong>
+            <%= @team.departureloc %>
+        </p>
+
+        <p>
+            <strong>Mode</strong>
+            <%= @team.modeofdeparture %>
+        </p>     
+    </div>
+    <br>
+    <div>
+        <%= form_for 'team' do |f|%>
+            <div class="field">
+                <%= f.label :arrival_transport %>
+                <br>
+                <%= f.text_area :arrivaltravelarrangement %>
+            </div>
+            <div class="field">
+                <%= f.label :departure_transport %>
+                <br>
+                <%= f.text_area :departuretravelarrangement %>
+            </div>
+            <div class="field">
+                <%= f.label :remarks %>
+                <br>
+                <%= f.text_area :instructionsfromadmin, value: '' %>
+            </div>
+            <div class="hidden-field">
+                <%= f.hidden_field :id%>
+            </div>
+            <%= f.submit "Arrange transport", formaction: 'arrangetransport'%>
+            <%= f.submit "Reject plan", formaction: 'rejecttravelplan'%>
+        <% end %>
+    </div>
+</div>
