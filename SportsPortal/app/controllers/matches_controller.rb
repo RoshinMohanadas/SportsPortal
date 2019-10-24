@@ -43,8 +43,8 @@ class MatchesController < ApplicationController
 
     respond_to do |format|
       if @match.save
-        format.html { redirect_to @match, notice: 'Match was successfully created.' }
-        format.json { render :show, status: :created, location: @match }
+        format.html { redirect_to event_path(@match.event), notice: 'Match was successfully created.' }
+        format.json { render :show, status: :created, location: event_path(@match.event) }
       else
         format.html { render :new }
         format.json { render json: @match.errors, status: :unprocessable_entity }
@@ -57,8 +57,8 @@ class MatchesController < ApplicationController
   def update
     respond_to do |format|
       if @match.update(match_params)
-        format.html { redirect_to @match, notice: 'Match was successfully updated.' }
-        format.json { render :show, status: :ok, location: @match }
+        format.html { redirect_to event_path(@match.event), notice: 'Match was successfully updated.' }
+        format.json { render :show, status: :ok, location: event_path(@match.event) }
       else
         format.html { render :edit }
         format.json { render json: @match.errors, status: :unprocessable_entity }
@@ -71,7 +71,7 @@ class MatchesController < ApplicationController
   def destroy
     @match.destroy
     respond_to do |format|
-      format.html { redirect_to matches_url, notice: 'Match was successfully destroyed.' }
+      format.html { redirect_to event_path(@match.event), notice: 'Match was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
