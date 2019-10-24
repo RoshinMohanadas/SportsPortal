@@ -11,8 +11,7 @@
      <p style="padding-left: 10%;" > <strong> Latest News </strong> <hr></p>
      <% all_news.each do |newsfile| %>
       
-      <p><%= newsfile.title %></p>
-    
+      <p><%= link_to newsfile.title, newsfiles_path %> </p>
     <% end %>
     </div>
 
