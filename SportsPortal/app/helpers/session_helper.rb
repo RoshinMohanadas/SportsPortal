@@ -22,6 +22,22 @@ module SessionHelper
     	@current_user = nil
   end
 
+  def event_admin?
+    if logged_in?
+      current_user.role.downcase == 'eventadmin'
+    else
+      return false
+    end
+  end
+
+  def institute?
+    if logged_in?
+      current_user.role.downcase == 'user'
+    else
+      return false
+    end
+  end
+
   def redirect_back_or(default)
     redirect_to(session[:forwarding_url] || default)
     session.delete(:forwarding_url)

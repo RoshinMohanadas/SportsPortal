@@ -1,0 +1,2 @@
+module NewsfilesHelper
+end

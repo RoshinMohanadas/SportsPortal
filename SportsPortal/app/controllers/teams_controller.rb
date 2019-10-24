@@ -72,7 +72,7 @@ class TeamsController < ApplicationController
 
     #send email to event admins regarding the team registration
 
-    redirect_to :action => 'index'
+    redirect_to :action => 'show', :id => @team.id 
 
   end
 
@@ -87,16 +87,11 @@ class TeamsController < ApplicationController
     @modeofarrival = params["team"]["modeofarrival"]
     @arrivaldetails = params["team"]["arrivaldetails"]
     @arrivalloc = params["team"]["arrivalloc"]
-    # @arrivaldate = params["team"]["arrivaldate"]
     @arrivaldate = getDateTime(params["team"], "arrivaldate")
     @modeofdeparture = params["team"]["modeofdeparture"]
     @departuredetails = params["team"]["departuredetails"]
     @departureloc = params["team"]["departureloc"]
-    # @departuredate = params["team"]["departuredate"]
     @departuredate = getDateTime(params["team"], "departuredate")
-
-    debugger
-    
 
     @team.update_attributes(:modeofarrival => @modeofarrival, 
                             :arrivaldetails => @arrivaldetails, 
@@ -108,7 +103,8 @@ class TeamsController < ApplicationController
                             :departuredate => @departuredate,
                             :travelplanstatus => "planned")
     if @team.save
-      redirect_to :controller => 'teams', :action => 'index'
+      # redirect_to :controller => 'teams', :action => 'index'
+      redirect_to :controller => 'teams', :action => 'show', id: @team.id
     else
       redirect_to :controller => 'teams', :action => 'edittravelplan', :id => @team.id
     end
@@ -120,8 +116,10 @@ class TeamsController < ApplicationController
     @team.status = "approved"
     @team.update_attributes(:instructionsfromadmin => params["team"]["instructionsfromadmin"])
 
-    @team.save
-    redirect_to request.referrer
+    if @team.save
+      UserMailer.approve_email(@team).deliver_now
+      redirect_to request.referrer
+    end
 
   end
 
@@ -131,8 +129,10 @@ class TeamsController < ApplicationController
     @team.status = "rejected"
     @team.update_attributes(:instructionsfromadmin => params["team"]["instructionsfromadmin"])
 
-    @team.save
-    redirect_to request.referrer
+    if @team.save
+      UserMailer.reject_email(@team).deliver_now
+      redirect_to request.referrer
+    end
   end
   
 
