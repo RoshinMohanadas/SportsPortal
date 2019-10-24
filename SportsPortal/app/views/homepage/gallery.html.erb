@@ -1,7 +1,10 @@
 <h1>Gallery <small>   NITC SportsPortal</small></h1>
 <hr>
 <% @images.each do |image| %>
-        <% if image.photo.attached? %>
-      <%= link_to image_tag(url_for(image.photo), {:style => "max-height:160px;max-width:100%;"}), image %>
-             <%end %>
+        <% if image.photo %>
+  <%= link_to image_tag(url_for(image.photo), {:style => "max-height:160px;max-width:100%;"}), image %>
+  <%else %>
+  <%= image_tag("gallery_default.jpg",  {:alt=> "Could not load Image",:style => "max-height:160px;max-width:100%;"}) %>
+  <%end %>
+  
          <% end %>
