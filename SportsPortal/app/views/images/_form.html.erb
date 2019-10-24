@@ -1,0 +1,41 @@
+<div class="row">
+<div class="col-md-12">
+<%= form_with(model: image, local: true) do |form| %>
+  <% if image.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(image.errors.count, "error") %> prohibited this image from being saved:</h2>
+
+      <ul>
+        <% image.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-12">
+        <%= form.label :Upload_a_new_image%> 
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <%= form.file_field :photo %>
+      </div>
+      <div class="col-md-1 col-offset-8">
+        <div class="actions">
+           <%= form.submit  'Upload'%>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<% end %>

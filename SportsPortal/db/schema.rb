@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_22_132942) do
+ActiveRecord::Schema.define(version: 2019_10_23_143452) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -55,6 +55,11 @@ ActiveRecord::Schema.define(version: 2019_10_22_132942) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["eventgroup_id"], name: "index_events_on_eventgroup_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "matches", force: :cascade do |t|
@@ -114,6 +119,8 @@ ActiveRecord::Schema.define(version: 2019_10_22_132942) do
     t.string "status"
     t.text "achievements"
     t.string "travelplanstatus"
+    t.text "arrivaltravelarrangement"
+    t.text "departuretravelarrangement"
     t.index ["event_id"], name: "index_teams_on_event_id"
     t.index ["user_id"], name: "index_teams_on_user_id"
   end

@@ -48,6 +48,12 @@
 
 <h1>Matches</h1>
 
+<% if event_admin? %>
+<br>
+  <%= link_to 'New Match', new_match_path(:eventid => @event.id)%>
+<br>
+<% end %>
+
 <table class="new_table table">
   <thead class="thead-light">
     <tr>

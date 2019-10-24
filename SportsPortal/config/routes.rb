@@ -28,6 +28,7 @@ end
   get 'about' => 'homepage#about'
   get 'facilities' => 'homepage#facilities'
   get 'contact' => 'homepage#contact'
+  get 'homegallery' => 'homepage#gallery'
 
 
   get 'teams/', to: 'teams#index'
@@ -41,6 +42,9 @@ end
   patch 'teams/updatebasicinfo', to: 'teams#updatebasicinfo'
   post 'teams/approve', to: 'teams#approve'
   post 'teams/reject', to: 'teams#reject'
+  get 'teams/transport', to: 'teams#transport'
+  post 'teams/arrangetransport', to: 'teams#arrangetransport'
+  post 'teams/rejecttravelplan', to: 'teams#rejecttravelplan'
 
   get 'teammembers/newmember', to: 'teammembers#newmember'
   get 'teammembers/edit', to: 'teammembers#edit'

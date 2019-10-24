@@ -1,0 +1,7 @@
+<h1>Gallery <small>   NITC SportsPortal</small></h1>
+<hr>
+<% @images.each do |image| %>
+        <% if image.photo.attached? %>
+      <%= link_to image_tag(url_for(image.photo), {:style => "max-height:160px;max-width:100%;"}), image %>
+             <%end %>
+         <% end %>
