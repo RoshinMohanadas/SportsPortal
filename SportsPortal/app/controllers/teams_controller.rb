@@ -130,7 +130,41 @@ class TeamsController < ApplicationController
     @team.save
     redirect_to request.referrer
   end
+
+
+  def transport
+    @team = Team.find(params[:id])
+  end
+
+  def arrangetransport
+    @team = Team.find(params["team"]["id"])
+
+    @team.travelplanstatus = "arranged"
+    @team.update_attributes(:arrivaltravelarrangement => params["team"]["arrivaltravelarrangement"], :departuretravelarrangement => params["team"]["departuretravelarrangement"],:instructionsfromadmin => params["team"]["instructionsfromadmin"])
+
+    if @team.save
+      #send email to POC informing the travel arrangements
+      redirect_to :controller => 'teams', :action => 'show', :id => @team.id
+    else
+      redirect_to :controller => 'teams', :action => 'transport', :id => @team.id
+    end
+
+  end
   
+  def rejecttravelplan
+    @team = Team.find(params["team"]["id"])
+
+    @team.travelplanstatus = "rejected"
+    @team.update_attributes(:arrivaltravelarrangement => '', :departuretravelarrangement => '',:instructionsfromadmin => params["team"]["instructionsfromadmin"])
+
+    if @team.save
+      #send email to POC informing the rejection of travel plan
+      redirect_to :controller => 'teams', :action => 'show', :id => @team.id
+    else
+      redirect_to :controller => 'teams', :action => 'transport', :id => @team.id
+    end
+
+  end
 
   # GET /teams/1/edit
   def edit
