@@ -1,17 +1,54 @@
 <p id="notice"><%= notice %></p>
 
+<head>
+ 
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#example').DataTable( {
+          dom: 'Bfrtip',
+          buttons: [
+              'copyHtml5',
+              'excelHtml5',
+              
+              {
+                extend: 'csvHtml5',
+                text: 'CSV',
+                className: 'btn btn-default',
+                exportOptions: {
+                    columns: ':not(.notexport)'
+                }
+            },
+              {
+                extend: 'pdfHtml5',
+                text: 'PDF',
+                className: 'btn btn-default',
+                exportOptions: {
+                    columns: ':not(.notexport)'
+                }
+            }
+          ]
+      } );
+  } );
+  </script>
+
+  
+</head>
+
 <h1>Users</h1>
 
-<table>
+  <table id="example" class="display" style="width:100%">
   <thead>
     <tr>
       <th>Name</th>
       <th>Username</th>
-      <th>Email</th>
-      <th>Password</th>
+      <th>Email</t>
+      <th class='notexport'>Password</th>
       <th>Role</th>
       <th>Contactno</th>
-      <th colspan="3"></th>
+      <th class='notexport'></th>
+      <th class='notexport'></th>
+      <th class='notexport'></th>
+      
     </tr>
   </thead>
 
@@ -27,12 +64,17 @@
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+       
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+
+
+
+
 <%= link_to "Download_pdf", :controller => "reports",:action=>:userdownload_pdf,:format => 'pdf'%><br>
 
 <%= link_to 'New User', new_user_path %>
