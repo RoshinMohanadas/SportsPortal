@@ -14,7 +14,7 @@ class MatchesController < ApplicationController
 
   # GET /matches/new
   def new
-    @event_id=1
+    @event_id= params[:eventid]
     @match = Match.new
     @match.event_id=@event_id
     @match.result="NA"
