@@ -22,13 +22,22 @@
         <p><h1><%= editcontent.welcometext %></h1></p>
       
       <% end %>
-      </h1>
+    
+      
       <hr>
-  
-  <!--    <marquee class="marq" bgcolor = "White" direction = "left" loop="" > 
-        <div class="geek1"> Important Announcement : There wont be any further announcements untill the next announcement. </div> 
-    </marquee> -->
+      <marquee class="marq" bgcolor = "White" direction = "left" loop="" > 
+        <div class="geek1"><strong> Important Announcements : </strong>
+        <% all_announcements.each do |announce| %>  
+          
+          &nbsp
+          <strong> <%= announce.message %></strong>
+          &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
+          
+        <% end %>
+         </div> 
+    </marquee>
     <hr>
+
       <h3>Quick Access</h3>
       <hr>
        <%= link_to "Users",users_path %><hr>

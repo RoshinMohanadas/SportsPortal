@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :announcements
   resources :editcontents
   resources :images
   #get "reports/userdownload_pdf" => "reports#userdownload_pdf", :as => 'userdownload_pdf'
