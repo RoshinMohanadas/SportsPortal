@@ -1,5 +1,37 @@
 <p id="notice"><%= notice %></p>
+<head>
+ 
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#example').DataTable( {
+          dom: 'Bfrtip',
+          buttons: [
+              'copyHtml5',
+              'excelHtml5',
+              
+              {
+                extend: 'csvHtml5',
+                text: 'CSV',
+                className: 'btn btn-default',
+                exportOptions: {
+                    columns: ':not(.notexport)'
+                }
+            },
+              {
+                extend: 'pdfHtml5',
+                text: 'PDF',
+                className: 'btn btn-default',
+                exportOptions: {
+                    columns: ':not(.notexport)'
+                }
+            }
+          ]
+      } );
+  } );
+  </script>
 
+  
+</head>
 <p>
   <strong>Name:</strong>
   <%= @eventgroup.name %>
@@ -46,15 +78,17 @@
 
 <h1>Events</h1>
 
-<table class="table">
+<table id="example" class="display" style="width:100%">
   <thead>
     <tr>
       <th>Name</th>
       <th>Description</th>
       <th>Eventtype</th>
       <th>Eventgroup</th>
+      <th class='notexport'></th>
       <% if event_admin? %>
-        <th colspan="2"></th>
+      <th class='notexport'></th>
+      <th class='notexport'></th>
       <% end %>
     </tr>
   </thead>

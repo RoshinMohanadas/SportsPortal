@@ -2,6 +2,36 @@
 
   <p id="notice"><%= notice %></p>
 
+  <head>
+ 
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('#example').DataTable( {
+            dom: 'Bfrtip',
+            buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                
+                {
+                  extend: 'csvHtml5',
+                  text: 'CSV',
+                  className: 'btn btn-default',
+                  exportOptions: {
+                      columns: ':not(.notexport)'
+                  }
+              },
+                {
+                  extend: 'pdfHtml5',
+                  text: 'PDF',
+                  className: 'btn btn-default',
+                  exportOptions: {
+                      columns: ':not(.notexport)'
+                  }
+              }
+            ]
+        } );
+    } );
+    </script>
   <p>
     <strong>Name:</strong>
     <%= @event.name %>
@@ -95,14 +125,15 @@
 <% if event_admin? %>
 <h2>Teams</h2>
 
-<table class="new_table table">
+<table id="example" class="display" style="width:100%">
   <thead>
     <tr>
       <th>Name</th>
       <th>Member count</th>
       <th>Registration Status</th>
       <th>Travel Plan Status</th>
-      <th colspan="2"></th>
+      <th class='notexport'></th>
+      
     </tr>
   </thead>
 
