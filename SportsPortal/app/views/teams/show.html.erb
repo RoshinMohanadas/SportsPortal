@@ -2,6 +2,40 @@
 
 <p id="notice"><%= notice %></p>
 
+<head>
+ 
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#example').DataTable( {
+          dom: 'Bfrtip',
+          buttons: [
+              'copyHtml5',
+              'excelHtml5',
+              
+              {
+                extend: 'csvHtml5',
+                text: 'CSV',
+                className: 'btn btn-default',
+                exportOptions: {
+                    columns: ':not(.notexport)'
+                }
+            },
+              {
+                extend: 'pdfHtml5',
+                text: 'PDF',
+                className: 'btn btn-default',
+                exportOptions: {
+                    columns: ':not(.notexport)'
+                }
+            }
+          ]
+      } );
+  } );
+  </script>
+
+
+  </head>
+
 <p>
   <strong>Name:</strong>
   <%= @team.name %>
@@ -107,9 +141,11 @@
 <% end %>
 
 </div>
+
 <div style="display:inline-block;width:80%">
-<table class="table">
-<thead>
+    <div class="table-responsive">
+  <table id="example" class="new_table table">
+    <thead class="thead-light">
   <tr>
     <th>Name</th>
     <th>Dob</th>
@@ -135,7 +171,7 @@
   <% end %>
 </tbody>
 </table>
-
+</div>
 </div>
 <% if event_admin? && (@team.status.downcase == 'pending') %>
 <div>
