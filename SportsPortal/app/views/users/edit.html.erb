@@ -34,14 +34,38 @@
 					</figure>
                      <div class="field">
     <%= form.label :Update_Profile_Picture%>
-    <%= form.file_field :avatar %>
+    <%= form.file_field :avatar ,class: 'file-form-control'%>
   </div>
         </div>
         <div class="col-md-7" style="padding-top:10%;">
           <table class="table">
+          <% if site_admin? %>
             <tr>
             
-              <th>Institute Name :</th>
+              <th>User Name :</th>
+              <td>  <%= form.text_field :name ,class: 'form-control'%> </td>
+            </tr>
+            <tr>
+              <th>Email ID :</th>
+              <td>   <%= form.text_field :email ,class: 'form-control' %> </td>
+            </tr>
+            <tr>
+              <th>Password :</th>
+              <td>   <%= form.text_field :password ,class: 'form-control'%> </td>
+            </tr>
+            <tr>
+              <th>Contact no :</th>
+              <td>  <%= form.text_field :contactno ,class: 'form-control' %></td>
+            </tr>
+            <tr>
+              <th>Account type :</th>
+              <td><%= form.select :role, ['User', 'SiteAdmin','EventAdmin'],{:include_blank => 'Select'},class: 'form-control'%>
+   </td>
+            </tr>
+          <%else%>
+            <tr>
+            
+              <th>User Name :</th>
               <td>  <%= @user.name %> </td>
             </tr>
             <tr>
@@ -50,16 +74,17 @@
             </tr>
             <tr>
               <th>Password :</th>
-              <td>   <%= form.text_field :password %> </td>
+              <td>   <%= form.text_field :password ,class: 'form-control'%> </td>
             </tr>
             <tr>
               <th>Contact no :</th>
-              <td>  <%= form.text_field :contactno %></td>
+              <td>  <%= form.text_field :contactno ,class: 'form-control'%></td>
             </tr>
             <tr>
               <th>Account type :</th>
               <td>  <%= @user.role %> </td>
             </tr>
+            <%end%>
             <tr>
               <th></th>
               <td></td>

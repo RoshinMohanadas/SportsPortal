@@ -35,14 +35,16 @@
 </head>
 
 <h1>Users</h1>
-
+<hr>
+<%= button_to "Add an User", new_user_path, method: "get" %>
+<hr>
+<div class="table-responsive">
   <table id="example" class="display" style="width:100%">
   <thead>
     <tr>
       <th>Name</th>
       <th>Username</th>
       <th>Email</t>
-      <th class='notexport'>Password</th>
       <th>Role</th>
       <th>Contactno</th>
       <th class='notexport'></th>
@@ -58,23 +60,22 @@
         <td><%= user.name %></td>
         <td><%= user.username %></td>
         <td><%= user.email %></td>
-        <td><%= user.password_digest %></td>
         <td><%= user.role %></td>
         <td><%= user.contactno %></td>
-        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'View', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
        
       </tr>
     <% end %>
   </tbody>
 </table>
-
+</div>
 <br>
 
 
 
 
-<%= link_to "Download_pdf", :controller => "reports",:action=>:userdownload_pdf,:format => 'pdf'%><br>
+<%= link_to "Download as PDF", :controller => "reports",:action=>:userdownload_pdf,:format => 'pdf'%><br>
 
-<%= link_to 'New User', new_user_path %>
+

@@ -30,6 +30,22 @@ module SessionHelper
     end
   end
 
+  def site_admin?
+    if logged_in?
+      current_user.role.downcase == 'siteadmin'
+    else
+      return false
+    end
+  end
+
+  def admin?
+    if logged_in?
+      (current_user.role.downcase == 'eventadmin' || current_user.role.downcase == 'siteadmin') 
+    else
+      return false
+    end
+  end
+
   def institute?
     if logged_in?
       current_user.role.downcase == 'user'

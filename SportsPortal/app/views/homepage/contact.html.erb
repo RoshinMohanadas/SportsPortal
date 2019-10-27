@@ -1,9 +1,10 @@
 <h1>Contact<small>  NITC SportsPortal</small></h1>
 <hr>
-      <p> National Institute of Technology Calicut,
-NIT Campus P.O 673 601,
-Kozhikode, India
-</p>
+<% all_contents.each do |editcontent| %>
+      
+      <p><%= editcontent.contact %></p>
+    
+    <% end %>
       <hr>
       <h3>Test</h3>
       <p>Lorem ipsum...</p>
