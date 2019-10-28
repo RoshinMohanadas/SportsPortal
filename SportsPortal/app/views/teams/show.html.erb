@@ -1,113 +1,42 @@
-<div style="display:inline-block;float:left;width:20%">
+<div >
 
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @team.name %>
-</p>
-
-<p>
-  <strong>Poc:</strong>
-  <%= @team.poc %>
-</p>
-
-<p>
-  <strong>Pocmobile:</strong>
-  <%= @team.pocmobile %>
-</p>
-
-<p>
-  <strong>Pocemail:</strong>
-  <%= @team.pocemail %>
-</p>
 
 <p>
   <strong>Registration status</strong>
   <%= @team.status %>
 </p>
 
-<% if !(@team.arrivaldate.nil?) %>
-<p>
-  <strong>Arrivaldate:</strong>
-  <%= @team.arrivaldate %>
-</p>
-<% end %>
+<div class="card card-1">
 
-<% if !(@team.arrivalloc.nil?) %>
-<p>
-  <strong>Arrivalloc:</strong>
-  <%= @team.arrivalloc %>
-</p>
-<% end %>
-
-<% if !(@team.modeofarrival.nil?) %>
-<p>
-  <strong>Mode of arrival:</strong>
-  <%= @team.modeofarrival %>
-</p>
-<% end %>
-
-<% if !(@team.arrivaldetails.nil?) %>
-<p>
-  <strong>Arrivaldetails:</strong>
-  <%= @team.arrivaldetails %>
-</p>
-<% end %>
-
-<% if !(@team.departuredate.nil?) %>
-<p>
-  <strong>Departure date:</strong>
-  <%= @team.departuredate %>
-</p>
-<% end %>
-
-<% if !(@team.departureloc.nil?) %>
-<p>
-  <strong>Departureloc:</strong>
-  <%= @team.departureloc %>
-</p>
-<% end %>
-
-<% if !(@team.modeofdeparture.nil?) %>
-<p>
-  <strong>Modeofdeparture:</strong>
-  <%= @team.modeofdeparture %>
-</p>
-<% end %>
-
-<% if !(@team.departuredetails.nil?) %>
-<p>
-  <strong>Departuredetails:</strong>
-  <%= @team.departuredetails %>
-</p>
-<% end %>
-
-<% if !(@team.instructionsfromadmin.nil?) %>
-<p>
-  <strong>Remarks:</strong>
-  <%= @team.instructionsfromadmin %>
-</p>
-<% end %>
+<h4>Basic info</h4>
 
 <p>
-  <strong>Event:</strong>
-  <%= @team.event_id %>
+  <strong>Team Name:</strong>
+  <%= @team.name %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @team.user_id %>
+  <strong>Person of contact:</strong>
+  <%= @team.poc %>
 </p>
 
-<% if institute? &&
-      current_user.id == @team.user_id &&
-      (@team.status.downcase == 'basicinfofilled' || @team.status.downcase == 'rejected') %>
-  <%= link_to 'Edit', { :action => :editbasicinfo, :id => @team.id}, method: "get" %>
-<% end %>
+<p>
+  <strong>Person of contact mobile:</strong>
+  <%= @team.pocmobile %>
+</p>
+
+<p>
+  <strong>Person of contact email:</strong>
+  <%= @team.pocemail %>
+</p>
+
 
 </div>
-<div style="display:inline-block;width:80%">
+
+<div class="card card-1">
+<h4>Team members</h4>
+
 <table class="table">
 <thead>
   <tr>
@@ -136,7 +65,97 @@
 </tbody>
 </table>
 
+
 </div>
+
+
+
+<div class="card card-1">
+  <h4>Travel plan</h4>
+  <br>
+  <% if !(@team.arrivaldate.nil?) %>
+  <p>
+    <strong>Arrival Date:</strong>
+    <%= @team.arrivaldate %>
+  </p>
+  <% end %>
+
+  <% if !(@team.arrivalloc.nil?) %>
+  <p>
+    <strong>Arrival location:</strong>
+    <%= @team.arrivalloc %>
+  </p>
+  <% end %>
+
+  <% if !(@team.modeofarrival.nil?) %>
+  <p>
+    <strong>Mode of arrival:</strong>
+    <%= @team.modeofarrival %>
+  </p>
+  <% end %>
+
+  <% if !(@team.arrivaldetails.nil?) %>
+  <p>
+    <strong>Arrival Details:</strong>
+    <%= @team.arrivaldetails %>
+  </p>
+  <% end %>
+
+  <% if !(@team.departuredate.nil?) %>
+  <p>
+    <strong>Departure date:</strong>
+    <%= @team.departuredate %>
+  </p>
+  <% end %>
+
+  <% if !(@team.departureloc.nil?) %>
+  <p>
+    <strong>Departure Location:</strong>
+    <%= @team.departureloc %>
+  </p>
+  <% end %>
+
+  <% if !(@team.modeofdeparture.nil?) %>
+  <p>
+    <strong>Mode of departure:</strong>
+    <%= @team.modeofdeparture %>
+  </p>
+  <% end %>
+
+  <% if !(@team.departuredetails.nil?) %>
+  <p>
+    <strong>Departure details:</strong>
+    <%= @team.departuredetails %>
+  </p>
+  <% end %>
+
+</div>
+
+<% if !(@team.instructionsfromadmin.nil?) %>
+<p>
+  <strong>Remarks:</strong>
+  <%= @team.instructionsfromadmin %>
+</p>
+<% end %>
+
+<p>
+  <strong>Event:</strong>
+  <%= @team.event_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @team.user_id %>
+</p>
+
+<% if institute? &&
+      current_user.id == @team.user_id &&
+      (@team.status.downcase == 'basicinfofilled' || @team.status.downcase == 'rejected') %>
+  <%= link_to 'Edit', { :action => :editbasicinfo, :id => @team.id}, method: "get" %>
+<% end %>
+
+</div>
+
 <% if event_admin? && (@team.status.downcase == 'pending') %>
 <div>
     <%= form_for 'team' do |f| %>
