@@ -116,7 +116,7 @@
   </div>
 </div>
 
-
+<% if @team.travelplanstatus.downcase != 'notplanned'%>
 <div class="card card-1">
 
   <% if event_admin? && @team.status.downcase == 'approved' && (@team.travelplanstatus.downcase == 'planned' || @team.travelplanstatus.downcase == 'arranged')%>
@@ -189,6 +189,7 @@
   <% end %>
 
 </div>
+<% end %>
 
 <% if event_admin? && (@team.status.downcase == 'pending') %>
 <h3>Approve/Reject</h3>
