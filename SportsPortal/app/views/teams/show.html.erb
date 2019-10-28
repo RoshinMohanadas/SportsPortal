@@ -2,6 +2,40 @@
 
 <p id="notice"><%= notice %></p>
 
+<head>
+ 
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#example').DataTable( {
+          dom: 'Bfrtip',
+          buttons: [
+              'copyHtml5',
+              'excelHtml5',
+              
+              {
+                extend: 'csvHtml5',
+                text: 'CSV',
+                className: 'btn btn-default',
+                exportOptions: {
+                    columns: ':not(.notexport)'
+                }
+            },
+              {
+                extend: 'pdfHtml5',
+                text: 'PDF',
+                className: 'btn btn-default',
+                exportOptions: {
+                    columns: ':not(.notexport)'
+                }
+            }
+          ]
+      } );
+  } );
+  </script>
+
+
+  </head>
+
 <p>
   <strong>Registration status</strong>
   <%= @team.status %>
@@ -34,39 +68,47 @@
 
 </div>
 
-<div class="card card-1">
+<% if institute? &&
+      current_user.id == @team.user_id &&
+      (@team.status.downcase == 'basicinfofilled' || @team.status.downcase == 'rejected') %>
+  <%= link_to 'Edit', { :action => :editbasicinfo, :id => @team.id}, method: "get" %>
+<% end %>
+
 <h4>Team members</h4>
 
-<table class="table">
-<thead>
-  <tr>
-    <th>Name</th>
-    <th>Dob</th>
-    <th>Email</th>
-    <th>Gender</th>
-    <th>Role</th>
-    <th>Food preference</th>
-    <th>Contact no</th>
-  </tr>
-</thead>
 
-<tbody>
-  <% @team.teammembers.each do |member| %>
-    <tr>
-      <td><%= member.name %></td>
-      <td><%= member.dob %></td>
-      <td><%= member.email %></td>
-      <td><%= member.gender %></td>
-      <td><%= member.role %></td>
-      <td><%= member.foodpreference %></td>
-      <td><%= member.contactno %></td>
-    </tr>
-  <% end %>
-</tbody>
-</table>
+<div style="display:inline-block;width:80%">
+    <div class="table-responsive">
+      <table id="example" class="new_table table">
+        <thead class="thead-light">
+          <tr>
+            <th>Name</th>
+            <th>Dob</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Role</th>
+            <th>Food preference</th>
+            <th>Contact no</th>
+          </tr>
+        </thead>
 
+        <tbody>
+          <% @team.teammembers.each do |member| %>
+            <tr>
+              <td><%= member.name %></td>
+              <td><%= member.dob %></td>
+              <td><%= member.email %></td>
+              <td><%= member.gender %></td>
+              <td><%= member.role %></td>
+              <td><%= member.foodpreference %></td>
+              <td><%= member.contactno %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-</div>
+    </div>
+  </div>
 
 
 
@@ -130,6 +172,7 @@
   <% end %>
 
 </div>
+</div>
 
 <% if !(@team.instructionsfromadmin.nil?) %>
 <p>
@@ -148,11 +191,6 @@
   <%= @team.user_id %>
 </p>
 
-<% if institute? &&
-      current_user.id == @team.user_id &&
-      (@team.status.downcase == 'basicinfofilled' || @team.status.downcase == 'rejected') %>
-  <%= link_to 'Edit', { :action => :editbasicinfo, :id => @team.id}, method: "get" %>
-<% end %>
 
 </div>
 

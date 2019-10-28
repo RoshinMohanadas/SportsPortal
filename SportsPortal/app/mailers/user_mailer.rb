@@ -15,5 +15,17 @@ class UserMailer < ApplicationMailer
     @event = Event.find(@team.event_id)
     mail(to: @team.pocemail, subject: 'NITC Sports Portal - Team Rejected')
    end
+   def arrangetransport_email(team)
+     @team = team
+     @event = Event.find(@team.event_id)
+     mail(to: @team.pocemail, subject: 'NITC Sports Portal - Travel Plan Approved')
+    end
+
+    def rejecttravelplan_email(team)
+     @team = team
+     @event = Event.find(@team.event_id)
+     mail(to: @team.pocemail, subject: 'NITC Sports Portal - Travel Plan Rejected')
+    end
+
 
 end

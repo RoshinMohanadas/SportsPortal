@@ -1,3 +1,6 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-2">
+
 <%= form_with(model: user, local: true) do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
@@ -13,22 +16,22 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name ,class: 'form-control', placeholder: "Full name" %>
   </div>
 
   <div class="field">
     <%= form.label :username %>
-    <%= form.text_field :username %>
+    <%= form.text_field :username ,class: 'form-control' , placeholder: "Required username"%>
   </div>
 
   <div class="field">
     <%= form.label :email %>
-    <%= form.text_field :email %>
+    <%= form.text_field :email ,class: 'form-control', placeholder: "Email Id"%>
   </div>
 
   <div class="field">
     <%= form.label :password %>
-    <%= form.text_field :password %>
+    <%= form.text_field :password ,class: 'form-control',placeholder: "Minimum 6 characters" %>
   </div>
 
   <div class="field">
@@ -38,16 +41,19 @@
 
   <div class="field">
     <%= form.label :contactno %>
-    <%= form.text_field :contactno %>
+    <%= form.text_field :contactno ,class: 'form-control', placeholder: "10 digit valid contact number"%>
   </div>
 
   <div class="field">
     <%= form.label :Profile_Picture%>(optional)
-    <%= form.file_field :avatar %>
+    <%= form.file_field :avatar ,class: 'file-form-control' %>
   </div>
   
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-primary form-control" %>
   </div>
 <% end %>
+</div>
+</div>
+<hr>

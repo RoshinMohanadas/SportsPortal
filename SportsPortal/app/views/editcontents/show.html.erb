@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Welcometext:</strong>
+  <%= @editcontent.welcometext %>
+</p>
+
+<p>
+  <strong>About:</strong>
+  <%= @editcontent.about %>
+</p>
+
+<p>
+  <strong>Facilities:</strong>
+  <%= @editcontent.facilities %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @editcontent.contact %>
+</p>
+
+<%= link_to 'Edit', edit_editcontent_path(@editcontent) %> |
+<%= link_to 'Back', editcontents_path %>

@@ -11,4 +11,8 @@ module HomepageHelper
         Newsfile.all
     end
 
+    def all_contents
+        Editcontent.all
+    end
+
 end

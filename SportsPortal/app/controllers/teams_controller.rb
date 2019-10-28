@@ -148,6 +148,7 @@ class TeamsController < ApplicationController
 
     if @team.save
       #send email to POC informing the travel arrangements
+      UserMailer.arrangetransport_email(@team).deliver_now
       redirect_to :controller => 'teams', :action => 'show', :id => @team.id
     else
       redirect_to :controller => 'teams', :action => 'transport', :id => @team.id
@@ -163,6 +164,7 @@ class TeamsController < ApplicationController
 
     if @team.save
       #send email to POC informing the rejection of travel plan
+      UserMailer.rejecttravelplan_email(@team).deliver_now
       redirect_to :controller => 'teams', :action => 'show', :id => @team.id
     else
       redirect_to :controller => 'teams', :action => 'transport', :id => @team.id
