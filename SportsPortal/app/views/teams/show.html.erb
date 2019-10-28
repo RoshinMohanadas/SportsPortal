@@ -41,6 +41,8 @@
   <%= @team.status %>
 </p>
 
+
+
 <div class="card card-1">
 
 <h4>Basic info</h4>
@@ -68,16 +70,19 @@
 
 </div>
 
+
 <% if institute? &&
       current_user.id == @team.user_id &&
       (@team.status.downcase == 'basicinfofilled' || @team.status.downcase == 'rejected') %>
   <%= link_to 'Edit', { :action => :editbasicinfo, :id => @team.id}, method: "get" %>
 <% end %>
 
+
+<div class="card card-1">
 <h4>Team members</h4>
 
 
-<div style="display:inline-block;width:80%">
+<div class="card card-1">
     <div class="table-responsive">
       <table id="example" class="new_table table">
         <thead class="thead-light">
@@ -109,11 +114,16 @@
 
     </div>
   </div>
-
+</div>
 
 
 <div class="card card-1">
-  <h4>Travel plan</h4>
+
+  <% if event_admin? && @team.status.downcase == 'approved' && (@team.travelplanstatus.downcase == 'planned' || @team.travelplanstatus.downcase == 'arranged')%>
+  <%= link_to @team.travelplanstatus.downcase == 'planned' ? 'Arrange Transportation': 'Edit Transportation', {:controller => :teams, :action => :transport, :id => @team.id}, method: "get"%>
+  <% end %>
+
+  <h4>Travel plan (<%= @team.travelplanstatus%>)</h4>
   <br>
   <% if !(@team.arrivaldate.nil?) %>
   <p>
@@ -171,30 +181,17 @@
   </p>
   <% end %>
 
-</div>
-</div>
-
-<% if !(@team.instructionsfromadmin.nil?) %>
-<p>
-  <strong>Remarks:</strong>
-  <%= @team.instructionsfromadmin %>
-</p>
-<% end %>
-
-<p>
-  <strong>Event:</strong>
-  <%= @team.event_id %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @team.user_id %>
-</p>
-
+  <% if @team.travelplanstatus.downcase == 'arranged'%>
+            <h3>Pickup on arrival</h3>
+              <%= @team.arrivaltravelarrangement%>
+            <h3>Pickup on departure</h3>
+              <%= @team.departuretravelarrangement%>
+  <% end %>
 
 </div>
 
 <% if event_admin? && (@team.status.downcase == 'pending') %>
+<h3>Approve/Reject</h3>
 <div>
     <%= form_for 'team' do |f| %>
       <div class="field">
@@ -212,13 +209,27 @@
 </div>
 <% end %>
 
+
+<% if !(@team.instructionsfromadmin.nil?) %>
+<p>
+  <strong>Remarks:</strong>
+  <%= @team.instructionsfromadmin %>
+</p>
+<% end %>
+
+
+
+
+</div>
+
+
+
+
 <% if institute? && @team.status.downcase == 'approved' && (@team.travelplanstatus.downcase == 'notplanned' || @team.travelplanstatus.downcase == 'rejected') %>
       <%= link_to @team.travelplanstatus.downcase == 'notplanned'? 'Travel Plan':'Edit Travel Plan', {:controller => :teams, :action => :edittravelplan, :id => @team.id}, method: "get"%>
 <% end %>
 
-<% if event_admin? && @team.status.downcase == 'approved' && (@team.travelplanstatus.downcase == 'planned' || @team.travelplanstatus.downcase == 'arranged')%>
-      <%= link_to @team.travelplanstatus.downcase == 'planned' ? 'Arrange Transportation': 'Edit Transportation', {:controller => :teams, :action => :transport, :id => @team.id}, method: "get"%>
-<% end %>
+
 
 <%= link_to 'Back', event_path(@team.event)%>
 
