@@ -32,39 +32,24 @@
 
   
 </head>
-<p>
-  <strong>Name:</strong>
-  <%= @eventgroup.name %>
-</p>
+
+<div class="card card-1">
+<marquee>
+          <span>Registration time <%= @eventgroup.regstartdate %> - <%= @eventgroup.regenddate %></span>
+</marquee>
+
 
 <p>
-  <strong>Description:</strong>
-  <%= @eventgroup.description %>
+  <h1><%= @eventgroup.name %></h1>
 </p>
 
-<p>
-  <strong>Regstartdate:</strong>
-  <%= @eventgroup.regstartdate %>
-</p>
+
+  <span><%= @eventgroup.startdate %> - <%= @eventgroup.enddate %></span>
+
+
 
 <p>
-  <strong>Regenddate:</strong>
-  <%= @eventgroup.regenddate %>
-</p>
-
-<p>
-  <strong>Startdate:</strong>
-  <%= @eventgroup.startdate %>
-</p>
-
-<p>
-  <strong>Enddate:</strong>
-  <%= @eventgroup.enddate %>
-</p>
-
-<p>
-  <strong>Isactive:</strong>
-  <%= @eventgroup.isactive %>
+  <h5><%= @eventgroup.description %></h5>
 </p>
 
 <p>
@@ -72,9 +57,14 @@
   <%= @eventgroup.venue %>
 </p>
 
+
+
+
 <% if event_admin? %>
   <%= link_to 'Edit', edit_eventgroup_path(@eventgroup) %> 
 <% end %>
+
+</div>
 
 <h1>Events</h1>
 
