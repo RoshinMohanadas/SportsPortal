@@ -1,5 +1,30 @@
-<div class="well">
-<p class="text-center"  > <strong> Upcoming Matches </strong> </p>
+<div class="well" style="max-height:37vh;overflow-y:scroll">
+<div class="text-center" > <strong> Today's Matches </strong> </p>
+        <% require 'date' %>
+        <% count=0 %>
+        <% all_matches.each do |match| %>
+        <% if match.result? && count<=4 %>
+        <% count+=1%>
+        <hr>
+        <% description=match.description+" - "+match.round%> 
+        <% title=match.teamone+" vs "+match.teamtwo%>
+        
+   
+      
+      <small> <%= description%>  </small><br>
+      <strong> <%= link_to title, match %> <strong>
+      
+      <div> <small><%=match.matchstarttime.strftime("%-d/%-m/%y: %H:%M %Z") %></small> </div>
+      
+      
+      
+      <%end %>
+    
+      <% end %>
+      </div>
+      <!--
+<p class="text-center"  >
+ <strong> Today's Matches </strong> </p>
             <div>
                 <% all_matches.each do |match| %>
         <% if match.result?%>
@@ -10,5 +35,5 @@
       <%end %>
       </p>
       <hr>
-      <% end %>
+      <% end %> -->
 </div>

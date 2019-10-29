@@ -4,7 +4,7 @@ module HomepageHelper
     end
 
     def all_matches
-        Match.all
+        Match.all.order('matchstarttime DESC')
     end
 
     def all_news

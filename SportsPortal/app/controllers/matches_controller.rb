@@ -17,7 +17,7 @@ class MatchesController < ApplicationController
     @event_id= params[:eventid]
     @match = Match.new
     @match.event_id=@event_id
-    @match.result="NA"
+    #@match.result="NA"
     @teams=Team.where("event_id = ? AND status=?",@event_id,"approved")
     
   end

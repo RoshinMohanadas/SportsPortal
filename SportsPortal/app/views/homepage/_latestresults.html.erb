@@ -1,18 +1,49 @@
-<div class="well">
-        <p class="text-center" > <strong> Latest Results </strong> </p>
+<div class="well text-center" style="max-height:37vh;overflow-y:scroll">
+        <div class="text-center" > <strong> Latest Results </strong> </p>
+        <% count=0 %>
         <% all_matches.each do |match| %>
-        <% if match.result?%>
-        <% title=match.teamone+" vs "+match.teamtwo%>
+        <% if match.result? && count<=4 %>
+        <% count+=1%>
+        <hr>
         <% description=match.description+" - "+match.round%> 
+        <% title=match.teamone+" vs "+match.teamtwo%>
+        
         <% result=match.result%>
-      <p><%= link_to title, match %>
+   
       
-       <%= "Result : "+result%>
-       <br>
-      <small> <%= description%></small>
+      <small> <%= description%>  </small><br>
+      <strong> <%= link_to title, match %> <strong>
+      
+      <!-- <div> <small><%=match.matchstarttime.strftime("%-d/%-m/%y: %H:%M %Z") %></small> </div> -->
+      <div><small> <strong><%= "Result : "+result%> </strong></small></div>
+      
+      
       <%end %>
-      </p>
-      <hr>
+    
       <% end %>
+
+      <!-- for testing -->
+      
+      <% count=0 %>
+        <% all_matches.each do |match| %>
+        <% if match.result? && count<=4 %>
+        <% count+=1%>
+        <hr>
+        <% description=match.description+" - "+match.round%> 
+        <% title=match.teamone+" vs "+match.teamtwo%>
+        
+        <% result=match.result%>
+   
+      
+      <small> <%= description%>  </small><br>
+      <strong> <%= link_to title, match %> <strong>
+      
+      <small> <strong><%= "Result : "+result%> </strong></small>
+      
+      
+      <%end %>
+    
+      <% end %> -->
+      </div>
       </div>
       

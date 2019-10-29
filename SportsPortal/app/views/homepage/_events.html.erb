@@ -1,14 +1,16 @@
     <div>
-     <p style="padding-left: 10%;" > <strong> Latest Events </strong> <hr> </p>
+     <p style="" > <strong> Latest Events </strong> <hr> </p>
       <% event_groups.each do |eventgroup| %>
+      <% if eventgroup.isactive%>
       <p><%= link_to eventgroup.name, eventgroup %></p>
+      <% end %>
       <% end %>
     </div>
     <hr>
 
 
     <div>
-     <p style="padding-left: 10%;" > <strong> Latest News </strong> <hr></p>
+     <p style="" > <strong> Latest News </strong> <hr></p>
      <% all_news.each do |newsfile| %>
       
       <p><%= link_to newsfile.title, newsfiles_path %> </p>
@@ -18,9 +20,11 @@
 
     <hr>
     <div>
-     <p style="padding-left: 10%;" > <strong> Past Events </strong> <hr></p>
+     <p style="" > <strong> Past Events </strong> <hr></p>
       <% event_groups.each do |eventgroup| %>
+      <p><% if !eventgroup.isactive%>
       <p><%= link_to eventgroup.name, eventgroup %></p>
+      <% end %></p>
       <% end %>
 
     </div>

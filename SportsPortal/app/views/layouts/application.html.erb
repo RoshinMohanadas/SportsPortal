@@ -35,12 +35,13 @@
 		<div class="container-fluid"> 
 			
 				<div class="row content">
-					<div class="col-sm-2 sidenav">
+					<div class="col-sm-2 sidenav text-center" style="max-height:90vh">
 						<%= render 'homepage/events' %>
 					</div> <!-- end of sidenav -->
 					
 
-					<div class="col-sm-8 text-left"> 
+					<div class="col-sm-8 text-left" style="-webkit-box-shadow: 1px 0 3px 3px #DEDEDE;
+box-shadow: 1px 0 3px 3px #DEDEDE;"> 
 						<div class="row" style="min-width:100%;">
 							<% flash.each do |message_type, message| %>
 							<div style="min-width:100%;" class="alert alert-<%= message_type %>"><%= message %></div>

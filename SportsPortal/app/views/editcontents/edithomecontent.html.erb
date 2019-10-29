@@ -1,0 +1,39 @@
+<div class="col-md-12">
+<%= form_with(model: $homecontent, local: true) do |form| %>
+  <% if $homecontent.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(editcontent.errors.count, "error") %> prohibited this editcontent from being saved:</h2>
+
+      <ul>
+        <% $homecontent.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :welcometext %>
+    <%= form.text_field :welcometext %>
+  </div>
+
+  <div class="field">
+    <%= form.label :about %>
+    <%= form.text_area :about %>
+  </div>
+
+  <div class="field">
+    <%= form.label :facilities %>
+    <%= form.text_area :facilities %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contact %>
+    <%= form.text_area :contact %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+</div>

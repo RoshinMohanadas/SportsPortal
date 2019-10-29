@@ -1,6 +1,6 @@
 class EditcontentsController < ApplicationController
   before_action :set_editcontent, only: [:show, :edit, :update, :destroy]
-
+  $homecontent = Editcontent.first
   # GET /editcontents
   # GET /editcontents.json
   def index
@@ -42,7 +42,7 @@ class EditcontentsController < ApplicationController
   def update
     respond_to do |format|
       if @editcontent.update(editcontent_params)
-        format.html { redirect_to @editcontent, notice: 'Editcontent was successfully updated.' }
+        format.html { redirect_to @editcontent, notice: 'HomeContents were successfully updated.' }
         format.json { render :show, status: :ok, location: @editcontent }
       else
         format.html { render :edit }

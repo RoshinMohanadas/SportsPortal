@@ -32,6 +32,7 @@ end
   get 'facilities' => 'homepage#facilities'
   get 'contact' => 'homepage#contact'
   get 'homegallery' => 'homepage#gallery'
+  get 'homecontent' => 'editcontents#edithomecontent'
 
 
   get 'teams/', to: 'teams#index'

@@ -21,6 +21,8 @@
         <td><%= editcontent.facilities %></td>
         <td><%= editcontent.contact %></td>
         <td><%= link_to 'Edit', edit_editcontent_path(editcontent) %></td>
+        
+        <td><%= link_to 'Delete', editcontent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
