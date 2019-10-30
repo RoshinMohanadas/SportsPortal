@@ -1,8 +1,9 @@
 
+<div class="card card-1">
 <h1> Team members</h1>
 
-<%= link_to 'Submit Team', {:controller => :teams, :action => :createteam, :teamid => @team.id, :eventid => @team.event_id}, method: "post" %>
 
+<div style="overflow-x:auto;">
 <table class="table">
   <thead>
     <tr>
@@ -11,7 +12,6 @@
       <th>Email</th>
       <th>Gender</th>
       <th>Role</th>
-      <th>Achievements</th>
       <th>Foodpreference</th>
       <th>Contactno</th>
       <th>Team</th>
@@ -27,7 +27,6 @@
         <td><%= member.email %></td>
         <td><%= member.gender %></td>
         <td><%= member.role %></td>
-        <td><%= member.achievements %></td>
         <td><%= member.foodpreference %></td>
         <td><%= member.contactno %></td>
         <td><%= member.team_id %></td>
@@ -37,6 +36,14 @@
     <% end %>
   </tbody>
 </table>
+</div>
+<br>
+<%= button_to 'Submit Team', {:controller => :teams, :action => :createteam, :teamid => @team.id, :eventid => @team.event_id}, method: "post", class: 'btn btn-success' %>
+</div>
 
+<div class="card card-1">
+<div style="margin:auto;width:300px;text-align:left">
 <h2>Add Member</h2>
 <%= render 'formmember', teammember: @member, dynamic_url: 'createmember'%>
+</div>
+</div>
