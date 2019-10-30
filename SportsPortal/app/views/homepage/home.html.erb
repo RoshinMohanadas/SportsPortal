@@ -34,8 +34,13 @@
          </div> 
     </marquee>
     <hr>
-<% @eventgroups.each do |eventgroup| %>
 
+
+
+
+
+<% @eventgroups.each do |eventgroup| %>
+<% if eventgroup.isactive %>
 <div class="card text-center">
   <div class="card-header">
     
@@ -70,25 +75,29 @@
       </div>
     </div>
     <hr>
-    
+      <div class="card-footer">
+      <Strong class="text-muted">Events</strong>
+    </div>
     <div class="row">
     <% eventgroup.events.each do |event| %>
-      <div class="col-md-4" style="border:1px solid lightgrey;padding:5%"> 
-       <%= event.name %><br>
+    
+      <div class="col-md-4" style="border:1px solid lightgrey;padding:5%;min-height:30vh"> 
+       <%= link_to event do %>
+       <%= event.name %>
+       <%end%><br>
         <%= event.description %>
       </div>
+      
       <%end%>
        
     </div>
 
 
 
-    <div class="card-footer">
-      <small class="text-muted">Registrations Closed</small>
-    </div>
-</div>
-</div>
 
+</div>
+</div>
+<% end %>
 <% end %>
 
 

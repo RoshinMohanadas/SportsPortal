@@ -1,10 +1,15 @@
-<div class="well" style="max-height:37vh;overflow-y:scroll">
-<div class="text-center" > <strong> Today's Matches </strong> </p>
-        <% require 'date' %>
-        <% count=0 %>
+<div class="well" style="max-height:42vh;overflow-y:scroll">
+<div class="text-center" > <strong> Upcoming Matches</strong> </p>
+        <hr>
+        <% tod=false %>
+        <% tom=false %>
+        <div> 
+        <div class="card-header"><small><strong> Today  (<%= Time.now.strftime("%m/%d/%Y") %>)</strong></small></div>
+
+
         <% all_matches.each do |match| %>
-        <% if match.result? && count<=4 %>
-        <% count+=1%>
+        <% if !match.result? && match.matchstarttime.to_date()==today  %>
+          <% tod=true%>
         <hr>
         <% description=match.description+" - "+match.round%> 
         <% title=match.teamone+" vs "+match.teamtwo%>
@@ -21,6 +26,47 @@
       <%end %>
     
       <% end %>
+      
+      <% if !tod%>
+        <br>
+        <p><small > No Scheduled Matches </small></p>
+      <%end%>
+      </div><!-- end of todays matches -->
+      <hr>
+   <div> 
+        <div class="card-header"><small><strong> Tomorrow  (<%= Time.now.tomorrow.strftime("%m/%d/%Y") %>)</strong></small></div>
+
+
+        <% all_matches.each do |match| %>
+        <% if !match.result? && match.matchstarttime.to_date()==today.tomorrow  %>
+          <% tom=true%>
+        <hr>
+        <% description=match.description+" - "+match.round%> 
+        <% title=match.teamone+" vs "+match.teamtwo%>
+        
+   
+      
+      <small> <%= description%>  </small><br>
+      <strong> <%= link_to title, match %> <strong>
+      
+      <div> <small><%=match.matchstarttime.strftime("%-d/%-m/%y: %H:%M %Z") %></small> </div>
+      
+      
+      
+      <%end %>
+    
+      <% end %>
+      
+      <% if !tom%>
+        <br>
+        <p><small >  No Scheduled Matches </small></p>
+      <%end%>
+      </div><!-- end of tomorrow's matches -->
+
+
+    
+
+
       </div>
       <!--
 <p class="text-center"  >
