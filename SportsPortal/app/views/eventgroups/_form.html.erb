@@ -1,3 +1,6 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
 <%= form_with(model: eventgroup, local: true) do |form| %>
   <% if eventgroup.errors.any? %>
     <div id="error_explanation">
@@ -13,32 +16,32 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name ,class: 'form-control'%>
   </div>
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description ,class: 'form-control'%>
   </div>
 
   <div class="field">
     <%= form.label :regstartdate %>
-    <%= form.date_select :regstartdate %>
+    <%= form.date_select :regstartdate,class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label :regenddate %>
-    <%= form.date_select :regenddate %>
+    <%= form.date_select :regenddate,class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label :startdate %>
-    <%= form.date_select :startdate %>
+    <%= form.date_select :startdate,class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label :enddate %>
-    <%= form.date_select :enddate %>
+    <%= form.date_select :enddate,class: 'form-control' %>
   </div>
 
   <div class="field">
@@ -48,10 +51,12 @@
 
   <div class="field">
     <%= form.label :venue %>
-    <%= form.text_field :venue %>
+    <%= form.text_field :venue ,class: 'form-control'%>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+  <%= form.submit class: "btn btn-primary form-control" %>
   </div>
 <% end %>
+</div>
+</div>
