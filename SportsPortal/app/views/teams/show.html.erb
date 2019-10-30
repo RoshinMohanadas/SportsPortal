@@ -122,6 +122,10 @@
   </div>
 </div>
 
+<% if institute? && @team.status.downcase == 'approved' && (@team.travelplanstatus.downcase == 'notplanned' || @team.travelplanstatus.downcase == 'rejected') %>
+      <%= link_to @team.travelplanstatus.downcase == 'notplanned'? 'Travel Plan':'Edit Travel Plan', {:controller => :teams, :action => :edittravelplan, :id => @team.id}, method: "get"%>
+<% end %>
+
 <% if @team.travelplanstatus.downcase != 'notplanned'%>
 <div class="card card-1">
 
@@ -131,6 +135,10 @@
 
   <h4>Travel plan (<%= @team.travelplanstatus%>)</h4>
   <br>
+  
+  <div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-5 text-left">
   <% if !(@team.arrivaldate.nil?) %>
   <p>
     <strong>Arrival Date:</strong>
@@ -158,6 +166,10 @@
     <%= @team.arrivaldetails %>
   </p>
   <% end %>
+
+  </div>
+
+  <div class="col-md-5 text-left">
 
   <% if !(@team.departuredate.nil?) %>
   <p>
@@ -187,11 +199,23 @@
   </p>
   <% end %>
 
+  </div>
+  </div>
+
+  
   <% if @team.travelplanstatus.downcase == 'arranged'%>
+  <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5 text-left" style="background-color:#e0e0d1;padding:10px">
             <h3>Pickup on arrival</h3>
               <%= @team.arrivaltravelarrangement%>
+            </div>
+            <div class="col-md-5 text-left" style="background-color:#e0e0d1;padding:10px">
             <h3>Pickup on departure</h3>
               <%= @team.departuretravelarrangement%>
+            </div>
+            <div class="col-md-1"></div>
+  </div>
   <% end %>
 
 </div>
@@ -232,9 +256,7 @@
 
 
 
-<% if institute? && @team.status.downcase == 'approved' && (@team.travelplanstatus.downcase == 'notplanned' || @team.travelplanstatus.downcase == 'rejected') %>
-      <%= link_to @team.travelplanstatus.downcase == 'notplanned'? 'Travel Plan':'Edit Travel Plan', {:controller => :teams, :action => :edittravelplan, :id => @team.id}, method: "get"%>
-<% end %>
+
 
 
 

@@ -1,5 +1,10 @@
 
+<div class="text-center">
 <h1>Travel Plan</h1>
+</div>
+<div class="row text-center">
+<div class="col-md-offset-2 col-md-8 text-left">
+
 
 <%= form_with(model: @team, url: 'updatetravelplan', local: true) do |form| %>
     <% if @team.errors.any? %>
@@ -18,51 +23,51 @@
  
   
     <div class="field">
-      <%= form.label :modeofarrival %>
+      <%= form.label :mode_of_arrival %>
       <br>
       <%= form.select :modeofarrival, ['Bus', 'Train', 'Flight'],{:include_blank => 'Select'},class: 'form-control'%>
     </div>
   
     <div class="field">
-      <%= form.label :arrivaldetails %>
+      <%= form.label :arrival_details %>
       <br>
-      <%= form.text_field :arrivaldetails %>
+      <%= form.text_field :arrivaldetails, class: 'form-control' %>
     </div>
 
     <div class="field">
-      <%= form.label :arrivalloc %>
+      <%= form.label :arrival_location %>
       <br>
-      <%= form.text_field :arrivalloc %>
+      <%= form.text_field :arrivalloc, class: 'form-control' %>
     </div>
 
     <div class="field">
-        <%= form.label :arrivaldate %>
+        <%= form.label :arrival_date %>
         <br>
-        <%= form.datetime_select :arrivaldate %>
+        <%= form.datetime_select :arrivaldate, class: 'form-control' %>
     </div>
   
     <div class="field">
-      <%= form.label :modeofdeparture %>
+      <%= form.label :mode_of_departure %>
       <br>
       <%= form.select :modeofdeparture, ['Bus', 'Train', 'Flight'],{:include_blank => 'Select'},class: 'form-control'%>
     </div>
 
     <div class="field">
-        <%= form.label :departuredetails %>
+        <%= form.label :departure_details %>
         <br>
-        <%= form.text_field :departuredetails %>
+        <%= form.text_field :departuredetails, class: 'form-control' %>
     </div>
   
     <div class="field">
-        <%= form.label :departureloc %>
+        <%= form.label :departure_location %>
         <br>
-        <%= form.text_field :departureloc %>
+        <%= form.text_field :departureloc, class: 'form-control' %>
     </div>
 
     <div class="field">
-        <%= form.label :departuredate %>
+        <%= form.label :departure_date %>
         <br>
-        <%= form.datetime_select :departuredate %>
+        <%= form.datetime_select :departuredate, class: 'form-control' %>
     </div>
 
     <div class="hidden-field">
@@ -71,7 +76,8 @@
 
     
     <div class="actions">
-      <%= form.submit 'Save and continue'%>
+      <%= form.submit 'Save and continue', class: 'btn btn-primary form-control'%>
     </div>
   <% end %>
-  
+  </div>
+  </div>
