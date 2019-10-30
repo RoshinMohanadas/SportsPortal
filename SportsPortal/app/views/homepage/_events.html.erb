@@ -2,7 +2,7 @@
      <p style="" > <strong> Latest Events </strong> <hr> </p>
       <% event_groups.each do |eventgroup| %>
       <% if eventgroup.isactive%>
-      <p><%= link_to eventgroup.name, eventgroup %></p>
+      <p class="nav-link nav "><%= link_to eventgroup.name, eventgroup %></p>
       <% end %>
       <% end %>
     </div>

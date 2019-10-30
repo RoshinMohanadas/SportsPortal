@@ -48,13 +48,14 @@
       <div class="col-md-6">
       <ul class="nav card-header-tabs" >
        <li class="">
-        <a class="nav-link disabled" href="#"> <strong> <%= eventgroup.name %> </strong></a>
+       <%= link_to eventgroup.name, eventgroup, { :style =>"padd ing-left:0px;" , :class=>"navbar-brand nav-link" } %>
+        <!-- <a class="nav-link disabled" href="#"> <strong> <%= eventgroup.name %> </strong></a> --> 
       </li>
       </ul>
       </div>
-      <div class="col-md-5 text-right">
-      <ul class="nav card-header-tabs navbar-right">
-      <li class="nav-item">
+      <div class="col-md-6 text-right">
+      <ul class="nav card-header-tabs navbar-right" >
+      <li class="nav-item" >
         <a class="nav-link disabled" href="#"><%= eventgroup.regstartdate %> - <%= eventgroup.regenddate %></a>
       </li>
     </ul>
@@ -67,25 +68,80 @@
   </div>
   <div class="card-body">
     <div class="row">
-      <div class="col-md-4"> 
-        <%= image_tag("eventgroup.jpg",{ :style =>"max-height:160px;max-width:100%;" }) %>
+      <div class="col-md-4" style="padding-bottom:3vh;"> 
+        <%= image_tag("tournament.jpg",{ :class=>"img-thumbnail rounded img-fluid", :style =>"" }) %>
       </div>
       <div class="col-md-8"> 
         <%= eventgroup.description %>
+  <br><br><br>
+          <ul class="list-group list-group-flush">
+                <div class="card-header">
+                   <p class="text-muted">From <%= eventgroup.startdate %>  to  <%= eventgroup.enddate  %></p>
+                 </div>
+                  <div class="card-header">
+                   <p class="text-muted">Venue:<%= eventgroup.venue %></p>
+                 </div>
+                  <div class="card-header">
+                   <p class="text-muted">Venue:<%= eventgroup.venue %></p>
+                 </div>
+                  <div class="card-header">
+                   <p class="text-muted">Venue:<%= eventgroup.venue %></p>
+                 </div>
+                 <!--
+            <li class="list-group-item">From <%= eventgroup.startdate %>  to  <%= eventgroup.enddate %></li>
+            <li class="list-group-item"><%= eventgroup.venue %></li>
+            <li class="list-group-item">Vestibulum at eros</li>
+             <div class="card-header">
+                   <p class="text-muted">Venue:<%= eventgroup.venue %></p>
+                 </div>-->
+          </ul>
+
+                
+
       </div>
+      
     </div>
-    <hr>
+    <div class="card-header">
+                   <p class="text-active"><%= "Registrations Open" %></p>
+                 </div>
+    <br>
       <div class="card-footer">
       <Strong class="text-muted">Events</strong>
     </div>
     <div class="row">
+     
     <% eventgroup.events.each do |event| %>
     
-      <div class="col-md-4" style="border:1px solid lightgrey;padding:5%;min-height:30vh"> 
+    <!--  <div class="col-md-4" style="bo rder:1px solid lightgrey;padding:5%;min-height:30vh"> 
        <%= link_to event do %>
        <%= event.name %>
        <%end%><br>
         <%= event.description %>
+      </div>
+-->
+      <div class="col-md-4" style="bor der:1px solid lightgrey;paddi ng:5%;m in-height:30vh"> 
+       <div class="card" style="wi dth: 18rem;">
+ <div class="card-header">  <h5 class="card-title"> <%= link_to event do %>
+       <%= event.name %>
+       <%end%></h5> </div>
+  <%= image_tag("meet.jpg",{ :class=>"img-fluid rounded", :style =>"max-height:160px;max-width:100%;" }) %>
+     
+  <div class="card-body">
+    <p class="card-text"><%= event.description %></p>
+  </div>
+  <!--
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><Strong>Event: </strong>Cricket</li>
+    <li class="list-group-item"><Strong>If rules: </strong>Rules</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+  -->
+  <hr>
+  <div class="card-body">
+    <a href="#" class="card-link">View Details</a>
+    <a href="#" class="card-link">Register</a>
+  </div>
+</div>
       </div>
       
       <%end%>
