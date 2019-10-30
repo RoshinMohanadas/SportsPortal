@@ -34,216 +34,64 @@
          </div> 
     </marquee>
     <hr>
+<% @eventgroups.each do |eventgroup| %>
 
 <div class="card text-center">
   <div class="card-header">
     
     <div class="row">
-      <div class="col-md-5">
-      <ul class="nav   card-header-tabs" >
+      <div class="col-md-6">
+      <ul class="nav card-header-tabs" >
        <li class="">
-        <a class="nav-link" href="#"> <strong> INTER-NIT Sports Tournament 2019 </strong></a>
+        <a class="nav-link disabled" href="#"> <strong> <%= eventgroup.name %> </strong></a>
       </li>
       </ul>
       </div>
+      <div class="col-md-5 text-right">
+      <ul class="nav card-header-tabs navbar-right">
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#"><%= eventgroup.regstartdate %> - <%= eventgroup.regenddate %></a>
+      </li>
+    </ul>
+  </div>
+ 
       
     </div>
 
 
   </div>
   <div class="card-body">
-    <div class="card-deck">
+    <div class="row">
+      <div class="col-md-4"> 
+        <%= image_tag("eventgroup.jpg",{ :style =>"max-height:160px;max-width:100%;" }) %>
+      </div>
+      <div class="col-md-8"> 
+        <%= eventgroup.description %>
+      </div>
+    </div>
+    <hr>
+    
+    <div class="row">
+    <% eventgroup.events.each do |event| %>
+      <div class="col-md-4" style="border:1px solid lightgrey;padding:5%"> 
+       <%= event.name %><br>
+        <%= event.description %>
+      </div>
+      <%end%>
+       
+    </div>
 
-    <div class="card">
-    </div>
-    <div class="card">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
-  <div class="card">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
-  </div>
-  </div>
+
 
     <div class="card-footer">
       <small class="text-muted">Registrations Closed</small>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="row card-deck" style="padding:2%">
-  <div class="col-md-12 card-header">
-NIT Inter sports meet 2019
-  </div>
-
-
-
-
-
-
-
-
-<div class="card-deck">
-  <div class="card">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
-  <div class="card">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
-  <div class="card">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
-  <div class="card">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
-
 </div>
 
+<% end %>
 
 
-
-  <div class="col-sm-4 mb-3 mb-md-0">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#!" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-sm-4">
-    <div class="card">
-      <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-    </div>
-  </div><div class="col-sm-4">
-    <div class="card">
-     <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-    </div>
-  </div>
-
-
-  <div class="col-sm-4">
-    <div class="card">
-     <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-    </div>
-  </div>
-
-  <div class="col-sm-4">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#!" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div>
-  
-</div>
-
-    
-<div class="card-deck">
-  <div class="card">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-  <div class="card">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-  <div class="card">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-</div>
 
       <h3>Quick Access</h3>
       <hr>
