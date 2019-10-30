@@ -66,7 +66,13 @@
 
 </div>
 
-<h1>Events</h1>
+<hr>
+<div class="row">
+<div class="col-md-10"> <h3 style="margin-top:3px">Events</h3> </div>
+<div class="col-md-2"> <%= button_to 'Back', root_path, method: "get" %> </div>
+</div>
+
+<hr>
 
 <div class="table-responsive">  
     <table id="example" class="new_table table">
@@ -75,7 +81,7 @@
       <th>Name</th>
       <th>Description</th>
       <th>Eventtype</th>
-      <th>Eventgroup</th>
+      <th>Fest/Meet</th>
       <th class='notexport'></th>
       <% if event_admin? %>
       <th class='notexport'></th>
