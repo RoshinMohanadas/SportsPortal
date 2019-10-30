@@ -10,23 +10,22 @@
         </ul>
       </div>
     <% end %>
-  
     <div class="field">
       <%= form.label :name %>
       <br>
-      <%= form.text_field :name %>
+      <%= form.text_field :name, class: 'form-control' %>
     </div>
   
     <div class="field">
-      <%= form.label :dob %>
+      <%= form.label :date_of_birth %>
       <br>
-      <%= form.date_select :dob %>
+      <%= form.date_select :dob, class: "form-control" %>
     </div>
   
     <div class="field">
       <%= form.label :email %>
       <br>
-      <%= form.text_field :email %>
+      <%= form.text_field :email, class: 'form-control' %>
     </div>
   
     <div class="field">
@@ -40,29 +39,25 @@
       <br>
       <%= form.select :role, ['Coach', 'Captain', 'Vice Captain', 'Player', 'Support Staff', 'Manager'],{:include_blank => 'Select'},class: 'form-control'%>
     </div>
-  
+
     <div class="field">
-      <%= form.label :achievements %>
-      <br>
-      <%= form.text_area :achievements %>
+    <%= form.hidden_field :achievements%>
     </div>
   
     <div class="field">
-      <%= form.label :foodpreference %>
+      <%= form.label :food_preference %>
       <br>
       <%= form.select :foodpreference, ['Veg', 'Non-Veg'],{:include_blank => 'Select'},class: 'form-control'%>
     </div>
   
     <div class="field">
-      <%= form.label :contactno %>
+      <%= form.label :contact_no %>
       <br>
-      <%= form.number_field :contactno %>
+      <%= form.number_field :contactno, class: 'form-control' %>
     </div>
-  
-    <div class="field">
-      <%= form.label :team_id %>
-      <br>
-      <%= form.text_field :team_id %>
+
+    <div class="hidden-field">
+      <%= form.hidden_field :team_id %>
     </div>
 
     <div class="hidden-field">
@@ -70,6 +65,6 @@
     </div>
   
     <div class="actions">
-      <%= form.submit %>
+      <%= form.submit 'Create Teammember', class: "btn btn-primary form-control" %>
     </div>
   <% end %>
