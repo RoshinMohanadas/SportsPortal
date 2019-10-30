@@ -12,33 +12,35 @@
     <% end %>
   
     <div class="field">
-      <%= form.label :name %>
+      <%= form.label :team_name %>
       <br>
-      <%= form.text_field :name %>
+      <%= form.text_field :name , class: 'form-control' %>
     </div>
 
     <div class="field">
       <%= form.label :achievements %>
       <br>
-      <%= form.text_area :achievements %>
+      <%= form.text_area :achievements , class: 'form-control'%>
+    </div>
+  
+    <br>
+    <h4>Point of contact</h4>
+    <div class="field">
+      <%= form.label :name %>
+      <br>
+      <%= form.text_field :poc, class: 'form-control' %>
     </div>
   
     <div class="field">
-      <%= form.label :poc %>
+      <%= form.label :mobile %>
       <br>
-      <%= form.text_field :poc %>
+      <%= form.number_field :pocmobile, class: 'form-control' %>
     </div>
   
     <div class="field">
-      <%= form.label :pocmobile %>
+      <%= form.label :email %>
       <br>
-      <%= form.number_field :pocmobile %>
-    </div>
-  
-    <div class="field">
-      <%= form.label :pocemail %>
-      <br>
-      <%= form.text_field :pocemail %>
+      <%= form.text_field :pocemail, class: 'form-control' %>
     </div>
   
     <div class="hidden-field">
@@ -50,7 +52,7 @@
     </div>
     
     <div class="actions">
-      <%= form.submit 'Save and continue'%>
+      <%= form.submit 'Save and continue', class: "btn btn-primary form-control"%>
     </div>
   <% end %>
   

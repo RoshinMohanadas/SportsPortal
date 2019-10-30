@@ -2,4 +2,4 @@
 
 <%= render 'formbasicinfo', team: @team, dynamic_url: 'updatebasicinfo' %>
 
-<%= link_to 'Back', teams_path %>
+<%= link_to 'Back', event_path(@team.event) %>
