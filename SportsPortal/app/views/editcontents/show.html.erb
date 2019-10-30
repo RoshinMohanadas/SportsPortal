@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Welcometext:</strong>
+  <strong>Welcome Text:</strong>
   <%= @editcontent.welcometext %>
 </p>
 
@@ -20,5 +20,5 @@
   <%= @editcontent.contact %>
 </p>
 
-<%= link_to 'Edit', edit_editcontent_path(@editcontent) %> |
-<%= link_to 'Back', editcontents_path %>
+<%= button_to 'Edit', homecontent_path, method: "get" %> 
+<%= button_to 'Back', root_path, method: "get" %>
