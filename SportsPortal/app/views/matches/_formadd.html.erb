@@ -1,3 +1,6 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+
 <%= form_with(model: match,local: true) do |form| %>
   <% if match.errors.any? %>
     <div id="error_explanation">
@@ -11,6 +14,7 @@
     </div>
   <% end %>
 
+<hr>
   <div class="field">
     <%= form.label :description %>
     <%= @match.description %>
@@ -43,19 +47,23 @@
     <%= form.label :venue %>
     <%= @match.venue%>
   </div>
-
+ 
+  <hr>
   <div class="field">
     <%= form.label :result %>
-    <%= form.text_field :result %>
+    <br>
+    <%= form.text_field :result ,class: 'form-control'%>
   </div>
 
   <div class="field">
     
     <%= form.hidden_field :event_id %>
   </div>
-
+  
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-primary form-control"%>
   </div>
 <% end %>
-
+</div>
+</div>
+<hr>
