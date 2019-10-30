@@ -1,8 +1,11 @@
 <p id="notice"><%= notice %></p>
+<div class="row">
+<div class="col-md-10"> <h3 style="margin-top:3px">Announcements</h3> </div>
+<div class="col-md-2"> <%= button_to 'Back', root_path, method: "get" %> </div>
+</div>
 
-<h1>Announcements</h1>
 
-<table>
+<table class="new_table table">
   <thead >
     <tr>
       <!-- <th>Message</th> -->
@@ -25,4 +28,3 @@
 <br>
 
 <%= button_to 'New Announcement', new_announcement_path, method: "get"%>
-<%= button_to 'Back', root_path, method: "get" %>

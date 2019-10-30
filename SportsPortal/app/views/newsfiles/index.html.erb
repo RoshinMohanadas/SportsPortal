@@ -1,8 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Manage News</h1>
+<div class="row">
+<div class="col-md-10"> <h3 style="margin-top:3px">News</h3> </div>
+<div class="col-md-2"> <%= button_to 'Back', root_path, method: "get" %> </div>
+</div>
 
-<table>
+<table class="new_table table">
   <thead>
     <tr>
       <th>Title</th>
@@ -18,7 +21,7 @@
         <td><%= newsfile.description %></td>
         <td><%= link_to 'Show', newsfile %></td>
         <td><%= link_to 'Edit', edit_newsfile_path(newsfile) %></td>
-        <td><%= link_to 'Destroy', newsfile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', newsfile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
