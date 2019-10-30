@@ -1,6 +1,5 @@
 class EditcontentsController < ApplicationController
   before_action :set_editcontent, only: [:show, :edit, :update, :destroy]
-  $homecontent = Editcontent.first
   # GET /editcontents
   # GET /editcontents.json
   def index
@@ -59,6 +58,11 @@ class EditcontentsController < ApplicationController
       format.html { redirect_to editcontents_url, notice: 'Editcontent was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def edithomecontent
+    @homecontent = Editcontent.first
+
   end
 
   private
