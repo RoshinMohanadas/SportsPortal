@@ -95,7 +95,7 @@
       <th>Name</th>
       <th>Description</th>
       <th>Eventtype</th>
-      <th>Fest/Meet</th>
+      <!--<th>Fest/Meet</th>-->
       <th class='notexport'></th>
       <% if event_admin? %>
       <th class='notexport'></th>
@@ -110,7 +110,7 @@
         <td><%= event.name %></td>
         <td><%= event.description %></td>
         <td><%= event.eventtype %></td>
-        <td><%= event.eventgroup.name %></td>
+        <!--<td><%= event.eventgroup.name %></td>-->
         <td><%= link_to 'Show', event %></td>
         <% if event_admin? %>
           <td><%= link_to 'Edit', edit_event_path(event) %></td>

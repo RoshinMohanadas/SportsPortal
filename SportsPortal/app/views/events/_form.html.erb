@@ -30,13 +30,17 @@
 
   <div class="field">
     <%= form.label :rulesfile %>
-    <%= form.file_field :rulesfile,class: 'form-control' %>
+    <%= form.file_field :rulesfile,class: 'form-file-control' %>
   </div>
 
-  <div class="field">
+  <!--<div class="field">
     <%= form.label :eventgroup_id %>
     <%= form.collection_select :eventgroup_id, eventgroups.order(:name), :id, :name, {prompt: 'Select Event Group'}, class: 'form-control'%>
-  </div> 
+  </div> -->
+
+  <div class="field"> 
+    <%= form.hidden_field :eventgroup_id %>
+  </div>
 
   <div class="actions">
   <%= form.submit class: "btn btn-primary form-control" %>
