@@ -1,7 +1,8 @@
+    
     <div>
-     <p style="" > <strong> Latest Events </strong> <hr> </p>
+     <p style="" class="text-info"> <strong> Latest Events </strong> <hr> </p>
       <% event_groups.each do |eventgroup| %>
-      <% if eventgroup.isactive%>
+      <% if eventgroup.enddate>= today %>
       <p class="nav-link nav "><%= link_to eventgroup.name, eventgroup %></p>
       <% end %>
       <% end %>
@@ -10,21 +11,28 @@
 
 
     <div>
-     <p style="" > <strong> Latest News </strong> <hr></p>
+     <p style="" class="text-info" > <strong> Latest News </strong> <hr></p>
      <% all_news.each do |newsfile| %>
       
-      <p><%= link_to newsfile.title, newsfiles_path %> </p>
+      <p class="text-truncate"><%= link_to newsfile.title, newsfile %> </p>
     <% end %>
     </div>
 
 
     <hr>
     <div>
-     <p style="" > <strong> Past Events </strong> <hr></p>
+     <p style="" class="text-info" > <strong> Downloads </strong> <hr></p>
+      <p><small class="text-muted"> No files to Download</small></p>
+
+    </div>
+
+    <hr>
+    <div>
+     <p style="" class="text-info" > <strong> Past Events </strong> <hr></p>
       <% event_groups.each do |eventgroup| %>
-      <p><% if !eventgroup.isactive%>
+      <p>  <% if eventgroup.enddate< today %> </p>
       <p><%= link_to eventgroup.name, eventgroup %></p>
-      <% end %></p>
+      <% end %>
       <% end %>
 
     </div>
