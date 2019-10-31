@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   #get "reports/userdownload_pdf" => "reports#userdownload_pdf", :as => 'userdownload_pdf'
   get "reports/userdownload_pdf"
   get "reports/egdownload_pdf"
+  get "reports/participantsdownload_pdf"
   resources :newsfiles
   
   get 'session/new'

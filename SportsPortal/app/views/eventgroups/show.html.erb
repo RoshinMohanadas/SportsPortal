@@ -70,6 +70,8 @@
 
 <% if event_admin? %>
   <%= link_to 'Edit', edit_eventgroup_path(@eventgroup) %> 
+  <br><br>
+  <%= link_to "Download Participants Report", :controller => "reports",:action=>:participantsdownload_pdf,:format => 'pdf',:egid => @eventgroup.id%>
 <% end %>
 
 </div>
