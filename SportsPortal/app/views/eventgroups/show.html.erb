@@ -33,6 +33,14 @@
   
 </head>
 
+<div class="row">
+  <div class="col-md-offset-10 col-md-2">
+    <div style="float:right">
+    <%= button_to 'Back', root_path, method: "get" %>
+    </div>
+  </div>
+</div>
+
 <div class="card card-1">
 <marquee>
           <span>Registration time <%= @eventgroup.regstartdate %> - <%= @eventgroup.regenddate %></span>
@@ -69,7 +77,11 @@
 <hr>
 <div class="row">
 <div class="col-md-10"> <h3 style="margin-top:3px">Events</h3> </div>
-<div class="col-md-2"> <%= button_to 'Back', root_path, method: "get" %> </div>
+<div class="col-md-2"> 
+  <% if event_admin? %>
+    <%= link_to 'New Event', {:controller => :events, :action => :new, :groupid => @eventgroup.id},class: 'btn btn-primary text-white', method: "get" %>
+  <% end %>
+</div>
 </div>
 
 <hr>
@@ -111,7 +123,5 @@
 </div> 
 <br>
 
-<% if event_admin? %>
-  <%= link_to 'New Event', {:controller => :events, :action => :new, :groupid => @eventgroup.id} %>
-<% end %>
+
 
