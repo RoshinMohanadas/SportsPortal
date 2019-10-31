@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_31_131020) do
+ActiveRecord::Schema.define(version: 2019_10_31_153055) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -113,7 +113,7 @@ ActiveRecord::Schema.define(version: 2019_10_31_131020) do
     t.string "role"
     t.text "achievements"
     t.string "foodpreference"
-    t.integer "contactno"
+    t.string "contactno"
     t.integer "team_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(version: 2019_10_31_131020) do
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.string "poc"
-    t.integer "pocmobile"
+    t.string "pocmobile"
     t.string "pocemail"
     t.datetime "arrivaldate"
     t.string "arrivalloc"
@@ -153,7 +153,7 @@ ActiveRecord::Schema.define(version: 2019_10_31_131020) do
     t.string "email"
     t.string "password_digest"
     t.string "role"
-    t.integer "contactno"
+    t.string "contactno"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

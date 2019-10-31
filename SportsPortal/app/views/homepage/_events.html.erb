@@ -25,7 +25,7 @@
       <p><small class="text-muted"> No files to Download</small></p>
       <% all_downloads.each do |download| %>
       
-        <p class="text-truncate"><%= link_to download.title, download %> </p>
+        <p class="text-truncate"><%= link_to download.title, url_for(download.attachfile), target: :_blank %> </p>
       <% end %>
 
 
