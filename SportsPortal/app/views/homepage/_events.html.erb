@@ -21,13 +21,16 @@
 
     <hr>
     <div>
+    <% dloads=false %>
      <p style="" class="text-info" > <strong> Downloads </strong> <hr></p>
-      <p><small class="text-muted"> No files to Download</small></p>
-      <% all_downloads.each do |download| %>
       
+      <% all_downloads.each do |download| %>
+        <% dloads=true%>
         <p class="text-truncate"><%= link_to download.title, url_for(download.attachfile), target: :_blank %> </p>
       <% end %>
-
+      <% if !dloads %>
+         <p><small class="text-muted"> No files to Download</small></p>
+      <%end %>
 
       </p>
 
