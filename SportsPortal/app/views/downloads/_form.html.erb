@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :accesslevel %>
-    <%= form.text_field :accesslevel,class: 'form-control'  %>
+    <%= form.select :accesslevel, ['User','Public'],{:include_blank => 'Select'},class: 'form-control'%>
   </div>
 
   <div class="field">
@@ -27,6 +27,6 @@
   </div>
 
   <div class="actions">
-  <%= form.submit class: "btn btn-primary form-control" %>
+  <%= form.submit 'Upload', class: "btn btn-primary form-control" %>
   </div>
 <% end %>
