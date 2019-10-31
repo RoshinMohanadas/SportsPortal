@@ -35,15 +35,34 @@
 
 
   </head>
-
-<p>
-  <strong>Registration status</strong>
-  <%= @team.status %>
-</p>
-
-
+<div class="row">
+  <div class="col-md-10">
+    <p>
+      <strong>Registration status</strong>
+      <%= @team.status %>
+    </p>
+  </div>
+  <div class="col-md-2">
+    <div style="float:right">
+      <%= button_to 'Back', event_path(@team.event), method: "get"%>
+    </div>
+  </div>
+</div>
 
 <div class="card card-1">
+
+<div class="row">
+  <div class="col-md-offset-10 col-md-2">
+    <% if institute? &&
+          current_user.id == @team.user_id &&
+          (@team.status.downcase == 'basicinfofilled' || @team.status.downcase == 'rejected') %>
+      <%= link_to 'Edit', { :action => :editbasicinfo, :id => @team.id}, class: 'btn btn-danger white-text', method: "get" %>
+    <% end %>
+    <% if institute? && @team.status.downcase == 'approved' && (@team.travelplanstatus.downcase == 'notplanned' || @team.travelplanstatus.downcase == 'rejected') %>
+      <%= link_to @team.travelplanstatus.downcase == 'notplanned'? 'Travel Plan':'Edit Travel Plan', {:controller => :teams, :action => :edittravelplan, :id => @team.id}, class: 'btn btn-primary white-text', method: "get"%>
+    <% end %>
+  </div>
+</div>
 
 <h4>Basic info</h4>
 
@@ -77,11 +96,7 @@
 </div>
 
 
-<% if institute? &&
-      current_user.id == @team.user_id &&
-      (@team.status.downcase == 'basicinfofilled' || @team.status.downcase == 'rejected') %>
-  <%= link_to 'Edit', { :action => :editbasicinfo, :id => @team.id}, method: "get" %>
-<% end %>
+
 
 
 <div class="card card-1">
@@ -122,9 +137,7 @@
   </div>
 </div>
 
-<% if institute? && @team.status.downcase == 'approved' && (@team.travelplanstatus.downcase == 'notplanned' || @team.travelplanstatus.downcase == 'rejected') %>
-      <%= link_to @team.travelplanstatus.downcase == 'notplanned'? 'Travel Plan':'Edit Travel Plan', {:controller => :teams, :action => :edittravelplan, :id => @team.id}, method: "get"%>
-<% end %>
+
 
 <% if @team.travelplanstatus.downcase != 'notplanned'%>
 <div class="card card-1">
@@ -260,7 +273,7 @@
 
 
 
-<%= link_to 'Back', event_path(@team.event)%>
+
 
 
 
