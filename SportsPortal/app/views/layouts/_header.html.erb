@@ -28,16 +28,14 @@
     </ul>
     <ul class="navbar-nav navbar-right navbar">
      <% if logged_in? %>
-         
-        <li class="nav-item">
-             <%= link_to "All Users", users_path, { :class=>"nav-link" } %>
-        </li>
+       
        <!-- <li class="nav-item">
              <%= link_to "Home", root_path, { :class=>"nav-link" } %>
         </li> -->
          <li class="nav-item">
              <%= link_to "My Profile", current_user, { :class=>"nav-link" } %>
         </li>
+        <% if site_admin? or event_admin?%>
         <li class="nav-item">
              <%= link_to "Manage News", newsfiles_path, { :class=>"nav-link" } %>
         </li>
@@ -49,9 +47,16 @@
             <%= link_to "Manage Announcements",  announcements_path, {:method=>"get", :class=>"nav-link" } %>
          </li>
 
-         <li class="nav-item">
+        <% end %>
+        <% if site_admin? %> 
+        <li class="nav-item">
             <%= link_to "Edit Homepage",  homecontent_path, {:method=>"get", :class=>"nav-link" } %>
          </li>
+        <li class="nav-item">
+             <%= link_to "All Users", users_path, { :class=>"nav-link" } %>
+        </li>
+        <% end %>
+         
 
         <!-- <li class="nav-item">
              <%= link_to "Update Profile",edit_user_path(current_user), { :class=>"nav-link" } %>
