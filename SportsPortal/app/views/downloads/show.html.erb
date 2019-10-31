@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  
+  <h4><%= @download.title %></h4>
+</p>
+
+<% if @download.attachfile.blank? then%>
+
+  <% else %>
+  <%= link_to 'Download file', url_for(@download.attachfile), target: :_blank %>
+  <%end%>
+<hr>
+<%= link_to 'Edit', edit_download_path(@download) %> |
+<%= link_to 'Back', downloads_path %>
