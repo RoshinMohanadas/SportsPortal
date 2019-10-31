@@ -23,6 +23,13 @@
     <div>
      <p style="" class="text-info" > <strong> Downloads </strong> <hr></p>
       <p><small class="text-muted"> No files to Download</small></p>
+      <% all_downloads.each do |download| %>
+      
+        <p class="text-truncate"><%= link_to download.title, download %> </p>
+      <% end %>
+
+
+      </p>
 
     </div>
 

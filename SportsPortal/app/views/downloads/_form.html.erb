@@ -1,0 +1,32 @@
+<%= form_with(model: download, local: true) do |form| %>
+  <% if download.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(download.errors.count, "error") %> prohibited this download from being saved:</h2>
+
+      <ul>
+        <% download.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_area :title,class: 'form-control'  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :accesslevel %>
+    <%= form.text_field :accesslevel,class: 'form-control'  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :attach_file %>
+    <%= form.file_field :attachfile,class: 'form-file-control' %>
+  </div>
+
+  <div class="actions">
+  <%= form.submit class: "btn btn-primary form-control" %>
+  </div>
+<% end %>
