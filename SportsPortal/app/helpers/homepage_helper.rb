@@ -15,4 +15,8 @@ module HomepageHelper
         Editcontent.all
     end
 
+    def all_downloads
+        Download.all
+    end
+
 end

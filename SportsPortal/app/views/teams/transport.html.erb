@@ -1,7 +1,8 @@
+<div class="text-center">
 <h1>Arrange Transport</h1>
 
-<div>
-    <div>
+<div class="row">
+    <div class="col-md-offset-2 col-md-4 text-left">
         <h3>Pickup</h3>
             <p>
                 <strong>Date</strong>
@@ -18,7 +19,7 @@
                 <%= @team.modeofarrival %>
             </p>            
     </div>
-    <div>
+    <div class="col-md-4 text-left">
         <h3>Drop off</h3>
         <p>
             <strong>Date</strong>
@@ -35,29 +36,43 @@
             <%= @team.modeofdeparture %>
         </p>     
     </div>
+</div>
+<div>
     <br>
     <div>
         <%= form_for 'team' do |f|%>
-            <div class="field">
-                <%= f.label :arrival_transport %>
-                <br>
-                <%= f.text_area :arrivaltravelarrangement %>
+            <div class="row">
+                <div class="field col-md-offset-2 col-md-4">
+                    <%= f.label :arrival_transport %>
+                    <br>
+                    <%= f.text_area :arrivaltravelarrangement, class: 'form-control' %>
+                </div>
+                <div class="field col-md-4">
+                    <%= f.label :departure_transport %>
+                    <br>
+                    <%= f.text_area :departuretravelarrangement, class: 'form-control' %>
+                </div>
             </div>
-            <div class="field">
-                <%= f.label :departure_transport %>
-                <br>
-                <%= f.text_area :departuretravelarrangement %>
+            <div class="row">
+                <div class="field col-md-offset-2 col-md-8">
+                    <%= f.label :remarks %>
+                    <br>
+                    <%= f.text_area :instructionsfromadmin, value: '', class: 'form-control' %>
+                </div>
+                <div class="hidden-field">
+                    <%= f.hidden_field :id%>
+                </div>
             </div>
-            <div class="field">
-                <%= f.label :remarks %>
-                <br>
-                <%= f.text_area :instructionsfromadmin, value: '' %>
+            <div class="row">
+                <div class="col-md-offset-2 col-md-4">
+                    <%= f.submit "Arrange transport", formaction: 'arrangetransport', class: 'btn btn-success form-control'%>
+                </div>
+                <div class="col-md-4">
+                    <%= f.submit "Reject plan", formaction: 'rejecttravelplan', class: 'btn btn-danger form-control'%>
+                </div>
             </div>
-            <div class="hidden-field">
-                <%= f.hidden_field :id%>
-            </div>
-            <%= f.submit "Arrange transport", formaction: 'arrangetransport'%>
-            <%= f.submit "Reject plan", formaction: 'rejecttravelplan'%>
         <% end %>
     </div>
+</div>    
+
 </div>

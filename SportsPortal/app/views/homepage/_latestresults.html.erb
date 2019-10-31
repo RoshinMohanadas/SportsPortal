@@ -1,5 +1,5 @@
 <div class="well text-center" style="max-height:42vh;overflow-y:scroll">
-        <div class="text-center" > <strong> Latest Results </strong> </p>
+        <div class="text-center" > <strong class="text-info"> Latest Results </strong> 
         <% count=0 %>
         <% all_matches.each do |match| %>
         <% if match.result? && count<=4 %>
@@ -15,7 +15,7 @@
       <strong> <%= link_to title, match %> <strong>
       
       <!-- <div> <small><%=match.matchstarttime.strftime("%-d/%-m/%y: %H:%M %Z") %></small> </div> -->
-      <div><small> <strong><%= "Result : "+result%> </strong></small></div>
+      <div  class="text-secondary"><small> <strong><%= result%> </strong></small></div>
       
       
       <%end %>

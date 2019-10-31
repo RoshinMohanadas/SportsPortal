@@ -62,57 +62,96 @@
     } );
     </script>
     </head>
+  
+  <div class="row">
+  <div class="col-md-offset-10 col-md-2">
+  <div style="float:right">
+  <%= button_to 'Back', eventgroup_path(@event.eventgroup), method: "get"%>
+  </div>
+  </div>
+  </div>
+
+  <div class="card card-1">
+  
+  <div class="row">
+    <div class="col-md-offset-10 col-md-2">
+    <% if institute? %>
+      <% if @event.teams.where('user_id = ?', current_user.id).count == 0%>
+        <%= link_to 'Register', { :controller => :teams, :action => :basicinfo, :eventid => @event.id }, class:'btn btn-primary text-white', method: "get"%>
+      <% else %>
+        <%= link_to 'View Team', { :controller => :teams, :action => :show, :id => @event.teams.where('user_id = ?', current_user.id).first.id}, class:'btn btn-primary text-white', method: "get"%>
+      <% end %>
+    <% end %>
+    <% if event_admin? %>
+      <%= link_to 'Edit', edit_event_path(@event), class:'btn btn-primary text-white' %> 
+    <% end %>
+    </div>
+  </div>
+
   <p>
-    <strong>Name:</strong>
-    <%= @event.name %>
+    
+    <h1><%= @event.name %></h1>
   </p>
 
   <p>
-    <strong>Description:</strong>
-    <%= @event.description %>
+    <h5><%= @event.description %></h5>
   </p>
 
   <p>
-    <strong>Eventtype:</strong>
+    <strong>Event type:</strong>
     <%= @event.eventtype %>
   </p>
 
 
   <p>
-    <strong>Eventgroup:</strong>
+    <strong>Fest/Meet:</strong>
     <%= @event.eventgroup.name %>
   </p>
 
   <% if @event.rulesfile.blank? then%>
 
   <% else %>
-  <%= link_to 'Rulefile', url_for(@event.rulesfile), target: :_blank %>
+  <%= link_to 'Download Rulefile', url_for(@event.rulesfile), target: :_blank %>
   <%end%>
+  
+  <% if logged_in? && !(@event.accomodation.blank?) %>
+  <hr>
+  <%= link_to 'Download Accomodation', url_for(@event.accomodation), target: :_blank %>
+  <% end %>
+
+  </div>
 
   <br>
 
-  <% if institute? %>
-    <% if @event.teams.where('user_id = ?', current_user.id).count == 0%>
-      <%= link_to 'Register', { :controller => :teams, :action => :basicinfo, :eventid => @event.id }, method: "get"%>
-    <% else %>
-      <%= link_to 'View Team', { :controller => :teams, :action => :show, :id => @event.teams.where('user_id = ?', current_user.id).first.id}%>
-    <% end %>
+  
+  
+
+ 
+<hr>
+<%= form_with(model: @event, local: true) do |form| %>
+
+<div class="field">
+<%= form.label :upload_accomodation_details %>
+<%= form.file_field :accomodation,class: 'form-file-control' %>
+</div>
+
+<div class="actions">
+<%= form.submit 'Upload' %>
+</div>
+
+<% end %>
+
+
+<hr>
+<div class="row">
+<div class="col-md-10"> <h3 style="margin-top:3px">Matches</h3> </div>
+<div class="col-md-2"> 
+  <% if event_admin? %>
+      <%= link_to 'New Match', new_match_path(:eventid => @event.id), class: 'btn btn-primary text-white', method: "get"%>
   <% end %>
+</div>
+</div>
 
-
-
-<% if event_admin? %>
-  <%= link_to 'Edit', edit_event_path(@event) %> 
-<% end %>
-
-
-<h1>Matches</h1>
-
-<% if event_admin? %>
-<br>
-  <%= link_to 'New Match', new_match_path(:eventid => @event.id)%>
-<br>
-<% end %>
 
 <table id="example" class="new_table table">
   <thead class="thead-light">
@@ -184,6 +223,6 @@
 
 <% end %>
 
-<%= link_to 'Back', eventgroup_path(@event.eventgroup)%>
+
 
 

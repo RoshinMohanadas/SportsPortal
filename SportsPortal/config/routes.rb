@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :downloads
   resources :announcements
   resources :editcontents
   resources :images

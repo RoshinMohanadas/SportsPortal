@@ -55,8 +55,9 @@
       </div>
       <div class="col-md-6 text-right">
       <ul class="nav card-header-tabs navbar-right" >
-      <li class="nav-item" >
-        <a class="nav-link disabled" href="#"><%= eventgroup.regstartdate %> - <%= eventgroup.regenddate %></a>
+      <li class="nav-item" ><h5>
+        <a class="nav-link disabled" href="#">From <%= eventgroup.regstartdate.strftime("%dth %b %Y")  %> to <%= eventgroup.regenddate.strftime("%dth %b %Y")  %></a>
+       </h5>
       </li>
     </ul>
   </div>
@@ -71,22 +72,17 @@
       <div class="col-md-4" style="padding-bottom:3vh;"> 
         <%= image_tag("tournament.jpg",{ :class=>"img-thumbnail rounded img-fluid", :style =>"" }) %>
       </div>
-      <div class="col-md-8"> 
+      <div class="col-md-8" > 
         <%= eventgroup.description %>
   <br><br><br>
           <ul class="list-group list-group-flush">
                 <div class="card-header">
-                   <p class="text-muted">From <%= eventgroup.startdate %>  to  <%= eventgroup.enddate  %></p>
+                   <p class="text-muted">Last Date for Registration : <%= eventgroup.regenddate.strftime("%dth %b %Y")  %></p>
                  </div>
                   <div class="card-header">
-                   <p class="text-muted">Venue:<%= eventgroup.venue %></p>
+                   <p class="text-muted">Location : <%= eventgroup.venue %></p>
                  </div>
-                  <div class="card-header">
-                   <p class="text-muted">Venue:<%= eventgroup.venue %></p>
-                 </div>
-                  <div class="card-header">
-                   <p class="text-muted">Venue:<%= eventgroup.venue %></p>
-                 </div>
+             
                  <!--
             <li class="list-group-item">From <%= eventgroup.startdate %>  to  <%= eventgroup.enddate %></li>
             <li class="list-group-item"><%= eventgroup.venue %></li>
@@ -101,9 +97,15 @@
       </div>
       
     </div>
-    <div class="card-header">
-                   <p class="text-active"><%= "Registrations Open" %></p>
-                 </div>
+              <div class="card-header">
+                  <% if ((today >= eventgroup.regstartdate.to_date() ) && (today <= eventgroup.regenddate.to_date()))%>
+                   <p class="text-success"><%= "Registrations Open" %></p>
+                  <% elsif  (today >= eventgroup.regenddate)%>
+                   <p class="text-danger"><%= "Registrations Closed" %></p>
+                  <% else %>
+                  <p class="text-info"><%= "Registrations will start from "+eventgroup.regstartdate.strftime("%dth %b") %></p>
+                  <%end %>
+              </div>
     <br>
       <div class="card-footer">
       <Strong class="text-muted">Events</strong>
@@ -127,7 +129,7 @@
   <%= image_tag("meet.jpg",{ :class=>"img-fluid rounded", :style =>"max-height:160px;max-width:100%;" }) %>
      
   <div class="card-body">
-    <p class="card-text"><%= event.description %></p>
+    <p class="card-text text-truncate" ><%= event.description %></p>
   </div>
   <!--
   <ul class="list-group list-group-flush">
