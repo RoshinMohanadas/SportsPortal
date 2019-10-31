@@ -86,10 +86,17 @@
   <% if @event.rulesfile.blank? then%>
 
   <% else %>
-  <%= link_to 'Rulefile', url_for(@event.rulesfile), target: :_blank %>
+  <%= link_to 'Download Rulefile', url_for(@event.rulesfile), target: :_blank %>
   <%end%>
 
   <br>
+
+  <% if @event.accomodation.blank? then%>
+
+  <% else %>
+  <%= link_to 'Download Accomodation', url_for(@event.accomodation), target: :_blank %>
+  <%end%>
+  <hr>
 
   <% if institute? %>
     <% if @event.teams.where('user_id = ?', current_user.id).count == 0%>
@@ -104,6 +111,20 @@
 <% if event_admin? %>
   <%= link_to 'Edit', edit_event_path(@event) %> 
 <% end %>
+<hr>
+<%= form_with(model: @event, local: true) do |form| %>
+
+<div class="field">
+<%= form.label :upload_accomodation_details %>
+<%= form.file_field :accomodation,class: 'form-file-control' %>
+</div>
+
+<div class="actions">
+<%= form.submit 'Upload' %>
+</div>
+
+<% end %>
+
 
 
 <h1>Matches</h1>
@@ -112,6 +133,7 @@
 <br>
   <%= link_to 'New Match', new_match_path(:eventid => @event.id)%>
 <br>
+
 <% end %>
 
 <table id="example" class="new_table table">
