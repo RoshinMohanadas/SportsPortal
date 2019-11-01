@@ -235,21 +235,31 @@
 <% end %>
 
 <% if event_admin? && (@team.status.downcase == 'pending') %>
+<div class="text-center">
 <h3>Approve/Reject</h3>
 <div>
     <%= form_for 'team' do |f| %>
-      <div class="field">
-        <%= f.label :remarks %>
-        <br>
-        <%= f.text_area :instructionsfromadmin %>
+      <div class="row">
+        <div class="field col-md-offset-2 col-md-8">
+          <%= f.label :remarks %>
+          <br>
+          <%= f.text_area :instructionsfromadmin, class: 'form-control' %>
+        </div>
       </div>
       <div class="hidden-field">
         <%= f.hidden_field :id, value: @team.id%>
       </div>
-      <%= f.submit "Approve Team", formaction: 'approve'%>
-      <%= f.submit "Reject Team", formaction: 'reject'%>
+      <div class="row">
+      <div class="col-md-offset-2 col-md-4">
+        <%= f.submit "Approve Team", formaction: 'approve', class: 'btn btn-success form-control'%>
+      </div>
+      <div class="col-md-4">
+      <%= f.submit "Reject Team", formaction: 'reject', class: 'btn btn-danger form-control'%>
+      </div>
+      </div>
     <% end %>
 
+</div>
 </div>
 <% end %>
 
