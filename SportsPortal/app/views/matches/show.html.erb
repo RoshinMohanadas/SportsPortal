@@ -1,12 +1,19 @@
 <p id="notice"><%= notice %></p>
 
+<div class="card card-1">
+<h2>Match Details</h2>
+
+
+<p>
+  <h4><span><%= @match.teamone %> v.s   <%= @match.teamtwo %></span></h4>
+</p>
 <p>
   <strong>Description:</strong>
   <%= @match.description %>
 </p>
 
 <p>
-  <strong>Matchstarttime:</strong>
+  <strong>Match start time:</strong>
   <%= @match.matchstarttime %>
 </p>
 
@@ -15,15 +22,8 @@
   <%= @match.round %>
 </p>
 
-<p>
-  <strong>Teamone:</strong>
-  <%= @match.teamone %>
-</p>
 
-<p>
-  <strong>Teamtwo:</strong>
-  <%= @match.teamtwo %>
-</p>
+
 
 <p>
   <strong>Venue:</strong>
@@ -37,8 +37,6 @@
 
 <p>
   <strong>Event:</strong>
-  <%= @match.event_id %>
+  <%= @match.event.name %>
 </p>
-
-<%= link_to 'Edit', edit_match_path(@match) %> |
-<%= link_to 'Back', matches_path %>
+</div>
