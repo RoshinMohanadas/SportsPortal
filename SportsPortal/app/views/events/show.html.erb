@@ -126,7 +126,7 @@
   
   
 
- 
+ <% if event_admin? %>
 <hr>
 <%= form_with(model: @event, local: true) do |form| %>
 
@@ -140,7 +140,7 @@
 </div>
 
 <% end %>
-
+<% end %>
 
 <hr>
 <div class="row">
