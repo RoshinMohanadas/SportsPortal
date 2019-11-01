@@ -15,12 +15,12 @@
 
 
 
-      <h1><small>Welcome to </small> <% all_contents.each do |editcontent| %>
-      
-        <%= editcontent.welcometext %>
+      <h2 class="text-primary"><small class="text-info  font-weight-bold">Welcome to </small> <% all_contents.each do |editcontent| %>
+      <span class="text-info font-weight-bolder"><strong> <%= editcontent.welcometext %> </strong></span>
+       
       
       <% end %>
-</h1>
+</h2>
       
       <hr>
       <marquee class="marq" bgcolor = "White" direction = "left" loop="" > 
@@ -72,7 +72,7 @@
       <div class="col-md-4" style="padding-bottom:3vh;"> 
         <%= image_tag("tournament.jpg",{ :class=>"img-thumbnail rounded img-fluid", :style =>"" }) %>
       </div>
-      <div class="col-md-8" > 
+      <div class="col-md-8 text-justify " > 
         <%= eventgroup.description %>
   <br><br><br>
           <ul class="list-group list-group-flush">
