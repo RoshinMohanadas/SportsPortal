@@ -222,6 +222,22 @@ class TeamsController < ApplicationController
       @team = Team.find(params[:id])
     end
 
+    def check_login
+      if (!logged_in?)
+        redirect_to session_path
+      end
+    end
+
+    def check_is_owner
+      team = Team.find(params[:id])
+      if(current_user.id != team.user_id)
+        redirect_to root
+      end
+    end
+
+
+    
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
       params.require(:team).permit(:name, :poc, :pocmobile, :pocemail, :arrivaldate, :arrivalloc, :modeofarrival, :arrivaldetails, :departuredate, :departureloc, :modeofdeparture, :departuredetails, :instructionsfromadmin, :event_id, :user_id)
