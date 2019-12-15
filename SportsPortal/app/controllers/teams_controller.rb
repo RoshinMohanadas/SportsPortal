@@ -1,5 +1,7 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
+  before_action :check_login, only: [:basicinfo, :createbasicinfo, :editbasicinfo, :updatebasicinfo]
+  before_action :check_is_owner, only: [:editbasicinfo]
 
   # GET /teams
   # GET /teams.json
@@ -224,14 +226,15 @@ class TeamsController < ApplicationController
 
     def check_login
       if (!logged_in?)
-        redirect_to session_path
+        redirect_to session_new_path
       end
     end
 
     def check_is_owner
       team = Team.find(params[:id])
-      if(current_user.id != team.user_id)
-        redirect_to root
+
+      if(logged_in? && current_user.id != team.user_id)
+        redirect_to controller: 'homepage', action: 'home'
       end
     end
 
