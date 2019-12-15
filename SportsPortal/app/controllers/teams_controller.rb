@@ -1,7 +1,7 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
-  before_action :check_login, only: [:basicinfo, :createbasicinfo, :editbasicinfo, :updatebasicinfo]
-  before_action :check_is_owner, only: [:editbasicinfo]
+  before_action :check_login, only: [:basicinfo, :createbasicinfo, :editbasicinfo, :updatebasicinfo, :edittravelplan, :updatetravelplan]
+  before_action :check_is_owner, only: [:editbasicinfo, :edittravelplan]
 
   # GET /teams
   # GET /teams.json
