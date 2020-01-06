@@ -35,6 +35,9 @@
 
 
   </head>
+
+
+
 <div class="row">
   <div class="col-md-10">
     <p>
@@ -48,6 +51,31 @@
     </div>
   </div>
 </div>
+
+<br>
+
+<div class="row">
+  <div class="col-md-2 text-center <%= @team.status == 'basicinfofilled' || @team.status == 'pending' || @team.status == 'approved' ?  'bar-green' : 'bar-red' %>">
+          Team info filled
+  </div>
+  <div class="col-md-2 text-center <%= @team.status == 'pending' || @team.status == 'approved' ? 'bar-green' : (@team.status == 'rejected' ? 'bar-red' : 'bar-gray') %>">
+          Members filled
+  </div>
+  <div class="col-md-2 text-center <%= @team.status == 'approved' ? 'bar-green' : ( @team.status == 'rejected' ? 'bar-red': 'bar-gray' )%>">
+          Team approved
+  </div>
+  <div class="col-md-2 text-center <%= @team.travelplanstatus == 'planned' || @team.travelplanstatus == 'arranged'  ? 'bar-green': ( @team.travelplanstatus == 'rejected'? 'bar-red' :'bar-gray') %>">
+          Travel planned
+  </div>
+  <div class="col-md-2 text-center <%= @team.travelplanstatus == 'arranged' ? 'bar-green': ( @team.travelplanstatus == 'rejected' ? 'bar-red' : 'bar-gray') %>">
+          Transport arranged
+  </div>
+  <div class="col-md-2 text-center <%= @team.travelplanstatus == 'arranged' ? 'bar-green' : 'bar-gray' %>">
+          All set
+  </div>
+</div>
+
+<br>
 
 <div class="card card-1">
 
