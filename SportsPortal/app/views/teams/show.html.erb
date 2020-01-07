@@ -67,7 +67,7 @@
   <div class="col-md-2 text-center <%= @team.travelplanstatus == 'planned' || @team.travelplanstatus == 'arranged'  ? 'bar-green': ( @team.travelplanstatus == 'rejected'? 'bar-red' :'bar-gray') %>">
           Travel planned
   </div>
-  <div class="col-md-2 text-center <%= @team.travelplanstatus == 'arranged' ? 'bar-green': ( @team.travelplanstatus == 'rejected' ? 'bar-red' : 'bar-gray') %>">
+  <div class="col-md-2 text-center <%= @team.travelplanstatus == 'arranged' ? 'bar-green': 'bar-gray' %>">
           Transport arranged
   </div>
   <div class="col-md-2 text-center <%= @team.travelplanstatus == 'arranged' ? 'bar-green' : 'bar-gray' %>">
@@ -183,7 +183,7 @@
   <% if !(@team.arrivaldate.nil?) %>
   <p>
     <strong>Arrival Date:</strong>
-    <%= @team.arrivaldate %>
+    <%= @team.arrivaldate.strftime("%-d/%-m/%y: %I:%M %p") %>
   </p>
   <% end %>
 
@@ -215,7 +215,7 @@
   <% if !(@team.departuredate.nil?) %>
   <p>
     <strong>Departure date:</strong>
-    <%= @team.departuredate %>
+    <%= @team.departuredate.strftime("%-d/%-m/%y: %I:%M %p") %>
   </p>
   <% end %>
 

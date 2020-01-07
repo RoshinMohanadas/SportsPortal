@@ -256,7 +256,18 @@ class TeamsController < ApplicationController
   end
 
   def getDateTime(parent, date_label)
-      DateTime.new parent[date_label + '(1i)'].to_i, parent[date_label + '(2i)'].to_i, parent[date_label + '(3i)'].to_i, parent[date_label + '(4i)'].to_i, parent[date_label + '(5i)'].to_i
+      # year = parent[date_label + '(1i)'].to_i
+      # month = parent[date_label + '(2i)'].to_i
+      # day = parent[date_label + '(3i)'].to_i
+      # hour = parent[date_label + '(4i)'].to_i
+      # minute = parent[date_label + '(5i)'].to_i
+
+      # Time.local(year, month, day, hour, minute, 0)
+
+
+
+      dt = DateTime.new parent[date_label + '(1i)'].to_i, parent[date_label + '(2i)'].to_i, parent[date_label + '(3i)'].to_i, parent[date_label + '(4i)'].to_i, parent[date_label + '(5i)'].to_i
+      dt.change(:offset => "+0530")
   end
 
 end
