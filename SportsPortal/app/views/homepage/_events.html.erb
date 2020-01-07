@@ -1,6 +1,7 @@
-    
+   <div class="well text-center" style="max-height:100vh;min-height:70vh;margin-left:0px;">
+        <div class="text-center" > <strong class="text-info"> Latest Events </strong>  
     <div>
-     <p style="" class="text-info"> <strong> Latest Events </strong> <hr> </p>
+     <hr>
       <% event_groups.each do |eventgroup| %>
       <% if eventgroup.enddate>= today %>
       <p class="nav-link nav text-secondary"><%= link_to eventgroup.name, eventgroup %></p>
@@ -11,7 +12,7 @@
 
 
     <div>
-     <p style="" class="text-info" > <strong> Latest News </strong> <hr></p>
+     <div style="" class="text-info" > <strong> Latest News </strong> <hr></div>
      <% all_news.each do |newsfile| %>
       
       <p class="text-truncate text-secondary"><%= link_to newsfile.title, newsfile %> </p>
@@ -22,7 +23,7 @@
     <hr>
     <div>
     <% dloads=false %>
-     <p style="" class="text-info" > <strong> Downloads </strong> <hr></p>
+     <div style="" class="text-info" > <strong> Downloads </strong> <hr></div>
       
       <% all_downloads.each do |download| %>
         <% dloads=true%>
@@ -38,7 +39,7 @@
 
     <hr>
     <div>
-     <p style="" class="text-info" > <strong> Past Events </strong> <hr></p>
+     <div style="" class="text-info" > <strong> Past Events </strong> <hr></div>
       <% event_groups.each do |eventgroup| %>
       <p>  <% if eventgroup.enddate< today %> </p>
       <p class="text-secondary"><%= link_to eventgroup.name, eventgroup %></p>
@@ -47,3 +48,5 @@
 
     </div>
     
+          </div>
+      </div>

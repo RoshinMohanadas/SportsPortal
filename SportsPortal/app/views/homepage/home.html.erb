@@ -12,15 +12,16 @@
 
     </div> 
     <div class="col-sm-8 text-left"> -->
-
-
-
-      <h2 class="text-primary"><small class="text-info  font-weight-bold">Welcome to </small> <% all_contents.each do |editcontent| %>
-      <span class="text-info font-weight-bolder"><strong> <%= editcontent.welcometext %> </strong></span>
-       
+    
+    <h2 class="text-info  font-weight-bold"> 
+    <% all_contents.each do |editcontent| %> 
+    <%= editcontent.welcometext %> 
+    <% end %> 
+    <span class="text-uppercase font-weight-bolder"> National Institute of Technology, Calicut </span></h2>
+    
+   
       
-      <% end %>
-</h2>
+
       
       <hr>
       <marquee class="marq" bgcolor = "White" direction = "left" loop="" > 
