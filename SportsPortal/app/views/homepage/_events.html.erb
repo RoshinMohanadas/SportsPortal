@@ -4,7 +4,7 @@
      <hr>
       <% event_groups.each do |eventgroup| %>
       <% if eventgroup.enddate>= today %>
-      <p class="nav-link nav text-secondary"><%= link_to eventgroup.name, eventgroup %></p>
+      <p class="nav-link nav text-secondary"><%= link_to eventgroup.name, eventgroup, :style=> 'color:#6c757d;'%></p>
       <% end %>
       <% end %>
     </div>
@@ -15,7 +15,7 @@
      <div style="" class="text-info" > <strong> Latest News </strong> <hr></div>
      <% all_news.each do |newsfile| %>
       
-      <p class="text-truncate text-secondary"><%= link_to newsfile.title, newsfile %> </p>
+      <p class="text-truncate text-secondary"><%= link_to newsfile.title, newsfile, :style=> 'color:#6c757d;' %> </p>
     <% end %>
     </div>
 
@@ -27,7 +27,7 @@
       
       <% all_downloads.each do |download| %>
         <% dloads=true%>
-        <p class="text-truncate text-secondary"><%= link_to download.title, url_for(download.attachfile), target: :_blank %> </p>
+        <p class="text-truncate text-secondary"><%= link_to download.title, url_for(download.attachfile), :style=> 'color:#6c757d;', target: :_blank %> </p>
       <% end %>
       <% if !dloads %>
          <p><small class="text-muted"> No files to Download</small></p>
@@ -42,7 +42,7 @@
      <div style="" class="text-info" > <strong> Past Events </strong> <hr></div>
       <% event_groups.each do |eventgroup| %>
       <p>  <% if eventgroup.enddate< today %> </p>
-      <p class="text-secondary"><%= link_to eventgroup.name, eventgroup %></p>
+      <p class="text-secondary"><%= link_to eventgroup.name, eventgroup, :style=> 'color:#6c757d;' %></p>
       <% end %>
       <% end %>
 
