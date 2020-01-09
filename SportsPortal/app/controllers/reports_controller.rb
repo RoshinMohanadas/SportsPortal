@@ -6,6 +6,63 @@ class ReportsController < ApplicationController
 require "prawn" 
 
 
+
+def ackdownload_pdf
+  request.format = 'pdf'
+  @teamid= params[:egid]
+  #@egid=1
+  @veg=0
+  @nonveg=0
+  @male=0
+  @female=0
+  @team = Team.find(@teamid)
+      respond_to do |format|
+        format.pdf do
+          pdf = Prawn::Document.new
+          pdf.text "National Institute of Technology Calicut", :size => 20 ,:align => :center,:style => :bold
+          pdf.text "  "
+          pdf.text @team.event.eventgroup.name, :size => 14 ,:align => :center,:style => :bold
+          pdf.text "  "
+          pdf.text @team.event.name, :size => 14 ,:align => :center,:style => :bold
+          
+          pdf.text "  "
+          pdf.text "Registration Acknowledgement Receipt", :size => 12 ,:align => :center,:style => :bold
+          pdf.text "  "
+
+          table_data = Array.new
+          table_data << ["<b>Team Name</b>", @team.name]
+          table_data << ["<b>Team Achievements</b>", @team.achievements]
+          table_data << ["<b>Point of Contact Name</b>",@team.poc]
+          table_data << ["<b>Point of Contact Mobile No</b>",@team.pocmobile]
+          table_data << ["<b>Point of Contact Emailid</b>",@team.pocemail]
+          pdf.table(table_data, :width => 500, :cell_style => { :inline_format => true,size: 10 },:header => true)
+             
+          pdf.text "  "
+          pdf.text "Team Members : ", :size => 11,:style => :bold
+
+          table_data = Array.new
+          table_data << ["<b>Name</b>","<b>DOB</b>","<b>Email</b>","<b>Gender</b>","<b>Role</b>","<b>Food Preference</b>","<b>Contact No</b>"]
+          
+          
+          @team.teammembers.each do |p|
+            
+            table_data << [p.name, p.dob,p.email,p.gender,p.role,p.foodpreference,p.contactno]
+        end
+        
+        pdf.table(table_data, :width => 500, :cell_style => { :inline_format => true,size: 8 },:header => true)
+      
+        pdf.text "  "
+        pdf.text "  "
+        pdf.text "  "
+        pdf.text "  "
+        
+        pdf.text "Signature ", :size => 11,:style => :bold,:align => :right
+
+          send_data pdf.render, filename: 'Acknowledgement_Receipt.pdf', type: 'application/pdf', :disposition => 'inline'
+        end
+      end
+ end
+
    def participantsdownload_pdf
     request.format = 'pdf'
     @egid= params[:egid]

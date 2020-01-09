@@ -121,6 +121,10 @@
 </p>
 
 
+<br><br>
+  <%= link_to "Download Acknowledgement Receipt", {:controller => "reports",:action=>:ackdownload_pdf,:format => 'pdf',:egid => @team.id},class: 'btn btn-primary text-white'%>
+ 
+
 </div>
 
 

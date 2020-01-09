@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "reports/userdownload_pdf"
   get "reports/egdownload_pdf"
   get "reports/participantsdownload_pdf"
+  get "reports/ackdownload_pdf"
   resources :newsfiles
   
   get 'session/new'
