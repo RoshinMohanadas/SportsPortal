@@ -43,7 +43,7 @@
 
 <div class="card card-1">
 <marquee>
-          <span>Registration time <%= @eventgroup.regstartdate %> - <%= @eventgroup.regenddate %></span>
+          <span>Registration: <%= @eventgroup.regstartdate %> - <%= @eventgroup.regenddate %></span>
 </marquee>
 
 
@@ -85,15 +85,13 @@
 
 <hr>  
 <div class="row">
-<div class="col-md-10"> <h3 style="margin-top:3px">Events</h3> </div>
+<div class="col-md-10 text-center"> <h3 style="margin-top:3px">Events</h3> </div>
 <div class="col-md-2"> 
   <% if event_admin? %>
     <%= link_to 'New Event', {:controller => :events, :action => :new, :groupid => @eventgroup.id},class: 'btn btn-primary text-white', method: "get" %>
   <% end %>
 </div>
-</div>
-
-<hr>
+</div><hr>
 
 <div class="table-responsive">  
     <table id="example" class="new_table table">

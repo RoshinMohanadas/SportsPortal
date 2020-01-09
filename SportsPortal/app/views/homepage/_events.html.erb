@@ -27,7 +27,11 @@
       
       <% all_downloads.each do |download| %>
         <% dloads=true%>
-        <p class="text-truncate text-secondary"><%= link_to download.title, url_for(download.attachfile), :style=> 'color:#6c757d;', target: :_blank %> </p>
+        <p class="text-truncate text-secondary"><% if download.attachfile %> <%= link_to download.title, url_for(download.attachfile), :style=> 'color:#6c757d;', target: :_blank %>
+        <% else %>
+        Cannot display files
+        <%end %>
+         </p>
       <% end %>
       <% if !dloads %>
          <p><small class="text-muted"> No files to Download</small></p>

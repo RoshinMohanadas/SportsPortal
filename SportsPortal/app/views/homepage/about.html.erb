@@ -6,8 +6,11 @@
     </div>
 
     <div class="col-sm-8 text-left">  -->
-      <h2><span class="text-info"><strong> About</strong></span> <small>   NITC SportsPortal</small></h2>
-      <hr>
+      <h3 class="text-info font-weight-bold">About</h3><hr>
+      <div class="cover">
+      <%= image_tag("pic2.png",  {:alt=> "Could not load Image",:class => "img-rounded img-thumbnail", :style => "  background-position: center;
+      background-repeat: no-repeat;background-size: cover;max-width:100%;min-width:100%;height:50%;max-height:50vh"}) %>
+      </div>
       <% all_contents.each do |editcontent| %>
       
         <p><%= editcontent.about %></p>
