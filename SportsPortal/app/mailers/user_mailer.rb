@@ -27,5 +27,11 @@ class UserMailer < ApplicationMailer
      mail(to: @team.pocemail, subject: 'NITC Sports Portal - Travel Plan Rejected')
     end
 
+    def changeinpassword_email(user, pass)
+        @user = user
+        @pass = pass
+        mail(to: @user.email, subject: 'NITC Sports Portal - Generated new account password')
+    end
+
 
 end
