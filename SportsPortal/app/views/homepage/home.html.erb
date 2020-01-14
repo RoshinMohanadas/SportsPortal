@@ -141,7 +141,17 @@
   -->
   <hr>
   <div class="card-body">
-  <%= link_to "View Details", event, { :style =>"padd ing-left:0px;" , :class=>"na vbar-brand na v-link" } %>
+  <!--
+   <%= link_to "View Details", event, { :style =>"padd ing-left:0px;" , :class=>"na vbar-brand na v-link" } %>
+  -->
+  
+  <% if institute? %>
+    <% if event.teams.where('user_id = ?', current_user.id).count == 0%>
+      <%= link_to 'Register', { :controller => :teams, :action => :basicinfo, :eventid => event.id }, class:'btn btn-primary text-white', method: "get"%>
+    <% else %>
+      <%= link_to 'View Team', { :controller => :teams, :action => :show, :id => event.teams.where('user_id = ?', current_user.id).first.id}, class:'btn btn-success text-white', method: "get"%>
+    <% end %>
+  <% end %>
   
   <!--    
     <a href="#" class="card-link">View Details</a>
