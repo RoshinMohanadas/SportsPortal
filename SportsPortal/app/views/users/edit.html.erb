@@ -43,7 +43,7 @@
             <tr>
             
               <th>User Name :</th>
-              <td>  <%= form.text_field :name ,class: 'form-control'%> </td>
+              <td>  <%= form.text_field :username ,class: 'form-control'%> </td>
             </tr>
             <tr>
               <th>Email ID :</th>
@@ -66,11 +66,11 @@
             <tr>
             
               <th>User Name :</th>
-              <td>  <%= @user.name %> </td>
+              <td>  <%= @user.username %> </td>
             </tr>
             <tr>
               <th>Email ID :</th>
-              <td>   <%= @user.email  %> </td>
+              <td>   <%= form.text_field :email ,class: 'form-control' %> </td>
             </tr>
             <tr>
               <th>Password :</th>
