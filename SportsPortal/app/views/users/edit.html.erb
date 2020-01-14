@@ -42,8 +42,12 @@
           <% if site_admin? %>
             <tr>
             
-              <th>User Name :</th>
+              <th>Username :</th>
               <td>  <%= form.text_field :username ,class: 'form-control'%> </td>
+            </tr>
+            <tr>
+              <th> Institute :</th>
+              <td> <%= form.collection_select :institute_id, @institutes.order(:name), :id, :name, {prompt: 'Select Institute'}, class: 'form-control'%></td>
             </tr>
             <tr>
               <th>Email ID :</th>
@@ -67,6 +71,10 @@
             
               <th>User Name :</th>
               <td>  <%= @user.username %> </td>
+            </tr>
+            <tr>
+              <th>Institute :</th>
+              <td> <%= @user.institute ? @user.institute.name : 'NIL'%></td>
             </tr>
             <tr>
               <th>Email ID :</th>
