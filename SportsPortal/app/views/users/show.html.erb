@@ -26,9 +26,15 @@
                             <div class="col-md-7" style="padding:5%;">
                                 <table class="table">
                                     <tr>
-                                        <th>Institute Name :</th>
+                                        <th>Username :</th>
                                         <td>
-                                            <%= @user.name %>
+                                            <%= @user.username %>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Institute :</th>
+                                        <td>
+                                            <%= @user.institute ? @user.institute.name : 'NIL'%>
                                         </td>
                                     </tr>
                                     <tr>

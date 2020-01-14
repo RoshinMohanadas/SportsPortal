@@ -17,10 +17,13 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    @institutes = Institute.all
+
   end
 
   # GET /users/1/edit
   def edit
+    @institutes = Institute.all
   end
 
   # POST /users
@@ -28,6 +31,8 @@ class UsersController < ApplicationController
   def create
    
     @user = User.new(user_params)
+    @institutes = Institute.all
+   
 
     respond_to do |format|
       if @user.save
@@ -43,6 +48,8 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    @institutes = Institute.all
+
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
@@ -72,6 +79,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :username, :email, :password, :role, :contactno, :avatar)
+      params.require(:user).permit(:name, :username, :email, :password, :role, :contactno, :avatar, :institute_id)
     end
 end
