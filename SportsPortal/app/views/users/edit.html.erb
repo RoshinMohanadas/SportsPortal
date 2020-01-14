@@ -67,6 +67,17 @@
    </td>
             </tr>
           <%else%>
+
+
+        <% if  institute? && @user.email.blank? %>
+
+        <div class="alert alert-danger">
+    <strong>Please set your Email ID before proceeding !</strong>
+      </div>
+  
+        <% end %>
+
+
             <tr>
             
               <th>User Name :</th>
