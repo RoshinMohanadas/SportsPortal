@@ -2,6 +2,7 @@ class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
   before_action :check_login, only: [:basicinfo, :createbasicinfo, :editbasicinfo, :updatebasicinfo, :edittravelplan, :updatetravelplan]
   before_action :check_is_owner, only: [:editbasicinfo, :edittravelplan]
+  before_action :is_email_set, only: [:basicinfo]
 
   # GET /teams
   # GET /teams.json
@@ -22,7 +23,14 @@ class TeamsController < ApplicationController
   # GET /teams/basicinfo
   def basicinfo
     @team = Team.new
+    @event = Event.find(params[:eventid])
+    @user_id = current_user.id
+    @user = User.find(@user_id.to_i)
 
+    rand_string = (0...8).map { ('a'..'z').to_a[rand(26)] }.join
+
+    @name_part_one = @user.institute_id ? @user.institute.code: rand_string
+    @team.name =  @name_part_one
     @team.event_id = params[:eventid]
   end
 
@@ -238,7 +246,11 @@ class TeamsController < ApplicationController
       end
     end
 
-
+    def is_email_set
+      if ( logged_in? && current_user.email.blank? )
+        redirect_to edit_user_path(current_user)
+      end
+    end
     
 
     # Never trust parameters from the scary internet, only allow the white list through.
