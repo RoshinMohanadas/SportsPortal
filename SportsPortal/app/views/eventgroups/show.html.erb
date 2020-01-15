@@ -25,35 +25,38 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img class="d-block w-100 bd-placeholder-img img-rounded" src="https://mdbootstrap.com/img/Photos/Slides/img%20(15).jpg"
-        alt="First slide">
+       <!-- <img class="d-block w-100 bd-placeholder-img img-rounded" src="https://mdbootstrap.com/img/Photos/Slides/img%20(15).jpg"
+        alt="First slide"> -->
+        <%= image_tag("cover1.jpg",{ :class=>" d-block w-100 bd-placeholder-img img-rounded img-fluid rounded" , :style =>"" }) %>
+        
         <div class="container">
           <div class="carousel-caption text-left">
             <h1><%= @eventgroup.name %></h1>
-            <p class="d-none d-md-block"><%= @eventgroup.description %></p>
-            <p><a class="btn btn-lg btn-primary" href="#events" role="button">Register</a></p>
+            <p class="d-none d-md-block lead"><%= @eventgroup.description %></p>
+            <p><a class="btn btn-lg btn-primary" href="#events" role="button">See Events</a></p>
           </div>
         </div>
       </div>
       <div class="carousel-item">
-        <img class="d-block w-100 bd-placeholder-img img-rounded" src="https://mdbootstrap.com/img/Photos/Slides/img%20(16).jpg"
-        alt="Second slide">
+        <%= image_tag("cover2.jpg",{ :class=>" d-block w-100 bd-placeholder-img img-rounded img-fluid rounded" , :style =>"" }) %>
+        
         <!-- <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
         --><div class="container">
           <div class="carousel-caption text-left">
             <h1><%= @eventgroup.name %></h1>
-            <p class="d-none d-md-block">From <%= @eventgroup.startdate.strftime("%dth %b %Y")  %> to <%= @eventgroup.enddate.strftime("%dth %b %Y")  %></p>
-            <p><a class="btn btn-lg btn-primary" href="#events" role="button">Register</a></p>
+            <p class="d-none d-md-block lead">From <%= @eventgroup.startdate.strftime("%dth %b %Y")  %> to <%= @eventgroup.enddate.strftime("%dth %b %Y")  %></p>
+            <p><a class="btn btn-lg btn-primary" href="#events" role="button">See Events</a></p>
           </div>
         </div>
       </div>
       <div class="carousel-item">
-        <img class="d-block w-100 bd-placeholder-img image-thumbnail" src="https://mdbootstrap.com/img/Photos/Slides/img%20(17).jpg"
-        alt="Third slide"><div class="container">
+        <%= image_tag("cover3.jpg",{ :class=>" d-block w-100 bd-placeholder-img img-rounded img-fluid rounded" , :style =>"" }) %>
+        
+        <div class="container">
           <div class="carousel-caption text-left">
             <h1><%= @eventgroup.name %></h1>
-            <p class="d-none d-md-block">Venue: <%= @eventgroup.venue %></p>
-            <p><a class="btn btn-lg btn-primary" href="#events" role="button">Register</a></p>
+            <p class="d-none d-md-block lead">Venue: <%= @eventgroup.venue %></p>
+            <p><a class="btn btn-lg btn-primary" href="#events" role="button">See Events</a></p>
           </div>
         </div>
       </div>
@@ -79,69 +82,25 @@
     <div class="row" id="events">
     <% @eventgroup.events.each do |event| %>
       <div class="col-lg-4">
-        <img class="d-block w-100 rounded-circle" src="https://mdbootstrap.com/img/Photos/Slides/img%20(15).jpg"
-        alt="First slide">
+        <%= image_tag("meet.jpg",{ :class=>"img-fluid rounded d-block w-100 img-thumbnail" , :style =>"max-height:160px;max-width:100%;" }) %>
+        <!-- <img class="d-block w-100 " src="https://mdbootstrap.com/img/Photos/Slides/img%20(15).jpg" 
+        alt="First slide"> -->
         <h2><%= event.name %></h2>
-        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        <p><%= event.eventtype %></p>
+        <p><%= event.description %></p>
+        <!-- <p><a class="btn btn-success" href="#" role="button">Register &raquo;</a></p> -->
+        <%= link_to "Register ", event, { :style =>"padd ing-left:0px;" , :class=>"btn btn-success" } %>
+  
       </div><!-- /.col-lg-4 -->
       <%end%>
       
     </div><!-- /.row -->
 
 
-    <!-- START THE FEATURETTES -->
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-      </div>
-      <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-      </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-      </div>
-      <div class="col-md-5 order-md-1">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-      </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-      </div>
-      <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-      </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <!-- /END THE FEATURETTES -->
-
+    
   </div><!-- /.container -->
-
-
-  <!-- FOOTER -->
-  <footer class="container">
-    <p class="float-right"><a href="#">Back to top</a></p>
-    <p>&copy; 2017-2019 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-  </footer>
 </main>
-
+<!--
 
 <div class="card card-1">
 <marquee>
@@ -202,7 +161,7 @@
       <th>Name</th>
       <th>Description</th>
       <th>Eventtype</th>
-      <!--<th>Fest/Meet</th>-->
+      <!--<th>Fest/Meet</th>
       <th class='notexport'></th>
       <% if event_admin? %>
       <th class='notexport'></th>
@@ -217,7 +176,7 @@
         <td><%= event.name %></td>
         <td><%= event.description %></td>
         <td><%= event.eventtype %></td>
-        <!--<td><%= event.eventgroup.name %></td>-->
+        <!--<td><%= event.eventgroup.name %></td>
         <td><%= link_to 'Show', event %></td>
         <% if event_admin? %>
           <td><%= link_to 'Edit', edit_event_path(event) %></td>
@@ -230,7 +189,7 @@
   </tbody>
 </table>
 </div> 
-<br>
+<br>-->
 
 
 
