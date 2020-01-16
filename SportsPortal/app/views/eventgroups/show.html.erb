@@ -1,45 +1,106 @@
 <p id="notice"><%= notice %></p>
-<head>
- 
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('#example').DataTable( {
-          dom: 'Bfrtip',
-          buttons: [
-              'copyHtml5',
-              'excelHtml5',
-              
-              {
-                extend: 'csvHtml5',
-                text: 'CSV',
-                className: 'btn btn-default',
-                exportOptions: {
-                    columns: ':not(.notexport)'
-                }
-            },
-              {
-                extend: 'pdfHtml5',
-                text: 'PDF',
-                className: 'btn btn-default',
-                exportOptions: {
-                    columns: ':not(.notexport)'
-                }
-            }
-          ]
-      } );
-  } );
-  </script>
-
-  
-</head>
-
-<div class="row">
-  <div class="col-md-offset-10 col-md-2">
-    <div style="float:right">
-    <%= button_to 'Back', root_path, method: "get" %>
-    </div>
-  </div>
+<div class="row logo">
+<div class="col-md-4">
+<%= image_tag("logo.jpg",{ :class=>" rounded img-fluid", :style =>"" }) %>
 </div>
+<div class="col-md-8 announcement">
+        <marquee class="marq" bgcolor = "White" direction = "left" loop="" > 
+        <% all_announcements.each do |announce| %>  
+          &nbsp
+          <strong> <%= announce.message %></strong>.
+        <% end %>
+      </marquee>
+</div>
+</div>
+
+<hr>
+
+<main role="main">
+
+  <div id="myCarousel" class="carousel  carousel-fade" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+       <!-- <img class="d-block w-100 bd-placeholder-img img-rounded" src="https://mdbootstrap.com/img/Photos/Slides/img%20(15).jpg"
+        alt="First slide"> -->
+        <%= image_tag("cover1.jpg",{ :class=>" d-block w-100 bd-placeholder-img img-rounded img-fluid rounded" , :style =>"" }) %>
+        
+        <div class="container">
+          <div class="carousel-caption text-left">
+            <h1><%= @eventgroup.name %></h1>
+            <p class="d-none d-md-block lead"><%= @eventgroup.description %></p>
+            <p><a class="btn btn-lg btn-primary" href="#events" role="button">See Events</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag("cover2.jpg",{ :class=>" d-block w-100 bd-placeholder-img img-rounded img-fluid rounded" , :style =>"" }) %>
+        
+        <!-- <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
+        --><div class="container">
+          <div class="carousel-caption text-left">
+            <h1><%= @eventgroup.name %></h1>
+            <p class="d-none d-md-block lead">From <%= @eventgroup.startdate.strftime("%dth %b %Y")  %> to <%= @eventgroup.enddate.strftime("%dth %b %Y")  %></p>
+            <p><a class="btn btn-lg btn-primary" href="#events" role="button">See Events</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag("cover3.jpg",{ :class=>" d-block w-100 bd-placeholder-img img-rounded img-fluid rounded" , :style =>"" }) %>
+        
+        <div class="container">
+          <div class="carousel-caption text-left">
+            <h1><%= @eventgroup.name %></h1>
+            <p class="d-none d-md-block lead">Venue: <%= @eventgroup.venue %></p>
+            <p><a class="btn btn-lg btn-primary" href="#events" role="button">See Events</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row" id="events">
+    <% @eventgroup.events.each do |event| %>
+      <div class="col-lg-4">
+        <%= image_tag("meet.jpg",{ :class=>"img-fluid rounded d-block w-100 img-thumbnail" , :style =>"max-height:160px;max-width:100%;" }) %>
+        <!-- <img class="d-block w-100 " src="https://mdbootstrap.com/img/Photos/Slides/img%20(15).jpg" 
+        alt="First slide"> -->
+        <h2><%= event.name %></h2>
+        <p><%= event.eventtype %></p>
+        <p><%= event.description %></p>
+        <!-- <p><a class="btn btn-success" href="#" role="button">Register &raquo;</a></p> -->
+        <%= link_to "Register ", event, { :style =>"padd ing-left:0px;" , :class=>"btn btn-success" } %>
+  
+      </div><!-- /.col-lg-4 -->
+      <%end%>
+      
+    </div><!-- /.row -->
+
+
+    
+  </div><!-- /.container -->
+</main>
+<!--
 
 <div class="card card-1">
 <marquee>
@@ -84,7 +145,7 @@
 </div>
 
 <hr>  
-<div class="row">
+<div class="row" >
 <div class="col-md-10 text-center"> <h3 style="margin-top:3px">Events</h3> </div>
 <div class="col-md-2"> 
   <% if event_admin? %>
@@ -100,7 +161,7 @@
       <th>Name</th>
       <th>Description</th>
       <th>Eventtype</th>
-      <!--<th>Fest/Meet</th>-->
+      <!--<th>Fest/Meet</th>
       <th class='notexport'></th>
       <% if event_admin? %>
       <th class='notexport'></th>
@@ -115,7 +176,7 @@
         <td><%= event.name %></td>
         <td><%= event.description %></td>
         <td><%= event.eventtype %></td>
-        <!--<td><%= event.eventgroup.name %></td>-->
+        <!--<td><%= event.eventgroup.name %></td>
         <td><%= link_to 'Show', event %></td>
         <% if event_admin? %>
           <td><%= link_to 'Edit', edit_event_path(event) %></td>
@@ -128,7 +189,7 @@
   </tbody>
 </table>
 </div> 
-<br>
+<br>-->
 
 
 
