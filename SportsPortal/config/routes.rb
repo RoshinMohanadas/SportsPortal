@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   
   get 'session/new'
   get 'homepage/home'
-  root :to => "eventgroups#show", :id => '1'
+  root 'homepage#home'
   resources :matches
 
   resources :matches do

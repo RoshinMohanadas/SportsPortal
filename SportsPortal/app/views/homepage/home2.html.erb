@@ -1,0 +1,187 @@
+<% provide(:title, "Home") %>
+
+<p>
+    <%# <marquee class="marq" bgcolor = "Yellow" direction = "left" loop="" > 
+        <div class="geek1"> &ltWARNING&gt Website under construction. Proceed with CAUTION &ltWARNING&gt </div> 
+    </marquee> 	 %>
+</p>
+
+
+   <!--  <div class="col-sm-2 sidenav">
+     <%= render 'events' %>
+
+    </div> 
+    <div class="col-sm-8 text-left"> -->
+    
+    <h2 class="text-info  font-weight-bold"> 
+    <% all_contents.each do |editcontent| %> 
+    <%= editcontent.welcometext %> 
+    <% end %> 
+    <span class="text-uppercase font-weight-bolder"> National Institute of Technology, Calicut </span></h2>
+    
+   
+      
+
+      
+      <hr>
+      <marquee class="marq" bgcolor = "White" direction = "left" loop="" > 
+        <div class="geek1"><strong> Important Announcements : </strong>
+        <% all_announcements.each do |announce| %>  
+          
+          &nbsp
+          <strong> <%= announce.message %></strong>.
+          
+        <% end %>
+         </div> 
+    </marquee>
+    <hr>
+
+
+
+
+
+<% @eventgroups.each do |eventgroup| %>
+<% if eventgroup.isactive %>
+<div class="card text-center">
+  <div class="card-header">
+    
+    <div class="row">
+      <div class="col-md-6">
+      <ul class="nav card-header-tabs" >
+       <li class="">
+       <%= link_to eventgroup.name, eventgroup, { :style =>"padd ing-left:0px;" , :class=>"navbar-brand nav-link" } %>
+        <!-- <a class="nav-link disabled" href="#"> <strong> <%= eventgroup.name %> </strong></a> --> 
+      </li>
+      </ul>
+      </div>
+      <div class="col-md-6 text-right">
+      <ul class="nav card-header-tabs navbar-right" >
+      <li class="nav-item" ><h5>
+        <a class="nav-link disabled" href="#">From <%= eventgroup.startdate.strftime("%dth %b %Y")  %> to <%= eventgroup.enddate.strftime("%dth %b %Y")  %></a>
+       </h5>
+      </li>
+    </ul>
+  </div>
+ 
+      
+    </div>
+
+
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-4" style="padding-bottom:3vh;"> 
+        <%= image_tag("tournament.jpg",{ :class=>"img-thumbnail rounded img-fluid", :style =>"" }) %>
+      </div>
+      <div class="col-md-8 text-justify " > 
+        <%= eventgroup.description %>
+  <br><br><br>
+          <ul class="list-group list-group-flush">
+                <div class="card-header">
+                   <p class="text-muted">Last Date for Registration : <%= eventgroup.regenddate.strftime("%dth %b %Y")  %></p>
+                 </div>
+                  <div class="card-header">
+                   <p class="text-muted">Location : <%= eventgroup.venue %></p>
+                 </div>
+             
+                 <!--
+            <li class="list-group-item">From <%= eventgroup.startdate %>  to  <%= eventgroup.enddate %></li>
+            <li class="list-group-item"><%= eventgroup.venue %></li>
+            <li class="list-group-item">Vestibulum at eros</li>
+             <div class="card-header">
+                   <p class="text-muted">Venue:<%= eventgroup.venue %></p>
+                 </div>-->
+          </ul>
+
+                
+
+      </div>
+      
+    </div>
+              <div class="card-header">
+                  <% if ((today >= eventgroup.regstartdate.to_date() ) && (today <= eventgroup.regenddate.to_date()))%>
+                   <p class="text-success"><%= "Registrations Open" %></p>
+                  <% elsif  (today >= eventgroup.regenddate)%>
+                   <p class="text-danger"><%= "Registrations Closed" %></p>
+                  <% else %>
+                  <p class="text-info"><%= "Registrations will start from "+eventgroup.regstartdate.strftime("%dth %b") %></p>
+                  <%end %>
+              </div>
+    <br>
+      <div class="card-footer">
+      <Strong class="text-muted">Events</strong>
+    </div>
+    <div class="row">
+     
+    <% eventgroup.events.each do |event| %>
+    
+    <!--  <div class="col-md-4" style="bo rder:1px solid lightgrey;padding:5%;min-height:30vh"> 
+       <%= link_to event do %>
+       <%= event.name %>
+       <%end%><br>
+        <%= event.description %>
+      </div>
+-->
+      <div class="col-md-4" style="bor der:1px solid lightgrey;paddi ng:5%;m in-height:30vh"> 
+       <div class="card" style="wi dth: 18rem;">
+ <div class="card-header">  <h5 class="card-title"> <%= link_to event do %>
+       <%= event.name %>
+       <%end%></h5> </div>
+  <%= image_tag("meet.jpg",{ :class=>"img-fluid rounded", :style =>"max-height:160px;max-width:100%;" }) %>
+     
+  <div class="card-body">
+    <p class="card-text text-truncate" ><%= event.eventtype %></p>
+  </div>
+  <!--
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><Strong>Event: </strong>Cricket</li>
+    <li class="list-group-item"><Strong>If rules: </strong>Rules</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+  -->
+  <hr>
+  <div class="card-body">
+  
+   <%= link_to "View Details", event, { :style =>"padd ing-left:0px;" , :class=>"btn btn-primary text-white na vbar-brand na v-link" } %>
+  
+  
+  <% if institute? %>
+    <% if event.teams.where('user_id = ?', current_user.id).count == 0%>
+      <%= link_to 'Register', { :controller => :teams, :action => :basicinfo, :eventid => event.id }, class:'btn btn-primary text-white', method: "get"%>
+    <% else %>
+      <%= link_to 'View Team', { :controller => :teams, :action => :show, :id => event.teams.where('user_id = ?', current_user.id).first.id}, class:'btn btn-success text-white', method: "get"%>
+    <% end %>
+  <% end %>
+  
+  <!--    
+    <a href="#" class="card-link">View Details</a>
+    <a href="#" class="card-link">Register</a> -->
+  </div>
+</div>
+      </div>
+      
+      <%end%>
+       
+    </div>
+
+
+
+
+</div>
+</div>
+<% end %>
+<% end %>
+
+
+<!--
+      <h3>Quick Access</h3>
+      <hr>
+       <%= link_to "Users",users_path %><hr>
+        <%= link_to "Event Groups",eventgroups_path %><hr>
+         <%= link_to "Events",events_path%><hr>
+          <%= link_to "Teams",teams_path %><hr>
+           <%= link_to "Matches",matches_path %> -->
+      
+    
+
+

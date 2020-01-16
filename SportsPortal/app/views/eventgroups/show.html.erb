@@ -72,8 +72,19 @@
   </div>
 
 
-  <!-- Marketing messaging and featurettes
-  ================================================== -->
+
+  <% if event_admin? %>
+  <hr>
+  <div class="row">
+  <div class="col-md-4 text-center"> <%= link_to 'Edit Event', edit_eventgroup_path(@eventgroup),class: 'btn btn-primary text-white' %> </div>
+  <div class="col-md-4 text-center">  <%= link_to 'Add sub-Event', {:controller => :events, :action => :new, :groupid => @eventgroup.id},class: 'btn btn-success text-white', method: "get" %></div>
+  <div class="col-md-4 text-center"> <%= link_to "Download Participants Report", {:controller => "reports",:action=>:participantsdownload_pdf,:format => 'pdf',:egid => @eventgroup.id},class: 'btn btn-primary text-white'%> </div>
+  </div>
+  <hr>
+      
+
+  <% end %>
+  <!--================================================== -->
   <!-- Wrap the rest of the page in another container to center all the content. -->
 
   <div class="container marketing">
@@ -100,8 +111,9 @@
     <% end %>
   <% end %>
   <% if event_admin? %>
-          <div><%= link_to 'Edit', edit_event_path(event), { :style =>"padding-left:5px; min-width:15px;" , :class=>"btn btn-info text-white " } %>
-          <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' , :style =>"padding-left:5px; min-width:15px;" , :class=>"btn btn-danger text-white " }%></div>
+          <div><%= link_to 'Edit', edit_event_path(event), { :style =>"padding-left:5px; min-width:25px;" , :class=>"btn btn-info text-white " } %>
+          <%= link_to "Delete", event, class: "btn btn-danger", data: {:confirm => 'Are you sure?'}, :method => :delete%>
+          </div>
         <% end %>
 
       </div><!-- /.col-lg-4 -->
