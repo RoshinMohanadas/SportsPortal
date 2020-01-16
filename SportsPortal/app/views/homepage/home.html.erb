@@ -141,9 +141,9 @@
   -->
   <hr>
   <div class="card-body">
-  <!--
-   <%= link_to "View Details", event, { :style =>"padd ing-left:0px;" , :class=>"na vbar-brand na v-link" } %>
-  -->
+  
+   <%= link_to "View Details", event, { :style =>"padd ing-left:0px;" , :class=>"btn btn-primary text-white na vbar-brand na v-link" } %>
+  
   
   <% if institute? %>
     <% if event.teams.where('user_id = ?', current_user.id).count == 0%>
