@@ -10,12 +10,13 @@ class User < ApplicationRecord
 	#validates :ename,  presence: true, length: { maximum: 50 }
 	# VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-	validates :email,  presence: true, length: { maximum: 225 },
+	validates :email, :allow_blank => true,length: { maximum: 225 },
 					   format: { with: VALID_EMAIL_REGEX },
 					   uniqueness: { case_sensitive: false }
-	validates :contactno,  presence: true, length: { minimum: 10,maximum: 10 }
+	validates :contactno,  :allow_blank => true, length: { maximum: 10 }
 	#validates :designation,  presence: true
     has_secure_password
 	validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 	has_many :teams, dependent: :delete_all
+	belongs_to :institute, optional: true
 end

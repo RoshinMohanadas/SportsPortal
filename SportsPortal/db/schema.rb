@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_31_153055) do
+ActiveRecord::Schema.define(version: 2020_01_14_055501) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -80,6 +80,13 @@ ActiveRecord::Schema.define(version: 2019_10_31_153055) do
   end
 
   create_table "images", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "institutes", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -156,6 +163,8 @@ ActiveRecord::Schema.define(version: 2019_10_31_153055) do
     t.string "contactno"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "institute_id"
+    t.index ["institute_id"], name: "index_users_on_institute_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -164,4 +173,5 @@ ActiveRecord::Schema.define(version: 2019_10_31_153055) do
   add_foreign_key "teammembers", "teams"
   add_foreign_key "teams", "events"
   add_foreign_key "teams", "users"
+  add_foreign_key "users", "institutes"
 end

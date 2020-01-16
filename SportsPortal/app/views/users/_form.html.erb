@@ -25,6 +25,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :institute %>
+    <%= form.collection_select :institute_id, @institutes.order(:name), :id, :name, {prompt: 'Select Institute'}, class: 'form-control'%>
+  </div>
+
+  <div class="field">
     <%= form.label :email %>
     <%= form.text_field :email ,class: 'form-control', placeholder: "Email Id"%>
   </div>

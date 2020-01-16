@@ -29,6 +29,8 @@ end
   get 'welcome/index'
 
   get    'login'   => 'session#new'
+  get     'forgot' => 'session#forgotpassword'
+  post 'forgot' => 'session#sendpassword'
   post   'login'   => 'session#create'
   delete 'logout'  => 'session#destroy'
   get 'about' => 'homepage#about'

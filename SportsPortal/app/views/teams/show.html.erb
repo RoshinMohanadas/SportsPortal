@@ -121,9 +121,21 @@
 </p>
 
 
-<br><br>
-  <%= link_to "Download Acknowledgement Receipt", {:controller => "reports",:action=>:ackdownload_pdf,:format => 'pdf',:egid => @team.id},class: 'btn btn-primary text-white'%>
- 
+
+  <% if @team.status == 'approved' && institute? %>
+
+  <div class="row">
+      <div class="col-md-4"> </div>
+  <div class="col-md-4"> 
+     
+      <br><br>
+      <%= link_to "Download Acknowledgement Receipt", {:controller => "reports",:action=>:ackdownload_pdf,:format => 'pdf',:egid => @team.id},class: 'btn btn-primary text-white'%>
+  </div>
+  <div class="col-md-4"> </div>
+</div>
+  
+  
+  <% end %>
 
 </div>
 
